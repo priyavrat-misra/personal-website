@@ -1,12 +1,12 @@
-baseURL = "https://example.com"
-title = "Your Website Title"
+baseURL = "https://p-v.pages.dev"
+title = "Priyavrat Misra"
 languageCode = "en-us"
 theme = "devise"
 relativeURLs = true
 enableEmoji = true
 googleAnalytics = ""
 enableRobotsTXT = true
-copyright = "&copy; Copyright Year, Your Name"
+copyright = "&copy; 2022 Priyavrat Misra. All Rights Reserved."
 
 # Main menu items
 [menu]
@@ -15,40 +15,49 @@ copyright = "&copy; Copyright Year, Your Name"
     name = "About"
     title = "About"
     url = "/about/"
-    weight = -110
+    weight = 1
   [[menu.main]]
-    identifier = "posts"
-    name = "Posts"
-    title = "Posts"
-    url = "/post/"
-    weight = -100
+    identifier = "projects"
+    name = "Projects"
+    title = "Samples from my tiny world of Experiments!"
+    url = "/projects/"
+    weight = 2
   [[menu.main]]
-    identifier = "categories"
-    name = "Categories"
-    title = "Categories"
-    url = "/categories/"
-    weight = -90
+    identifier = "blog"
+    name = "Blog"
+    title = "Musings of a CS student."
+    url = "/blog/"
+    weight = 3
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    title = "Tags"
+    url = "/tags/"
+    weight = 4
+  [[menu.main]]
+    identifier = "cv"
+    name = "CV"
+    title = "All about me!"
+    url = "https://raw.githubusercontent.com/priyavrat-misra/resume/main/R%C3%A9sum%C3%A9.pdf"
+    weight = 5
 
 # Configuration Features
 [params]
   description = "Your meta description"      # Your meta description of the site
-  header_title = "Your Name"                 # Your header title
-  header_subtitle = "Your Creative Subtitle" # Your header subtitle
-  home_image = "/images/avatar.png"          # Path to header image starting from the static directory
+  header_title = "Priyavrat Misra"                 # Your header title
+  header_subtitle = "Computer Science Graduate" # Your header subtitle
+  home_image = "./images/avatar.jpeg"          # Path to header image starting from the static directory
   recent_posts = 5                           # Max amount of recent posts to show
   mainSections = ["posts", "post", "blog"]   # Main sections to include in recent posts
   [params.style]                             # CSS style overrides
-    backgroundColor = "#f8f9fa"
-    fontColor = "#212529"
+    backgroundColor = "#cfd8dc"
+    fontColor = "#263238"
   [[params.social]]
     fa_icon = "fab fa-github fa-1x"          # Font Awesome icon class
-    href = "http://github.com/youruser"      # Link to associate with icon (http://, https://, mailto:)
+    href = "http://github.com/priyavrat-misra"      # Link to associate with icon (http://, https://, mailto:)
   [[params.social]]
     fa_icon = "fab fa-linkedin-in fa-1x"
-    href = ""
-  [[params.social]]
-    fa_icon = "fab fa-twitter fa-1x"
-    href = ""
+    href = "https://www.linkedin.com/in/priyavrat-misra/"
   [[params.social]]
     fa_icon = "fas fa-at fa-1x"
-    href = ""
+    href = "mailto:priyavratmisra123@gmail.com"
