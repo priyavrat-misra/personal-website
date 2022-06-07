@@ -4,7 +4,6 @@ languageCode = "en-us"
 theme = "devise"
 relativeURLs = true
 enableEmoji = false
-googleAnalytics = ""
 enableRobotsTXT = true
 copyright = "&copy; 2022 Priyavrat Misra. All rights reserved."
 

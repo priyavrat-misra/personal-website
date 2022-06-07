@@ -1,16 +1,42 @@
 // === Import Bootstrap and set variable overrides ===
 $body-bg: {{ if .Param "style.backgroundColor" }}{{ .Param "style.backgroundColor"}}{{ else }}#f8f9fa{{ end }};
 $body-color: {{ if .Param "style.fontColor" }}{{ .Param "style.fontColor"}}{{ else }}#212529{{ end }};
-$font-family-base: 'Raleway', sans-serif;
+$font-family-base: Raleway, sans-serif;
 $font-size-base: 0.95rem;
 @import "../../node_modules/bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+/* raleway-regular - latin */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/raleway-v27-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/fonts/raleway-v27-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/raleway-v27-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/raleway-v27-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/raleway-v27-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/raleway-v27-latin-regular.svg#Raleway') format('svg'); /* Legacy iOS */
+}
+/* raleway-600 - latin */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/raleway-v27-latin-600.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/fonts/raleway-v27-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/raleway-v27-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/raleway-v27-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/raleway-v27-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/raleway-v27-latin-600.svg#Raleway') format('svg'); /* Legacy iOS */
+}
 
 // === Import Font Awesome ===
 $fa-font-path: "../webfonts";
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+@import "../../node_modules/@fontawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../../node_modules/@fontawesome/fontawesome-free/scss/solid.scss";
+@import "../../node_modules/@fontawesome/fontawesome-free/scss/brands.scss";
 .fa-1x {
   font-size: 0.9em !important;
 }
@@ -64,12 +90,12 @@ hr {
 
 h1, h2 {
   letter-spacing: -0.085rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 h3, h4 {
   letter-spacing: -0.065rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 p {
