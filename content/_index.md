@@ -8,4 +8,4 @@ A Computer Science graduate with a passion for implementing things from scratch.
 Artificial Intelligence and Deep Learning fascinate him, and he has always had a keen interest in training models. His interests also extend to studying the concepts of Algorithms, Operating Systems and Computer Architecture, and appreciating the decades of innovation that went into these meticulous concepts. As a final note, he enjoys Open Source Softwares, and has contributed to a few of them.
 
 #### Contact
-You can reach him out on [LinkedIn](https://www.linkedin.com/in/priyavrat-misra/), [GitHub](https://github.com/priyavrat-misra) or [email](mailto:priyavratmisra123@gmail.com).
+You can reach him out on [LinkedIn](https://www.linkedin.com/in/priyavrat-misra), [GitHub](https://github.com/priyavrat-misra), [Telegram](https://telegram.me/prv_t) or [Email](mailto:priyavratmisra123@gmail.com).
