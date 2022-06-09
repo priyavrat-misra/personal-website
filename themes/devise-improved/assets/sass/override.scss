@@ -10,6 +10,7 @@ $font-size-base: 0.95rem;
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
+  font-display: fallback;
   src: url('/fonts/raleway-v27-latin-regular.eot'); /* IE9 Compat Modes */
   src: local(''),
        url('/fonts/raleway-v27-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -23,6 +24,7 @@ $font-size-base: 0.95rem;
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 600;
+  font-display: fallback;
   src: url('/fonts/raleway-v27-latin-600.eot'); /* IE9 Compat Modes */
   src: local(''),
        url('/fonts/raleway-v27-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */

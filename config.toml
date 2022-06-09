@@ -1,7 +1,7 @@
 baseURL = "https://p-v.pages.dev"
 title = "Priyavrat Misra"
 languageCode = "en-us"
-theme = "devise"
+theme = "devise-improved"
 relativeURLs = true
 enableEmoji = false
 enableRobotsTXT = true
@@ -12,7 +12,7 @@ copyright = "&copy; 2022 Priyavrat Misra. All rights reserved."
   [[menu.main]]
     identifier = "projects"
     name = "Projects"
-    title = "Samples from my tiny world of experiments."
+    title = "Samples from his tiny world of experiments."
     url = "/projects/"
     weight = 1
   [[menu.main]]

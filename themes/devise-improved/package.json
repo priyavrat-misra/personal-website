@@ -1,7 +1,7 @@
 {
-  "name": "devise",
+  "name": "devise-improved",
   "version": "1.0.0",
-  "description": "devise hugo theme",
+  "description": "hugo theme",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,7 @@
     "hugo",
     "theme"
   ],
-  "author": "Austin Gebauer",
+  "author": "Priyavrat Misra",
   "license": "MIT",
   "devDependencies": {}
 }
