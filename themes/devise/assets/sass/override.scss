@@ -147,6 +147,88 @@ blockquote p {
   display: inline;
 }
 
+// copypasta from https://codepen.io/brandonmcconnell/pen/bZqGdw
+$strings: (
+  "Computer Science Graduate"
+  "Deep Learning Enthusiast"
+  "Udacity AI Scholar"
+  "Open Source Advocate"
+);
+
+// now for some timing (in seconds)
+$durCharFwd: 0.10; // character typed
+$durFullGap: 2.00; // time between typed/delete
+$durCharBwd: 0.08; // character deleted
+$durDoneGap: 1.00; // time between strings
+
+// initializing some variables and functions
+$charCount: 0; $durTotal: 0;
+@each $string in $strings {
+  $charCount: $charCount + str-length($string);
+  $durTotal: $durTotal
+    + (str-length($string) * ($durCharFwd + $durCharBwd))
+    + $durFullGap + $durDoneGap;
+}
+@function percent($string, $letter, $modifier) {
+  $stringsPast: $string - 1; $time: 0;
+  @while $stringsPast > 0 {
+    $time: $time
+      + (($durCharFwd + $durCharBwd) * (str-length(nth($strings, $stringsPast))))
+      + $durFullGap + $durDoneGap;
+    $stringsPast: $stringsPast - 1;
+  }
+  @if $letter <= str-length(nth($strings, $string)) {
+    $time: $time
+      + ($durCharFwd * ($letter - 1));
+  } @else {
+    $time: $time
+      + ($durCharFwd * str-length(nth($strings, $string)))
+      + $durFullGap
+      + ($durCharBwd * ($letter - str-length(nth($strings, $string))));
+  }
+  @return ($time / $durTotal * 100 + $modifier) + "%";
+}
+$currentPercentage: 0;
+// now THIS is where the magic happens...
+@keyframes typed {
+  @for $i from 1 through length($strings) {
+    // @for $j from 1 through (str-length(nth($strings, $i)) * 2 - 1) {
+    @for $j from 1 through (str-length(nth($strings, $i)) * 2) {
+      /* string #{$i}, char #{$j} */
+      @if $j < str-length(nth($strings, $i)) * 2 { // not last character deleted
+        #{percent($i, $j, 0)}, #{percent($i, $j+1, -0.001)} {
+          @if $j <= str-length(nth($strings, $i)) {
+            content: quote(#{str_slice(nth($strings, $i), 1, $j)});
+          } @else {
+            content: quote(#{str_slice(nth($strings, $i), 1, str-length(nth($strings, $i)) - ($j - str-length(nth($strings, $i))))});
+          }
+        }
+      } @else {
+        @if $i < length($strings) { // not last string
+          #{percent($i, $j, 0)}, #{percent($i+1, 1, -0.001)} {
+            content: "​"; // zero-width space to retain element height
+          }
+        } @else { // last string
+          #{percent($i, $j, 0)}, 100% {
+            content: "​"; // zero-width space to retain element height
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes cursor {
+  50% {border-color: transparent}
+}
+
+.subtitle {
+  &::after {
+    content: "​"; // zero-width space to retain element height
+    border-right: 1px solid;
+    animation: typed #{$durTotal + "s"} linear 1s infinite, cursor 1s infinite;
+  }
+}
+
 // === Media breakpoints ===
 // 576px
 @include media-breakpoint-up(sm) {}
