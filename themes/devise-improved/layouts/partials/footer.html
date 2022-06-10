@@ -1,10 +1,11 @@
 <footer class="text-center pb-1">
+    <script defer language="javascript" type="text/javascript"  src="{{ "/js/repo-card.js" | urlize | relURL }}"></script>
     <small>
         <small class="text-muted">
             {{ if .Site.Copyright }}
             {{ .Site.Copyright | safeHTML }}
             {{ else }}
-            {{ "&copy; Copyright Year, Your Name" | safeHTML }}
+            {{ "&copy; {{< year >}}, Your Name" | safeHTML }}
             {{ end }}
         </small>
     </small>
