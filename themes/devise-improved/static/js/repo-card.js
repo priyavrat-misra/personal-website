@@ -1,6 +1,10 @@
 // copypasta from https://github.com/Tarptaeya/repo-card
 window.addEventListener('DOMContentLoaded', async function() {
   const CACHE_TIMEOUT = 60000;
+  for (const el of document.querySelectorAll('.repo-card')) {
+    el.innerHTML = `<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>`;
+  }
+  
   async function get(url) {
     const now = new Date().getTime();
     const prevResp = JSON.parse(localStorage.getItem(url));
