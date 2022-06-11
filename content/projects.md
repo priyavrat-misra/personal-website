@@ -6,4 +6,7 @@ title: "Projects"
 
 {{<embed-repo "xrays-and-gradcam">}}  
 {{<embed-repo "image-colorization">}}  
-{{<embed-repo "scifi-lorem">}}  
+{{<embed-repo "scifi-char-rnn">}}  
+{{<embed-repo "image-compression-cae">}}  
+{{<embed-repo "image-denoising-cae">}}  
+{{<embed-repo "neural-style-transfer">}}  
