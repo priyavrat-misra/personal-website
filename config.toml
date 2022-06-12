@@ -18,7 +18,7 @@ copyright = "&copy; 2022 Priyavrat Misra. All rights reserved."
   [[menu.main]]
     identifier = "blog"
     name = "Blog"
-    title = "Musings of a CS student."
+    title = "A work in progress."
     url = "/blog/"
     weight = 2
   [[menu.main]]

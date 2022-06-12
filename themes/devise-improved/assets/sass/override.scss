@@ -42,6 +42,9 @@ $fa-font-path: "../webfonts";
 .fa-1x {
   font-size: 0.9em !important;
 }
+.fa-1x:hover {
+  color: #263238 !important;
+}
 
 // === Custom Styles ===
 #content {
