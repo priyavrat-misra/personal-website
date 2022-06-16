@@ -7,6 +7,9 @@ enableEmoji = false
 enableRobotsTXT = true
 copyright = "&copy; 2022 Priyavrat Misra. All rights reserved."
 
+[taxonomies]
+  tag = "tags"
+
 # Main menu items
 [menu]
   [[menu.main]]
