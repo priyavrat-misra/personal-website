@@ -49,5 +49,3 @@ The table below summarizes all the characters in `"Hello, World!\n"`, but it can
 {{</ table >}}
 
 I know life was simple only with the first `cout` statement; I ruined it for good, didn't I?
-
----
