@@ -239,7 +239,7 @@ $currentPercentage: 0;
 .spinner > div {
   width: 6px;
   height: 6px;
-  background-color: #586069;
+  background-color: $body-color;
 
   border-radius: 100%;
   display: inline-block;

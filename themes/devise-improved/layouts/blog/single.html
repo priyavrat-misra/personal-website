@@ -1,16 +1,23 @@
 {{ define "main" }}
-    <div class="pl-sm-2">
-        <div class="mb-3">
-            <h3 class="mb-0">{{ .Title }}</h3>
-            {{ if .Params.Subtitle }}
+  <div class="pl-sm-2">
+      <div class="mb-3">
+          <h3 class="mb-0">{{ .Title }}</h3>
+          {{ if .Params.Subtitle }}
             <h5>{{ .Params.Subtitle }}</h5>
-            {{ end }}
-            <small class="text-muted">Published {{ .Date.Format "Mon, 02 Jan 2006 15:04:05 MST"  }}</small>
-        </div>
-
-        <article>
-            {{ .Content }}
-        </article>
-    </div>
-
+          {{ end }}
+          <small class="text-muted">Published {{ .Date.Format "Mon, 02 Jan 2006 15:04:05 MST"  }}</small>
+      </div>
+  
+      <article>
+          {{ .Content }}
+      </article>
+  </div>
+  <script src="https://utteranc.es/client.js"
+    repo="priyavrat-misra/personal-website"
+    issue-term="pathname"
+    label="comment"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+  </script>
 {{ end }}

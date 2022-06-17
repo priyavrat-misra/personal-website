@@ -46,8 +46,8 @@ copyright = "&copy; 2022 Priyavrat Misra. All rights reserved."
   recent_posts = 5
   mainSections = ["posts", "post", "blog"]
   [params.style]
-    backgroundColor = "#cfd8dc"
-    fontColor = "#263238"
+    backgroundColor = "aliceblue"
+    fontColor = "#586069"
   [[params.social]]
     fa_icon = "fab fa-linkedin-in fa-1x"
     href = "https://www.linkedin.com/in/priyavrat-misra"

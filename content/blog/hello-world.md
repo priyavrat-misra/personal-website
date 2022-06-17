@@ -16,16 +16,16 @@ int main(int argc, char *argv[]) {
 ```
 All three `cout` statements will print the same thing i.e., `Hello, World!`. Try for yourself.
 
-Now coming to the "how" part; in a nutshell, it has to do with **escape sequences**. Basically, they are used to represent characters which have special meaning in the language. For example, if we want to have a double quotation mark (`"`) within some string literal we can't have it directly, instead we need to have a backslash (`\`) precede the double quotation mark. Also, there many **escape sequences** like `\n`, `\t`, etc. which are predefined by the language.
+Now coming to the "how" part; in a nutshell, it has to do with **escape sequences**. Basically, they are used to represent characters which have special meaning in the language. For example, if we want to have a double quotation mark (`"`) within some string literal we can't have it directly, instead first we need to have a backslash (`\`) precede it. Also, there many **escape sequences** like `\n`, `\t`, etc. which are predefined by the language.
 
-But that is not all there is to **escape sequences**, they can be used with **octal** and **hexadecimal number systems** as well. Widely, there are 2 kinds of such sequences:
+But that is not all there is to them, we can have **escape sequences** of **octal** and **hexadecimal** digits as well. Below is a list of two such obscure sequences:
 - `\` followed by _one_, _two_ or _three_ **octal** digits
 - `\x` followed by _one_ or more **hexadecimal** digits
 
-The value that follows `\` and `\x` represents the numerical value of the character. To keep it simple, let's assume the language uses {{<a_blank title="ASCII" url="https://en.wikipedia.org/wiki/ASCII">}} character encoding. In simple terms, it means every character that is used in the language is associated with a predefined numercial value as per the **ASCII specification**, the second and third `cout` statements use nothing but those values in **octal** and **hexadecimal** format respectively.
+The value that follows `\` and `\x` represents the numerical value of the character. To keep it simple, let's assume the language uses {{<a_blank title="ASCII" url="https://en.wikipedia.org/wiki/ASCII">}} character encoding. In simple terms, it means every character that is used in the language is associated with a predefined numercial value as per the **ASCII specification**. The second and third `cout` statements use nothing but those values in **octal** and **hexadecimal** format respectively to represent the corresponding characters.
 
-> - _if there are more than three octal digits, then only the first 3 are considered, the remaining are considered as simple characters in a string._
-> - _the hexadecimal digits are not case sensitive, `\x6C` is same as `\x6c`._
+> - If there are more than three octal digits after `\`, then only the first three are considered, the remaining are considered as simple characters in a string.
+> - The hexadecimal digits are not case sensitive, `\x6C` is same as `\x6c`.
 
 The table below summarizes all the characters in `"Hello, World!\n"`, but it can be generalized to any string.
 
@@ -45,9 +45,9 @@ The table below summarizes all the characters in `"Hello, World!\n"`, but it can
 |   `l`   | 108 | `\154` | `\x6C` |
 |   `d`   | 100 | `\144` | `\x64` |
 |   `!`   |  33 |  `\41` | `\x21` |
-|   `\n ` |  10 |  `\12` |  `\xA` |
+|  `\n`   |  10 |  `\12` |  `\xA` |
 {{</ table >}}
 
-I know life was simple only with the first `cout` statement, I ruined it for good didn't I?
+I know life was simple only with the first `cout` statement; I ruined it for good, didn't I?
 
 ---
