@@ -4,11 +4,7 @@
          instead of the default. For details on this configuration capability,
          see https://gohugo.io/templates/homepage/#add-content-and-front-matter-to-the-homepage
     -->
-    {{ if .Content }}
-        <div class="pl-sm-4 ml-sm-5">
-            {{ .Content }}
-        </div>
-    {{ else }}
-        {{- partial "category-posts.html" . -}}
-    {{ end }}
+    <div class="pl-sm-4 ml-sm-5">
+        {{ .Content }}
+    </div>
 {{ end }}

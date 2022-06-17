@@ -1,8 +1,8 @@
 ---
-title: "\"Hello, World!\"? Sure, why not?"
+title: "Overengineering \"Hello, World!\"."
 date: 2022-06-16T12:30:21+05:30
-description: "Overengineering \"Hello, World!\"."
-tags: ["cpp", "programming"]
+description: "Not for the faint of heart."
+tags: ["c++", "programming"]
 ---
 
 ```cpp
