@@ -23,7 +23,7 @@ But that is not all there is to them, we can have **escape sequences** of **octa
 - `\` followed by _one_, _two_ or _three_ **octal** digits
 - `\x` followed by _one_ or more **hexadecimal** digits
 
-The value that follows `\` and `\x` represents the numerical value of the character. To keep it simple, let's assume the language uses {{<a_blank title="ASCII" url="https://en.wikipedia.org/wiki/ASCII">}} character encoding. In simple terms, it means every character that is used in the language is associated with a predefined numercial value as per the **ASCII specification**. The second and third `cout` statements use nothing but those values in **octal** and **hexadecimal** format respectively to represent the corresponding characters.
+The value that follows `\` and `\x` represents the numerical value of the character. To keep it simple, let's assume the language uses {{<a_blank title="ASCII" url="https://en.wikipedia.org/wiki/ASCII">}} character encoding. In simple terms, it means every character that is used in the language is associated with a predefined numercial value as per the **ASCII specification**. The second and third `cout` statements use nothing but those values in **octal** and **hexadecimal** format respectively, to represent the corresponding characters.
 
 > - If there are more than three octal digits after `\`, then only the first three are considered, the remaining are considered as simple characters in a string.
 > - The hexadecimal digits are not case sensitive, `\x6C` is same as `\x6c`.
