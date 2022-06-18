@@ -2,7 +2,7 @@ baseURL = "https://p-v.pages.dev"
 title = "Priyavrat Misra"
 languageCode = "en-us"
 theme = "devise-improved"
-relativeURLs = true
+relativeURLs = false
 enableEmoji = false
 enableRobotsTXT = true
 pluralizelisttitles = false
@@ -48,7 +48,7 @@ copyright = "&copy; 2022 Priyavrat Misra. All rights reserved."
   description = "Priyavrat Misra's region of the Internet."
   header_title = "Priyavrat Misra"
   header_subtitle = "('Computer Science Graduate' 'Deep Learning Enthusiast' 'Udacity AI Scholar' 'Open Source Advocate')"
-  home_image = "./images/avatar.webp"
+  home_image = "/images/avatar.webp"
   [params.style]
     backgroundColor = "aliceblue"
     fontColor = "#586069"
