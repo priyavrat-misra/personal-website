@@ -1,9 +1,9 @@
 {{ define "main" }}
 <div class="pl-sm-4 ml-sm-5">
     <h4>{{ .Title }}</h4>
-    <ul class="list-unstyled">
+    <ul class="list-inline">
         {{ range .Data.Terms }}
-        <li>
+        <li class="list-inline-item">
             <a href="{{ .Page.RelPermalink }}" class="badge badge-secondary text-decoration-none">
                 {{ .Page.Title }} <sup>{{ .Count }}</sup>
             </a>

@@ -5,11 +5,11 @@
     {{ if .Params.Subtitle }}
     <h5>{{ .Params.Subtitle }}</h5>
     {{ end }}
-    <small class="text-muted">Published {{ .Date.Format "Mon, 02 Jan 2006 15:04:05 MST" }}</small>
+    <small class="text-muted">Published {{ dateFormat "02 Jan 06 15:04 MST" .Date.Local }}</small>
       {{ if gt .Params.tags 0 }}
         <br class="d-sm-none"/>
         <small>
-          <i class="fas fa-tags fa-xs ml-2"></i>
+          <i class="fas fa-tags fa-xs ml-1"></i>
           {{ range .Params.tags }}
           <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge badge-secondary text-decoration-none">{{ . }}</a>
           {{ end }}
