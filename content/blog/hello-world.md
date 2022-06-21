@@ -1,10 +1,11 @@
 ---
-title: "Overengineering \"Hello, World!\"."
+title: "Overengineering \"Hello, World!\""
 date: 2022-06-16T12:30:21+05:30
-description: "Not for the faint of heart."
+description: "Octal and Hexadecimal escape sequences in C++."
 tags: ["c++", "programming"]
 ---
 
+A word of warning, this article is not for the faint of heart.
 ```cpp
 #include <iostream>
 using namespace std;
@@ -15,7 +16,7 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 ```
-All three `cout` statements will print the same thing i.e., `Hello, World!`. Try for yourself.
+All three `cout` statements will print the same thing i.e., `Hello, World!`.
 
 Now coming to the "how" part; in a nutshell, it has to do with **escape sequences**. Basically, they are used to represent characters which have special meaning in the language. For example, if we want to have a double quotation mark (`"`) within some string literal we can't have it directly, instead first we need to have a backslash (`\`) precede it. Also, there many **escape sequences** like `\n`, `\t`, etc. which are predefined by the language.
 
@@ -23,7 +24,7 @@ But that is not all there is to them, we can have **escape sequences** of **octa
 - `\` followed by _one_, _two_ or _three_ **octal** digits
 - `\x` followed by _one_ or more **hexadecimal** digits
 
-The value that follows `\` and `\x` represents the numerical value of the character. To keep it simple, let's assume the language uses {{<a_blank title="ASCII" url="https://en.wikipedia.org/wiki/ASCII">}} character encoding. In simple terms, it means every character that is used in the language is associated with a predefined numercial value as per the **ASCII specification**. The second and third `cout` statements use nothing but those values in **octal** and **hexadecimal** format respectively, to represent the corresponding characters.
+The value that follows `\` and `\x` represents the numerical value of the character. To keep it simple, let's assume the language uses {{<a_blank title="ASCII character encoding" url="https://en.wikipedia.org/wiki/ASCII">}}. In simple terms, it means every character that is used in the language is associated with a predefined numercial value as per the **ASCII specification**. The second and third `cout` statements use nothing but those values in **octal** and **hexadecimal** format respectively, to represent the corresponding characters.
 
 > - If there are more than three octal digits after `\`, then only the first three are considered, the remaining are considered as simple characters in a string.
 > - The hexadecimal digits are not case sensitive, `\x6C` is same as `\x6c`.
@@ -49,4 +50,4 @@ The table below summarizes all the characters in `"Hello, World!\n"`, but it can
 |  `\n`   |  10 |  `\12` |  `\xA` |
 {{</ table >}}
 
-I know life was simple only with the first `cout` statement; I ruined it for good, didn't I?
+Hope you enjoyed this article. See you next time.

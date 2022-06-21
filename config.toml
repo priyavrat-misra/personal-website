@@ -45,7 +45,6 @@ copyright = "&copy; 2022 Priyavrat Misra. All rights reserved."
 
 # Configuration Features
 [params]
-  description = "Priyavrat Misra's region of the Internet."
   header_title = "Priyavrat Misra"
   header_subtitle = "('Computer Science Graduate' 'Deep Learning Enthusiast' 'Udacity AI Scholar' 'Open Source Advocate')"
   home_image = "/images/avatar.webp"

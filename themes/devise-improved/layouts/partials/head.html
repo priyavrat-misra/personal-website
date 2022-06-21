@@ -2,7 +2,8 @@
     <title>{{ .Title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Description}}{{end}}" />
+    <meta name="author" content="{{ $.Site.Params.header_title }}">
+    <meta name="description" content="{{if .Description}}{{.Description}}{{else}}{{$.Site.Params.header_title}}{{with .Title}} - {{.}}{{end}}{{end}}" />
 
     {{/* Adds complete override capability */}}
     {{ $overrideTemplate := resources.Get "sass/override.scss" }}
