@@ -21,13 +21,13 @@ copyright = "&copy; 2022 Priyavrat Misra. All rights reserved."
   [[menu.main]]
     identifier = "projects"
     name = "Projects"
-    title = "Samples from his tiny world of experiments."
+    title = "Samples from my tiny world of experiments."
     url = "/projects/"
     weight = 1
   [[menu.main]]
     identifier = "blog"
     name = "Blog"
-    title = "Musings of a CS Student."
+    title = "My views on various technical topics."
     url = "/blog/"
     weight = 2
   [[menu.main]]

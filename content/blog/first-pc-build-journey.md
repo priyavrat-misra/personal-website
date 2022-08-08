@@ -12,7 +12,7 @@ As a result, I decided it was about time I built a PC instead of getting a lapto
 
 After spending a few exhausting days researching about the hardwares, comparing various benchmarks, choosing the components, looking for compatibilty issues and on and on, I finally placed the orders. It took me a lot of work to get through this step, but I enjoyed each and every step of it.
 
-#### The Parts
+#### Parts
 When choosing the parts, my goal was to get better performance while staying within the budget of an average laptop. I was able to accomplish that with the following components. As for why I bought a GT 1030 in 2022, it's because I intend to replace it once the {{<a_blank url="https://en.wikipedia.org/wiki/2020%E2%80%93present_global_chip_shortage" title="global chip shortage">}} boils down. Until then, it'll do.
 
 ![The Parts](/images/parts.webp)
@@ -29,7 +29,7 @@ When choosing the parts, my goal was to get better performance while staying wit
 | **Case** |**:**| [Corsair SPEC-05 ATX Mid Tower Case](https://www.corsair.com/ww/en/Categories/Products/Cases/Mid-Tower-ATX-Cases/Carbide-Series-SPEC-05-Mid-Tower-Gaming-Case-%E2%80%94-Black/p/CC-9011138-WW) |
 {{< /table >}}
 
-#### Assembling
+#### Assemblage
 After a whole week of anxious waiting, I finally received the orders. Since this was my first time putting together a computer, I made sure I had everything ready before I began. Surprisingly, that "everything" included only a {{<a_blank url="https://en.wikipedia.org/wiki/List_of_screw_drives#Phillips" title="Phillips #1 screwdriver">}}, that's all. That's all one needs to assemble a PC. Also another thing that goes without saying, a great deal of concentration.
 
 I took my sweet time going through the manuals provided in the boxes, and then everything started to come together (pun intended).
