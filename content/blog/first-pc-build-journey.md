@@ -8,10 +8,10 @@ A couple of weeks ago, I learned that my laptop’s processor and the motherboar
 
 As a result, I decided it was about time I built a PC instead of getting a laptop and going through the same situation all over again. And with that decision in mind, my PC-building journey began.
 
-After spending a few exhausting days researching the hardware, comparing various benchmarks, choosing the components, looking for compatibility issues and on and on, I finally placed the orders. It took me a lot of work to get through this step, but I enjoyed every step.
+After spending a few exhausting days researching the hardware, comparing various benchmarks, choosing the components, looking for compatibility issues and on and on, I finally placed the orders. It took me a lot of work to get through this step, but I enjoyed every bit of it.
 
 #### Parts
-When choosing the parts, my goal was to get better performance while staying within the budget of an average laptop. I was able to accomplish that with the following components. As for why I bought a GT 1030 in 2022, it’s because I intend to replace it once {{<a_blank url="https://en.wikipedia.org/wiki/2020%E2%80%93present_global_chip_shortage" title="global chip shortage">}} boils down. Until then, it’ll do.
+When choosing the parts, my goal was to get better performance while staying within the budget of an average laptop. I was able to accomplish that with the following components. As for why I bought a GT 1030 in 2022, it’s because I intend to replace it once the {{<a_blank url="https://en.wikipedia.org/wiki/2020%E2%80%93present_global_chip_shortage" title="global chip shortage">}} boils down. Until then, it’ll do.
 
 ![The Parts](/images/parts.webp)
 
@@ -28,7 +28,7 @@ When choosing the parts, my goal was to get better performance while staying wit
 {{< /table >}}
 
 #### Assemblage
-After a whole week of anxious waiting, I finally received the orders. Since this was my first time putting together a computer, I made sure I had everything ready before I began. Surprisingly, that “everything” included only a {{<a_blank url="https://en.wikipedia.org/wiki/List_of_screw_drives#Phillips" title="Phillips #1 screwdriver">}}, that’s all. That’s all one needs to assemble a PC. Also, another thing which goes without saying is a great deal of concentration.
+After a whole week of anxious waiting, I finally received the orders. Since this was my first time putting together a computer, I made sure I had everything ready before I began. Surprisingly, that “everything” included only a {{<a_blank url="https://en.wikipedia.org/wiki/List_of_screw_drives#Phillips" title="Phillips #1 screwdriver">}}, that’s all. That’s all one needs to assemble a PC. Also, another thing which goes without saying is "a great deal of concentration".
 
 I took my sweet time going through the manuals in the boxes, and then everything started to come together (pun intended).
 
@@ -36,9 +36,9 @@ I took my sweet time going through the manuals in the boxes, and then everything
 
 After having assembled a PC by myself, I can confirm that it is not as complicated as it sounds; still I did mess up once or twice. The first mistake was with the way I inserted the AMD heatsink; they have this projection on one side where the logo goes and this blocked a RAM slot. Due to which, I had to remove the heatsink, where the second mistake came in.
 
-While removing it, the CPU came off with it unexpectedly. It shouldn't have happened since there is a lock in the motherboard that holds the CPU. Until now, I’m unable to figure out if it’s because of a forced pull or a tighter adhesion by the thermal paste or both. I felt a heart attack for a moment, thinking I had ruined the CPU pins and the motherboard’s lock. I couldn’t confirm it until after 24 hours when I received the final missing piece in the puzzle, the DVI cable. Fortunately, neither of these scenarios occurred, and it booted!
+While removing, the CPU came off with it unexpectedly. It shouldn't have happened since there is a lock in the motherboard which holds the CPU. Until now, I’m unable to figure out if it’s because of a forced pull or a tighter adhesion by the thermal paste or both. I felt a heart attack for a moment, thinking I had ruined the CPU pins and the motherboard’s lock. I couldn’t confirm it until after 24 hours when I received the final missing piece in the puzzle, the {{<a_blank url="https://en.wikipedia.org/wiki/Digital_Visual_Interface" title="DVI cable">}}. Fortunately, neither of these scenarios occurred, and it booted!
 
 ![The Build](/images/build.webp 'Another way to say "Hello, World!", I guess.')
 
 #### Final Thoughts
-I would highly recommend building your PC if you get the chance. It takes a little research and time, but it’s incredibly rewarding. As a final note, I am delighted I decided to embark on this journey.
+I would highly recommend building your own PC if you get the chance. It takes a little research and time, but it’s incredibly rewarding. As a final note, I am glad I decided to embark on this journey.
