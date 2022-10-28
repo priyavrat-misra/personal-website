@@ -6,7 +6,7 @@ tags: ["hardware", "life"]
 ---
 A couple of weeks ago, I learned that my laptop’s processor and the motherboard had fried. It might have sounded like a surprise to someone in my position, but to me, it didn’t. I had been using that laptop for over four years. I spent extended hours on it every day, some 12 to 14 hours. I knew I had it coming.
 
-As a result, I decided it was about time I built a PC instead of getting a laptop and going through the same situation all over again. And with that decision in mind, my PC-building journey began.
+As a result, I decided it was about time I built a PC instead of getting a laptop and going through the same situation all over again. With that decision in mind, my PC-building journey began.
 
 After spending a few exhausting days researching the hardware, comparing various benchmarks, choosing the components, looking for compatibility issues and on and on, I finally placed the orders. It took me a lot of work to get through this step, but I enjoyed every bit of it.
 
@@ -36,9 +36,9 @@ I took my sweet time going through the manuals in the boxes, and then everything
 
 After having assembled a PC by myself, I can confirm that it is not as complicated as it sounds; still I did mess up once or twice. The first mistake was with the way I inserted the AMD heatsink; they have this projection on one side where the logo goes and this blocked a RAM slot. Due to which, I had to remove the heatsink, where the second mistake came in.
 
-While removing, the CPU came off with it unexpectedly. It shouldn't have happened since there is a lock in the motherboard which holds the CPU. Until now, I’m unable to figure out if it’s because of a forced pull or a tighter adhesion by the thermal paste or both. I felt a heart attack for a moment, thinking I had ruined the CPU pins and the motherboard’s lock. I couldn’t confirm it until after 24 hours when I received the final missing piece in the puzzle, the {{<a_blank url="https://en.wikipedia.org/wiki/Digital_Visual_Interface" title="DVI cable">}}. Fortunately, neither of these scenarios had occurred, and it booted!
+While removing, the CPU came off with it unexpectedly. It shouldn't have happened since there is a lock in the motherboard which holds the CPU. Thus far I’m unable to figure out if it’s because of a forced pull or a tighter adhesion by the thermal paste or both. I was scared to death for a moment, thinking I had ruined the CPU pins and the motherboard’s lock. I couldn’t confirm it until after 24 hours when I received the final missing piece in the puzzle, the {{<a_blank url="https://en.wikipedia.org/wiki/Digital_Visual_Interface" title="DVI cable">}}. Fortunately, neither of these scenarios had occurred, and it booted!
 
-![The Build](/images/build.webp 'Another way to say "Hello, World!", I guess.')
+![The Build](/images/build.webp 'Translation: "Hello, World!"')
 
 #### Final Thoughts
 I would highly recommend building your own PC if you get the chance. It takes a little research and time, but it’s incredibly rewarding. As a final note, I am glad I decided to embark on this journey.

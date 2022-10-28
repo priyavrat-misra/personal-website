@@ -9,6 +9,7 @@ A word of warning, this article is not for the faint of heart.
 ```cpp
 #include <iostream>
 using namespace std;
+
 int main(int argc, char *argv[]) {
 	cout << "Hello, World!\n";  // about time we make it a little interesting
 	cout << "\110\145\154\154\157\54\40\127\157\162\154\144\41\12";
