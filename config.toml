@@ -46,7 +46,7 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
 # Configuration Features
 [params]
   header_title = "Priyavrat Misra"
-  header_subtitle = "('Computer Science Graduate' 'Deep Learning Enthusiast' 'Udacity AI Scholar' 'Open Source Advocate')"
+  header_subtitle = "('Software Engineer @ ADP' 'Deep Learning Enthusiast' 'Udacity AI Scholar' 'Open Source Advocate')"
   home_image = "/images/avatar.webp"
   [params.style]
     backgroundColor = "aliceblue"
