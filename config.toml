@@ -67,3 +67,8 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
     fa_icon = "fas fa-rss-square fa-1x"
     title = "RSS feed"
     url = "/blog/rss.xml"
+
+[markup]
+  [markup.highlight]
+    lineNoStart = 1
+    lineNos = true

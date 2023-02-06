@@ -152,6 +152,16 @@ blockquote p {
   display: inline;
 }
 
+img[src$='#floatleft']
+{
+	float:left;
+}
+
+img[src$='#floatright']
+{
+	float:right;
+}
+
 // copypasta from https://codepen.io/brandonmcconnell/pen/bZqGdw
 // now for some timing (in seconds)
 $durCharFwd: 0.10; // character typed
