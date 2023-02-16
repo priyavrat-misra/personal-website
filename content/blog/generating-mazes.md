@@ -7,9 +7,9 @@ draft: true
 ---
 Oftentimes when we are all alone, we can't help but think about our forgotten goals. This article is about achieving one such goal I had as a kid i.e., to make a computer game.
 
-One day while browsing the Internet, I stumbled across something interesting, a maze generation algorithm. In no time, I was fixated on the idea of seeing it in action. Never before it occurred to me that there are complex algorithms at work for something as simple as children's puzzles.
+One day while browsing the Internet, I stumbled across something interesting, a maze generation algorithm. Never before it occurred to me that there are complex algorithms at work for something as simple as children's puzzles. In no time, I was fixated on the idea of seeing it in action.
 
-The experiment began with finding tools to visualize the maze generation processes. Eventually, I came across {{<a_blank url="https://www.sfml-dev.org" title="Simple and Fast Multimedia Library (SFML)">}}. I decided to go for it entirely due to it's name, hoping it would be both simple and fast, and it was! However, it is possible to use any other library and/or programming language of your choice to follow along. Or you can just give SFML a shot as well.
+The experiment began with finding tools to visualize the maze generation processes. Eventually, I came across {{<a_blank url="https://www.sfml-dev.org" title="Simple and Fast Multimedia Library (SFML)">}}. I decided to go for it entirely due to it's name, hoping it would be both simple and fast, and it was! However, you may use any other library and/or programming language of your choice to follow along. Or you can just give SFML a shot as well.
 
 You can install SFML for your operating system by following the respective guide from {{<a_blank url="https://www.sfml-dev.org/tutorials/2.5/#getting-started" title="here">}}.
 ### The Algorithm
@@ -87,5 +87,7 @@ The for loops are used to draw dots in the entire window else it would have been
 #### Choosing the right Data Structure
 Now that the field has been laid, all that remains is to draw the maze. But first we need some data structure to hold information about the maze. Information like whether two cells are neighbors, whether there is a wall separating them and if they are neighbors then in which direction one is present to the next and so on.
 
-Maybe we can use a "graph" to represent the maze? Let's see, the cells can be nodes and if two cells are neighbors we can put an edge between them.
+The "graph" data structure seems like a good candidate, the cells can be vertices and if two cells are neighbors we can put an edge between them. But is it the right data structure for our use case? Let's see some of it's disadvantages.
+
+Consider the generated image above. It has around 576 cells, which means we need 576 vertices for this specific maze if we represent it as a graph. Let's say the vertices are implemented as structure objects with five integer fields (4 bytes each) to store the information mentioned earlier. So it will consume about 576 * 5 * 4 = 11520 bytes = 11.25 KiloBytes. 
 #### Visiting Neighbors
