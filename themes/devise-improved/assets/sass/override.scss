@@ -7,31 +7,31 @@ $font-size-base: 0.95rem;
 
 /* raleway-regular - latin */
 @font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  font-display: fallback;
-  src: url('/webfonts/raleway-v27-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('/webfonts/raleway-v27-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/webfonts/raleway-v27-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/webfonts/raleway-v27-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('/webfonts/raleway-v27-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('/webfonts/raleway-v27-latin-regular.svg#Raleway') format('svg'); /* Legacy iOS */
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 400;
+	font-display: fallback;
+	src: url('/webfonts/raleway-v27-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local(''),
+	url('/webfonts/raleway-v27-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('/webfonts/raleway-v27-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+	url('/webfonts/raleway-v27-latin-regular.woff') format('woff'), /* Modern Browsers */
+	url('/webfonts/raleway-v27-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('/webfonts/raleway-v27-latin-regular.svg#Raleway') format('svg'); /* Legacy iOS */
 }
 /* raleway-600 - latin */
 @font-face {
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 600;
-  font-display: fallback;
-  src: url('/webfonts/raleway-v27-latin-600.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('/webfonts/raleway-v27-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/webfonts/raleway-v27-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/webfonts/raleway-v27-latin-600.woff') format('woff'), /* Modern Browsers */
-       url('/webfonts/raleway-v27-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('/webfonts/raleway-v27-latin-600.svg#Raleway') format('svg'); /* Legacy iOS */
+	font-family: 'Raleway';
+	font-style: normal;
+	font-weight: 600;
+	font-display: fallback;
+	src: url('/webfonts/raleway-v27-latin-600.eot'); /* IE9 Compat Modes */
+	src: local(''),
+	url('/webfonts/raleway-v27-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('/webfonts/raleway-v27-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+	url('/webfonts/raleway-v27-latin-600.woff') format('woff'), /* Modern Browsers */
+	url('/webfonts/raleway-v27-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('/webfonts/raleway-v27-latin-600.svg#Raleway') format('svg'); /* Legacy iOS */
 }
 
 // === Import Font Awesome ===
@@ -40,126 +40,126 @@ $fa-font-path: "../webfonts";
 @import "../../node_modules/@fontawesome/fontawesome-free/scss/solid.scss";
 @import "../../node_modules/@fontawesome/fontawesome-free/scss/brands.scss";
 .fa-1x {
-  font-size: 0.9em !important;
+	font-size: 0.9em !important;
 }
 .fa-1x:hover {
-  color: #263238 !important;
+	color: #263238 !important;
 }
 
 // === Custom Styles ===
 #content {
-  width: 100%;
-  max-width: 650px;
-  min-height: calc(100vh - 105px);
+	width: 100%;
+	max-width: 650px;
+	min-height: calc(100vh - 105px);
 }
 
 #home-image {
-  width: 120px;
-  height: 120px;
-  border: solid 1px #6c757d;
-  // box-shadow: 0px 10px 7px -10px rgba(0,0,0,0.6);
-  // border-radius: 0.20rem;
-  padding: 0px;
-  object-fit: cover;
-  object-position: top;
+	width: 120px;
+	height: 120px;
+	border: solid 1px #6c757d;
+	// box-shadow: 0px 10px 7px -10px rgba(0,0,0,0.6);
+	// border-radius: 0.20rem;
+	padding: 0px;
+	object-fit: cover;
+	object-position: top;
 }
 
 #nav-links {
-  position: relative;
-  left: -5px;
+	position: relative;
+	left: -5px;
 }
 
 #nav-social {
-  position: relative;
-  left: 1px;
+	position: relative;
+	left: 1px;
 }
 
 .category {
-  color: $body-bg;
-  background-color: $body-color;
+	color: $body-bg;
+	background-color: $body-color;
 }
 
 .highlight > pre {
-  padding: 0.5rem 0.8rem;
-  border: 1px solid;
-  border-color: #ddd #ddd #ccc;
-  border-radius: 3px;
+	padding: 0.5rem 0.8rem;
+	border: 1px solid;
+	border-color: #ddd #ddd #ccc;
+	border-radius: 3px;
 }
 
 hr {
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(51, 51, 51, 0.3), rgba(51, 51, 51, 0.4),
-          rgba(51, 51, 51, 0.3), rgba(0, 0, 0, 0));
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(51, 51, 51, 0.3), rgba(51, 51, 51, 0.4),
+	rgba(51, 51, 51, 0.3), rgba(0, 0, 0, 0));
 }
 
 h1, h2 {
-  letter-spacing: -0.085rem;
-  font-weight: 600;
+	letter-spacing: -0.085rem;
+	font-weight: 600;
 }
 
 h3, h4 {
-  letter-spacing: -0.065rem;
-  font-weight: 600;
+	letter-spacing: -0.065rem;
+	font-weight: 600;
 }
 
 p {
-  margin-bottom: 0.7rem;
+	margin-bottom: 0.7rem;
 }
 
 header {
-  h2 {
-    a, a:hover {
-      color: $body-color;
-    }
-  }
+	h2 {
+		a, a:hover {
+			color: $body-color;
+		}
+	}
 }
 
 img {
 	max-width: 100%;
 	height: auto;
-	vertical-align: middle;
 	border-radius: .2rem;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 h4 {
-  margin-top: 2.2rem;
-  margin-bottom: 0.7rem;
+	margin-top: 2.2rem;
+	margin-bottom: 0.7rem;
 }
 
 a {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 blockquote {
-  background: $body-bg;
-  border-left: 8px solid #ccc;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-  quotes: "\201C""\201D""\2018""\2019";
+	background: $body-bg;
+	border-left: 8px solid #ccc;
+	margin: 1.5em 10px;
+	padding: 0.5em 10px;
+	quotes: "\201C""\201D""\2018""\2019";
 }
 
 blockquote:before {
-  color: #ccc;
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
+	color: #ccc;
+	content: open-quote;
+	font-size: 4em;
+	line-height: 0.1em;
+	margin-right: 0.25em;
+	vertical-align: -0.4em;
 }
 
 blockquote p {
-  display: inline;
+	display: inline;
 }
 
-img[src$='#floatleft']
-{
-	float:left;
+img[src$='#floatleft'] {
+	float: left;
 }
 
-img[src$='#floatright']
-{
-	float:right;
+img[src$='#floatright'] {
+	float: right;
 }
 
 // copypasta from https://codepen.io/brandonmcconnell/pen/bZqGdw
@@ -173,113 +173,113 @@ $durDoneGap: 1.00; // time between strings
 $charCount: 0; $durTotal: 0;
 $strings: {{ .Site.Params.header_subtitle }};
 @each $string in $strings {
-  $charCount: $charCount + str-length($string);
-  $durTotal: $durTotal
-    + (str-length($string) * ($durCharFwd + $durCharBwd))
-    + $durFullGap + $durDoneGap;
+	$charCount: $charCount + str-length($string);
+	$durTotal: $durTotal
+	+ (str-length($string) * ($durCharFwd + $durCharBwd))
+	+ $durFullGap + $durDoneGap;
 }
 @function percent($string, $letter, $modifier) {
-  $stringsPast: $string - 1; $time: 0;
-  @while $stringsPast > 0 {
-    $time: $time
-      + (($durCharFwd + $durCharBwd) * (str-length(nth($strings, $stringsPast))))
-      + $durFullGap + $durDoneGap;
-    $stringsPast: $stringsPast - 1;
-  }
-  @if $letter <= str-length(nth($strings, $string)) {
-    $time: $time
-      + ($durCharFwd * ($letter - 1));
-  } @else {
-    $time: $time
-      + ($durCharFwd * str-length(nth($strings, $string)))
-      + $durFullGap
-      + ($durCharBwd * ($letter - str-length(nth($strings, $string))));
-  }
-  @return ($time / $durTotal * 100 + $modifier) + "%";
+	$stringsPast: $string - 1; $time: 0;
+	@while $stringsPast > 0 {
+		$time: $time
+		+ (($durCharFwd + $durCharBwd) * (str-length(nth($strings, $stringsPast))))
+		+ $durFullGap + $durDoneGap;
+		$stringsPast: $stringsPast - 1;
+	}
+	@if $letter <= str-length(nth($strings, $string)) {
+		$time: $time
+		+ ($durCharFwd * ($letter - 1));
+	} @else {
+		$time: $time
+		+ ($durCharFwd * str-length(nth($strings, $string)))
+		+ $durFullGap
+		+ ($durCharBwd * ($letter - str-length(nth($strings, $string))));
+	}
+	@return ($time / $durTotal * 100 + $modifier) + "%";
 }
 $currentPercentage: 0;
 // now THIS is where the magic happens...
 @keyframes typed {
-  @for $i from 1 through length($strings) {
-    // @for $j from 1 through (str-length(nth($strings, $i)) * 2 - 1) {
-    @for $j from 1 through (str-length(nth($strings, $i)) * 2) {
-      /* string #{$i}, char #{$j} */
-      @if $j < str-length(nth($strings, $i)) * 2 { // not last character deleted
-        #{percent($i, $j, 0)}, #{percent($i, $j+1, -0.001)} {
-          @if $j <= str-length(nth($strings, $i)) {
-            content: quote(#{str_slice(nth($strings, $i), 1, $j)});
-          } @else {
-            content: quote(#{str_slice(nth($strings, $i), 1, str-length(nth($strings, $i)) - ($j - str-length(nth($strings, $i))))});
-          }
-        }
-      } @else {
-        @if $i < length($strings) { // not last string
-          #{percent($i, $j, 0)}, #{percent($i+1, 1, -0.001)} {
-            content: "​"; // zero-width space to retain element height
-          }
-        } @else { // last string
-          #{percent($i, $j, 0)}, 100% {
-            content: "​"; // zero-width space to retain element height
-          }
-        }
-      }
-    }
-  }
+	@for $i from 1 through length($strings) {
+		// @for $j from 1 through (str-length(nth($strings, $i)) * 2 - 1) {
+		@for $j from 1 through (str-length(nth($strings, $i)) * 2) {
+			/* string #{$i}, char #{$j} */
+			@if $j < str-length(nth($strings, $i)) * 2 { // not last character deleted
+				#{percent($i, $j, 0)}, #{percent($i, $j+1, -0.001)} {
+					@if $j <= str-length(nth($strings, $i)) {
+						content: quote(#{str_slice(nth($strings, $i), 1, $j)});
+					} @else {
+						content: quote(#{str_slice(nth($strings, $i), 1, str-length(nth($strings, $i)) - ($j - str-length(nth($strings, $i))))});
+					}
+				}
+			} @else {
+				@if $i < length($strings) { // not last string
+					#{percent($i, $j, 0)}, #{percent($i+1, 1, -0.001)} {
+						content: "​"; // zero-width space to retain element height
+					}
+				} @else { // last string
+					#{percent($i, $j, 0)}, 100% {
+						content: "​"; // zero-width space to retain element height
+					}
+				}
+			}
+		}
+	}
 }
 @keyframes cursor {
-  50% {border-color: transparent}
+	50% {border-color: transparent}
 }
 
 .subtitle {
-  &::after {
-    content: "​"; // zero-width space to retain element height
-    border-right: 1px solid;
-    animation: typed #{$durTotal + "s"} linear 1s infinite, cursor 1s infinite;
-  }
+	&::after {
+		content: "​"; // zero-width space to retain element height
+		border-right: 1px solid;
+		animation: typed #{$durTotal + "s"} linear 1s infinite, cursor 1s infinite;
+	}
 }
 
 
 // copypasta from https://codepen.io/danielmorosan/pen/XmYBVx
 .spinner {
-  margin: 100px auto 0;
-  width: 70px;
-  text-align: center;
+	margin: 100px auto 0;
+	width: 70px;
+	text-align: center;
 }
 
 .spinner > div {
-  width: 6px;
-  height: 6px;
-  background-color: $body-color;
+	width: 6px;
+	height: 6px;
+	background-color: $body-color;
 
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	border-radius: 100%;
+	display: inline-block;
+	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
 
 .spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
 }
 
 .spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
 }
 
 @-webkit-keyframes sk-bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0) }
-  40% { -webkit-transform: scale(1.0) }
+	0%, 80%, 100% { -webkit-transform: scale(0) }
+	40% { -webkit-transform: scale(1.0) }
 }
 
 @keyframes sk-bouncedelay {
-  0%, 80%, 100% { 
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  } 40% { 
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
-  }
+	0%, 80%, 100% { 
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	} 40% { 
+		-webkit-transform: scale(1.0);
+		transform: scale(1.0);
+	}
 }
 
 // === Media breakpoints ===
