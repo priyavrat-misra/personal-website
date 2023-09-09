@@ -3,19 +3,23 @@
   <div class="mb-3">
     <h3 class="mb-0">{{ .Title }}</h3>
     {{ if .Params.Subtitle }}
-    <h5>{{ .Params.Subtitle }}</h5>
+      <h5>{{ .Params.Subtitle }}</h5>
     {{ end }}
-    <small class="text-muted">Published {{ dateFormat "02 Jan 06 15:04 MST" .Date.Local }}</small>
-      {{ if gt .Params.tags 0 }}
-        <br class="d-sm-none"/>
-        <small>
-          <i class="fas fa-tags fa-xs ml-1"></i>
-          {{ range .Params.tags }}
+    <small class="text-muted">Published: {{ dateFormat "02 Jan 06 15:04 MST" .Date.Local }}</small>
+    {{- if .Lastmod }}
+      {{- if ne .Lastmod .Date }}
+        <small class="text-muted">Last updated: {{ dateFormat "02 Jan 06 15:04 MST" .Lastmod.Local }}</small>
+      {{- end }}
+    {{- end }}
+    {{ if gt .Params.tags 0 }}
+      <br class="d-md-none"/>
+      <small>
+        <i class="fas fa-tags fa-xs ml-1"></i>
+        {{ range .Params.tags }}
           <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge badge-secondary text-decoration-none">{{ . }}</a>
-          {{ end }}
-        </small>
-      {{ end }}
-    
+        {{ end }}
+      </small>
+    {{ end }}
   </div>
   
   <article>

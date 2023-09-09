@@ -7,6 +7,7 @@ enableEmoji = false
 enableRobotsTXT = true
 pluralizelisttitles = false
 copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
+enableGitInfo = true
 
 [taxonomies]
   tag = "tags"
@@ -68,7 +69,6 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
     title = "RSS feed"
     url = "/blog/rss.xml"
 
-[markup]
-  [markup.highlight]
-    lineNoStart = 1
-    lineNos = true
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = ["lastmod", ":git", "date", "publishDate"]
