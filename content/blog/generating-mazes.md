@@ -5,25 +5,37 @@ description: ""
 tags: ["c++", "programming", "sfml", "game"]
 draft: true
 ---
-Oftentimes when we are all alone, we can't help but think about our forgotten goals. This article is about achieving one such goal I had as a kid i.e., to make a computer game.
+> _Oftentimes when we have lots of free time, we can't help but think about our forgotten goals. This article is about achieving one such goal I had as a kid i.e., to make my own game._
 
-One day while browsing the Internet, I stumbled across something interesting, a maze generation algorithm. Never before it occurred to me that there are complex algorithms at work for something as simple as children's puzzles. In no time, I was fixated on the idea of seeing it in action.
+One day while browsing the Internet, I stumbled across something interesting, a maze generation algorithm. Never before it occurred to me that there are complex algorithms at play for something as simple as children's puzzles. In no time, I was fixated on the idea of seeing it in action.
 
-The experiment began with finding tools to visualize the maze generation processes. Eventually, I came across {{<a_blank url="https://www.sfml-dev.org" title="Simple and Fast Multimedia Library (SFML)">}}. I decided to go for it entirely due to it's name, hoping it would be both simple and fast, and it was! However, you may use any other library and/or programming language of your choice to follow along. Or you can just give SFML a shot as well.
+The experiment began with finding tools to visualize the maze generation process. After doing some digging around, I came across {{<a_blank url="https://www.sfml-dev.org" title="Simple and Fast Multimedia Library (SFML)">}}. I decided to go for it entirely because to it's catchy name, hoping it would be both simple and fast, and to my surprise it was!
+> You may use any other library and/or programming language of your choice to follow along. Or if you like exploring new things ~~like me~~, grab your copy of {{<a_blank url="https://www.sfml-dev.org/download.php" title="SFML">}} and start hacking!
 
-You can install SFML for your operating system by following the respective guide from {{<a_blank url="https://www.sfml-dev.org/tutorials/2.5/#getting-started" title="here">}}.
-### The Algorithm
-There are a plethora of maze generation algorithms out there but this article will be about the simplest of them all i.e., **Randomized Depth First Search** (or oftentimes just called **Recursive Backtracker**).
+### Dry running the Algorithm
+> This section is entirely optional.
 
-!["The Algorithm"](/images/mazic.gif#floatright)
-Before we begin, I want you to get a pen/pencil and a piece of paper, then draw dots in an orderly grid like fashion. Start your pen/pencil with a random dot. For every dot, you have atmost 4 options i.e., the unvisited neighbors to choose from. A dot is considered as visited if you have been there before. Go to one of the neighboring dots by drawing a line. If you come across a dot with all of it's neighbors visited, backtrack your steps until you find a dot with atleast one unvisited neighbor. Repeat the process until all dots are visited. That's it, you have your algorithmically generated maze from scratch. Thanks for reading, kthxbye.
+There are a plethora of algorithms for Maze Generation but in this article I will be using the simplest one of them all i.e., **Randomized Depth First Search** (or oftentimes just called **Recursive Backtracker**).
+
+!["The Algorithm"](/images/mazic.gif)
+
+Before we begin, I want you to get a pen/pencil and a piece of paper, then draw dots in an orderly grid like fashion. Start your pen/pencil with a random dot. Here are some ground rules before we begin:
+- For every dot, you have atmost 4 options you can navigate to, those are top, bottom, left and right.
+- A dot is considered as visited if you have been there before.
+- You can go to a neighboring dot by drawing a line, preferably a bold one.
+- Upon coming across a dot with all of it's neighbors visited, backtrack your steps until you find a dot with atleast one unvisited neighbor.
+- Repeat the process until all dots are visited.
+
+If you look closely, you will see a maze. The lines you have drawn are the walls and the gaps in between are the paths. _Now challenge someone to solve it!_
+
+#### Pseudocode
 ```plaintext {linenos=false}
 draw dots
 start with a random dot
-while (every dots are not visited) {
-    randomly choose a neighbor to be the next dot
-    if all neighbor are visited
-        backtrack steps until a dot with atleast an unvisited neighbor
+while (non of the dots are unvisited) {
+    randomly choose a neighbor to be the next one
+    if all neighboring dots are visited for the chosen dot
+        backtrack steps until a dot with atleast one unvisited neighbor is found
 }
 ```
 &nbsp;
@@ -38,8 +50,8 @@ create a window
 while (window is open) {
     check if there are any events & act accordingly
     clear the window of off any previous artifacts
-    draw in the window buffer
-    display whatever that is drawn
+    draw to the window buffer
+    display whatever that was drawn
 }
 ```
 > An _event_ can be thought of as an input by the user. Here are some examples:
@@ -83,7 +95,7 @@ int main() {
 }
 ```
 The for loops are used to draw dots in the entire window else it would have been a single dot in the top left corner. If everything works, you should see this in a new window:
-![dots](/images/dots.png "They don't look like 'dots', are they? From now on I'll use the word 'cells'.")
+![dots](/images/dots.png "They don't look like 'dots', do they? 'cell' is a more accurate term.")
 #### Choosing the right Data Structure
 Now that the field has been laid, all that remains is to draw the maze. But first we need some data structure to hold information about the maze. Information like whether two cells are neighbors, whether there is a wall separating them and if they are neighbors then in which direction one is present to the next and so on.
 
