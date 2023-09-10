@@ -7,7 +7,6 @@ enableEmoji = false
 enableRobotsTXT = true
 pluralizelisttitles = false
 copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
-enableGitInfo = true
 
 [taxonomies]
   tag = "tags"
@@ -68,7 +67,3 @@ enableGitInfo = true
     fa_icon = "fas fa-rss-square fa-1x"
     title = "RSS feed"
     url = "/blog/rss.xml"
-
-[frontmatter]
-  date = ["date", "publishDate", "lastmod"]
-  lastmod = ["lastmod", ":git", "date", "publishDate"]
