@@ -1,43 +1,53 @@
 ---
 title: "Generating Mazes from Scratch"
 date: 2023-01-23T21:46:36+05:30
-lastmod: 2024-01-15T11:30:00+05:30
+lastmod: 2024-06-27T17:36:00+05:30
 description: ""
-tags: ["c++", "programming", "sfml", "game"]
+tags: ["c++", "programming", "sfml", "game", "life"]
 draft: true
 ---
-> _Oftentimes we can't help but contemplate about our forgotten ambitions. This article is about how I achieved one such ambition I had as a kid._
+> _Where walls entwine and shadows play, our journey's map is written day by day, as every step reveals the maze within, we find our way out – or in._  
+> -- Llama 3
 
-One day while navigating the _World Wide Web_, I stumbled across something interesting, a maze generation algorithm. Never before it occurred to me that there are complex algorithms at work for something as simple as children's puzzles. In no time, I was fixated on the idea of seeing it in action.
+### The Motivation
+One fine day, I stumbled across something interesting, a maze generation algorithm. Never before it occurred to me that there are complex algorithms at work for something as simple as children's puzzles. In no time, I was fixated on the idea of seeing it in action.
 
 The experiment began with finding tools to visualize the maze generation process. After doing some digging around, I came across {{<a_blank url="https://www.sfml-dev.org" title="Simple and Fast Multimedia Library (SFML)">}}. I decided to go for it entirely because of it's catchy name, hoping it would be both simple and fast, and to my surprise it was!
-> You may use any other library and/or programming language of your choice to follow along. Or if you like exploring new things ~~like me~~, grab a copy of {{<a_blank url="https://www.sfml-dev.org/download.php" title="SFML">}} and start hacking!
 
-There are a plethora of algorithms for Maze Generation but in this article we will be exploring the simplest one of them all i.e., **Randomized Depth First Search** (or oftentimes just called **Recursive Backtracker**).
+> You may use any other grapics library and programming language of your choice to follow along. Or if you like exploring new things ~~like me~~, grab a copy of {{<a_blank url="https://www.sfml-dev.org/download.php" title="SFML">}} and start hacking!
 
-### Dry running the Algorithm on Paper
-> This section is entirely optional.
+### The Algorithm
+Since you've made it this far, I am going to assume that you have solved mazes of some form or another in the past. To refresh your childhood memory, here's how it goes.
+
+A typical maze has a start and an end point. When solving one, you begin by tracing a path from the starting point, then going with the flow until you hit a dead end. At that point, you backtrack and explore alternative routes until you find a viable opening. Eventually, you'll reach the end, immediately your brain will release dopamine, giving you a sense of accomplishment. But let's not dwell on the thrill of maze-solving; instead, I'll backtrack my lines and look for a viable opening to continue.
+
+As you lift up your pencil, you might notice that you've left behind an artistic trail – a testament to the twists and turns you took along the way. You will likely fall somewhere on a scale between "luckiest" (optimal path, no backtracking) and "unluckiest" (covering every inch of the maze). If you're often the latter, here's a quote I made up to lift your spirits:
+
+> _The unluckiest ones are the ones who learn the most._
+
+Sit with that for a minute... Okay, enough about life, let's backtrack.
+
+There's a reason why I brought up the worst-case path (or _"spanning path"_, in _Graph Theory_ terms). When you think about it, in such a scenario, there will be no blank space in the maze. Moreover,
+1. the entire maze area will become the combination of walls and the worst-case path, one resulting the complement of another and vice-versa i.e., having one will give enough information to generate another.
+2. there's always at least one path from one maze cell to another.
+3. the optimal paths are subsets of it.
+
+From these corollaries, we can conclude that,
+
+> Generating a **valid** worst-case path will naturally lead to the creation of the maze's walls. And since every cell is connected by at least one path, it means there's always a route between the start and end cell – which, in turn, leads to a valid maze.
 
 !["The Algorithm"](/images/mazic.gif "An animation showing various steps in the algorithm.")
 
-Before we begin, I want you to get a pencil and a piece of paper, then draw rectangular cells in an orderly grid like fashion. Below are some ground rules to generate your own maze!
-- Start your pencil with a random cell.
-- From every cell you can navigate to top, bottom, left or right.
-- You can go to a neighboring cell by drawing a line.
-- A cell is considered visited if you have been there before.
-- Upon coming across a cell with all of it's neighbors visited, backtrack your steps until you find a cell with atleast one unvisited neighbor.
-- Repeat the process until all cells are visited.
+Now, to generate a "valid" worst-case path, all we have to do is reverse-engineer the way we solve a maze. The idea is simple, start at any cell (not necessarily the starting), then randomly venture into one of its unexplored neighboring cells. From there, repeat this _depth-first process_ by selecting another neighboring cell at random, and so on. At some point, you'll stumble upon a cell with no remaining neighbors to explore - a dead end, in maze terms. But don't give up! You must backtrack your steps until you find a new path to pursue ~~like in real life~~. This iterative process continues until every cell has been visited, revealing the entire maze in all its glorious complexity.
 
-If you look closely, you will see a maze. The lines you have drawn is the path and the gaps in between are the walls. _Now challenge someone to solve it!_
-
-#### Pseudocode
+##### TL;DR
 ```plaintext {linenos=false}
-draw cells in a grid like fashion
+draw a grid of cells
 start with a random cell
-repeat until there is no unvisited cell {
-    randomly choose a neighbor
+while there are unvisited cells {
+    visit an unvisited neighboring cell at random
     if all of it's neighboring cells are visited
-        backtrack steps until a cell with atleast one unvisited neighbor is found
+        backtrack until a cell with at least an unvisited neighbor is found
 }
 ```
 &nbsp;
