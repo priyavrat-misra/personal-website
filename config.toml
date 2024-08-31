@@ -60,6 +60,10 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
     title = "GitHub"
     url = "https://github.com/priyavrat-misra"
   [[params.social]]
+    fa_icon = "fab fa-strava fa-1x"
+    title = "Strava"
+    url = "https://www.strava.com/athletes/priyavrat"
+  [[params.social]]
     fa_icon = "fas fa-at fa-1x"
     title = "Email"
     url = "mailto:priyavratmisra123@gmail.com"
