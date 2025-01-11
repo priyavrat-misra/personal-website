@@ -12,7 +12,7 @@ I have been using that laptop for over four years, spending extended hours on it
 After spending a few exhausting days researching the hardware, comparing various benchmarks, choosing the components, looking for compatibility issues, and on and on, I finally placed the orders. It took me a lot of work to get through this step, but like they say:
 > _All's well that ends well._
 
-#### Parts
+## Parts
 When choosing the parts, my goal was to get better performance while staying within the budget of an average laptop. I was able to accomplish that with the following components.
 
 ![The Parts](/images/parts.webp)
@@ -39,7 +39,7 @@ As for why I bought a **GT 1030** in 2022, it’s because I intend to replace it
 | **Monitor** |**:**| [Gigabyte G24F 2](https://www.gigabyte.com/Monitor/G24F-2/) |
 {{< /table >}}
 
-#### Assemblage
+## Assemblage
 After a whole week of anxious waiting, I finally received the orders. Since this was my first time putting together a computer, I made sure I had everything ready before I began. Surprisingly, that “everything” included only a {{<a_blank url="https://en.wikipedia.org/wiki/List_of_screw_drives#Phillips" title="Phillips #1 screwdriver">}}, that’s all. That’s all one needs to assemble a PC. Also, another thing that goes without saying is “a great deal of concentration.”
 
 I took my sweet time going through the manuals in the boxes, and then everything started to come together (pun intended).
@@ -54,5 +54,5 @@ It started with the way I inserted the AMD heatsink; they have this projection f
 
 ![The Build](/images/build.webp 'Translation: "Hello, World!"')
 
-#### Final Thoughts
+## Final Thoughts
 I recommend building your own PC if you get the chance. It takes a little research and time, but it’s incredibly rewarding. As a final note, I am glad I decided to embark on this journey.
