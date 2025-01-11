@@ -1,7 +1,6 @@
 ---
 title: "Building a PC"
 date: 2022-07-20T12:12:12+05:30
-lastmod: 2024-01-15T13:13:13+05:30
 description: "Achievement Unlocked: Build a PC."
 tags: ["hardware", "life"]
 ---

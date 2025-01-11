@@ -1,7 +1,6 @@
 ---
 title: "Generating Mazes from Scratch"
 date: 2023-01-23T21:46:36+05:30
-lastmod: 2024-06-27T17:36:00+05:30
 description: ""
 tags: ["c++", "programming", "sfml", "game", "life"]
 draft: true
