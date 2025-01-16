@@ -22,13 +22,13 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
   [[menu.main]]
     identifier = "projects"
     name = "Projects"
-    title = "Samples from my tiny world of experiments."
+    title = "Where ideas meet execution."
     url = "/projects/"
     weight = 1
   [[menu.main]]
     identifier = "blog"
     name = "Blog"
-    title = "My views on various technical topics."
+    title = "Ramblings for the curious mind."
     url = "/blog/"
     weight = 2
   [[menu.main]]
@@ -47,7 +47,7 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
 # Configuration Features
 [params]
   header_title = "Priyavrat Misra"
-  header_subtitle = "('Software Development Engineer' 'Computer Science Graduate' 'Open Source Advocate' 'Cycling Enthusiast')"
+  header_subtitle = "('Software Engineer' 'Computer Science Graduate' 'Open Source Advocate' 'Cycling Enthusiast')"
   home_image = "/images/avatar.webp"
   [params.style]
     backgroundColor = "aliceblue"
