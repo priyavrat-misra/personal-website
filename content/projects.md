@@ -1,8 +1,7 @@
 ---
 title: "Projects"
 ---
-
-#### Projects
+## Projects
 
 {{<embed-repo "xrays-and-gradcam">}}  
 {{<embed-repo "computime">}}  
