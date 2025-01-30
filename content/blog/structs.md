@@ -1,6 +1,6 @@
 ---
 title: "A Voyage to Structs"
-date: 2024-12-25T19:05:02+05:30
+date: 2025-01-29T08:15:00+05:30
 description: ""
 subtitle: "without getting lost."
 tags: ["c++", "programming"]
@@ -9,7 +9,7 @@ draft: true
 ### Motivation
 I'm back, albeit a little rusty! It'd been a while since I've written anything; life got in the way - new job, new priorities, and all that jazz and I'm not exactly sure what prompted me to dust off my portfolio today. Perhaps it was the domain renewal email or perhaps it was the realization that two years have passed since I started writing an article that's still lingering in draft form, waiting for its chance to shine (or be completely rewritten). But today I'm dusting myself off and diving back in, ready to share some fresh thoughts. Join me, if you will, on a voyage to structs.
 
-> Note that this article is entirely focused on structs in C++, majority of the concepts here will apply to C, and some might apply to other [C-family languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages), but no promises.
+> Note that this article is entirely focused on structs in C++, majority of the concepts here will apply to C, and some might even apply to other [C-family languages](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages), but no promises.
 
 ### Introduction
 Quoting cppreference,
@@ -34,7 +34,7 @@ struct Direction {
     int dx;
     int dy;
 };
-// ...
+
 // initialization
 struct Direction north;
 north.dx = 0;
@@ -49,8 +49,7 @@ typedef struct {
     int dx;
     int dy;
 } Direction;
-// ...
-// initialization
+
 Direction north;
 north.dx = 0;
 north.dy = -1;
@@ -71,8 +70,7 @@ struct Direction {
     int dx;
     int dy;
 };
-// ...
-// initialization
+
 Direction north; // no need for `struct`
 north.dx = 0;
 north.dy = -1;
@@ -125,7 +123,7 @@ There are four ways to initialize an aggregate, all of which are various forms o
 
 Here, 2 and 4 are termed _direct list initialization_ and, 1 and 3 are termed _copy list initialization_.
 
-##### Initializing with an ordinary initializer list
+##### initializing with ordinary initializer lists
 This syntax (_1, 2_) is commonly used when initializing arrays, which can be generalized to aggregates.
 ```cpp
 int oneDigitPrimes[]{2, 3, 5, 7}; // or oneDigitPrimes[] = {2, 3, 5, 7}
@@ -153,7 +151,7 @@ struct Person {
     int age {-1};
     double height;
 };
-// ...
+
 Person person1; // name = "", age = -1, height = undefined behavior
 Person person2 {}; // name = "", age = -1, height = 0.0
 Person jane {"Jane Doe"}; // age = -1, height = 0.0
@@ -173,7 +171,7 @@ struct Person {
     double height;
     Address address;
 };
-// ...
+
 Person person1 {}; // address will be initialized like so `Address address {};`
 Person person2 {"Jane", 21, 180, {"LA"}}; // or `{"Jane", 21, 180, "LA"}`
 ```
@@ -192,7 +190,7 @@ struct Course {
     Student student;  // Nested structure
     double grade;
 };
-// ...
+
 Course c1 = {{1234, "Alice", {85, 90, 88}}, 90.5};
 // same as `{1234, "Alice", 85, 90, 88, 90.5}`
 
@@ -224,7 +222,7 @@ derived d2{{}, {}, 4};     // initializes d2.b1 with 0, d2.b2 with 42,
 ```
 > Note that if there is a user declared default constructor (like in `base2`), then value-initialization will invoke it instead of value initializing the members. 
 
-##### Initializing with designated initializers
+##### initializing with designated initializers
 A designated initializer, or designator, points out a particular element to be initialized. A designator list is a comma-separated list of one or more designators. They must appear in the same order as the order of declaration. All the members without a designator having a default value are assigned that value. And the other members are initialized from an empty initializer list, similar to the above section.
 ```cpp
 struct Person {
@@ -232,7 +230,7 @@ struct Person {
     int age {-1};
     double height;
 };
-// ...
+
 Person person { .name = "Jane", .height = 180.0 }; // age = -1
 ```
 
@@ -255,7 +253,7 @@ struct S {
     int a;
     int c;
 };
-// ...
+
 S s1 {.a = 1, .c = 2};
 S s2 {1, 2}; // a = 1, c = 2
 ```
@@ -266,10 +264,12 @@ struct S {
     int b;
     int c;
 };
-// ...
+
 S s1 {.a = 1, .c = 2}; // no change here
-S s2 {1, 0, 2};
+S s2 {1, 2}; // b will get assigned 2 here
 ```
+Note that the above scenario is only useful if and only if in all initialization/assignment occurances designated initializers are used. That is why it is good practice to add any new members at the bottom so that the other members don't shift.
+
 Last but not least, we can have a combination of both list and designated initialization when initializing a nested aggregate.
 ```cpp
 struct Student {
@@ -282,11 +282,97 @@ struct Course {
     Student student;  // Nested structure
     double grade;
 };
-// ...
+
 Course c = {{.name = "Alice", .marks = {85, 90, 88}}, 90.5};
 ```
 
-### Arrays and Structs
-In an array, the address of the first element is same as the address of the array, the same is true for structs. In structs, there may be unnamed padding between any two members of a struct or after the last member, but not before the first member.
+#### Initializing from a Struct
+Let's say we have a struct and we want to initialize another struct with the same values, _C++_ provides a rather intuitive way to do so without the need of explicit initialization of each member. It can be as straightforward as using `operator=`, which is also know as _copy initialization_.
+```cpp
+struct Node {
+    int val;
+    struct Node* next;
+};
 
-Arrays can be thought of as structs having elements with same data type and no padding in between, which makes the array's size calculation easier, which is simply the multiplication of the number of elements and the size of the data type. But the size of a struct is **at least** as large as the sum of the sizes of its members.
+Node last = { 2 };
+Node first = { 1, &second };
+Node middle = first; // copy initialization
+first = { .val = 0, .next = &middle };
+```
+In addition to the above form of initialization, there are two more syntax forms called _direct initialization_ and _direct-list initialization_.
+1. `T object2 = object1; // copy initialization`
+2. `T object2(object1); // direct initialization`
+3. `T object2 { object1 }; // direct-list initialization`
+
+Now you might be wondering how these type of initializations work since we have not defined any constructor or overloaded `operator=`. It works because the compiler generates a copy constructor if it is not provided, and all the syntax forms simply invoke it.
+
+The following example explicitly defines two constructors, _default_ and _copy_, and shows that all the syntax forms discussed above call the _copy constructor_.
+```cpp
+struct Node {
+    int val;
+    struct Node* next;
+
+    Node() { std::cout << "default ctor invoked\n"; } 
+    Node(const Node& other) { std::cout << "copy ctor invoked\n"; }
+};
+
+Node d; // default ctor invoked
+Node a = d; // copy ctor invoked
+Node b(a); // copy ctor invoked
+Node c{b}; // copy ctor invoked
+```
+
+### Assigning Structs
+There will be times when not all the values of struct members are known at initialization. Later on, when the values become known, one option is to assign individually but there is always a chance of overlooking a few. The following section discusses about a couple approaches to correctly assign structs.
+#### assigning with initializer lists
+Of the four list-initialization forms described above, two _(1, 3)_ can be used during assigning values. To refresh your memory, these two forms of initialization are called _copy list initialization_.
+1. `object = { arg1, arg2, ... };`
+2. `object = { .des1 = arg1 , .des2 { arg2 } ... };` (since C++20)
+
+Let's revisit an earlier example,
+```cpp
+struct Person {
+    std::string name;
+    int age {-1};
+    double height;
+};
+
+Person person { .name = "Jane", .height = 180.0 };
+std::cout << "Enter date of birth: ";
+std::string dob;
+std::cin >> dob;
+person = { .name = person.name, .age = calc_age(dob) }; 
+```
+Here, `age` was value-initialized to `-1` at the time of initialization, later on it gets calculated and assigned. Since no changes were required in `name`, it was provided the earlier value. However, `height` got missed and gets value-initialized to `0.0`, replacing the existing value.
+
+#### assigning another struct using `operator=`
+The syntax is similar to that of initializing from a struct using `operator=`.
+- `object2 = object1;`
+
+But here in this case, it doesn't invoke the copy constructor. The compiler generates an overloaded assignment operator if it is not provided, which gets invoked here. This simply replaces the existing values with that of the values from the right hand side struct. 
+```cpp
+struct A {
+    A() { std::cout << "default ctor invoked\n"; }
+    A(const A& other) { std::cout << "copy ctor invoked\n"; }
+    A& operator=(const A& other) { std::cout << "operator= invoked\n"; }
+};
+
+A a; // default ctor invoked
+A b = a; // copy ctor invoked
+a = b; // operator= invoked
+```
+
+### Structs and Functions
+#### passing structs as argument
+#### returning structs
+
+### Structs and Memory
+#### the `alignas` specifier
+### Flexible array members
+### Arrays and Structs—_two sides of the same coin_
+Along with the ones we saw so far, below are few more similarities and differences between arrays and structs I find noteworthy,
+- In an array, the address of the first element is same as the address of the array, the same is true for structs.
+- In structs, there may be unnamed padding between any two members of a struct or after the last member, but not before the first member.
+- Arrays can be thought of as structs having elements with same data type and no padding in between, which makes the array's size calculation easier, which is simply the multiplication of the number of elements and the size of the data type. But the size of a struct is _at least_ as large as the sum of the sizes of its members.
+
+### Conclusion
