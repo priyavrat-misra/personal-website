@@ -1,8 +1,8 @@
-<footer class="text-center pb-1">
+<footer>
     <script defer language="javascript" type="text/javascript"  src="{{ "/js/repo-card.js" | urlize | relURL }}"></script>
-    <small>
+    <p>
         <small class="text-muted">
 		{{ replace .Site.Copyright "{year}" now.Year | safeHTML }}
         </small>
-    </small>
+    </p>
 </footer>
