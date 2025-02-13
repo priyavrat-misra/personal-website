@@ -154,7 +154,7 @@ Person person2 {}; // name = "", age = -1, height = 0.0
 Person jane {"Jane Doe"}; // age = -1, height = 0.0
 Person john {"John Doe", 22}; // height = 0.0
 ```
-> Note that `person1.name` was initialized with empty string even without the explicit declaration. This is so because the varaible was initialized with an empty initializer list, which in turn invoked the default constructor leading to an empty string.
+Did you notice `person1.name` was initialized with empty string but not garbage? This is so because `name` is a class type, and for a class type if there are no braces, they are implicitly initialized with an empty initializer list, which in turn invokes the default constructor. Here in this case, the default constructor for `std::string` initializes `name` to an empty string.
 ```cpp
 struct Address {
     std::string city;
@@ -217,7 +217,7 @@ derived d1{{1, 2}, {}, 4}; // initializes d1.b1 with 1, d1.b2 with 2,
 derived d2{{}, {}, 4};     // initializes d2.b1 with 0, d2.b2 with 42,
                            //             d2.b3 with 42, d2.d with 4
 ```
-> Note that if there is a user declared default constructor (like in `base2`), then value-initialization will invoke it instead of value initializing the members. 
+Note that if there is a user declared default constructor (like in `base2`), then value-initialization will invoke it instead of value initializing the members. 
 
 ##### initializing with designated initializers
 A designated initializer, or designator, points out a particular element to be initialized. A designator list is a comma-separated list of one or more designators. They must appear in the same order as the order of declaration. All the members without a designator having a default value are assigned that value. And the other members are initialized from an empty initializer list, similar to the above section.
