@@ -1,166 +1,153 @@
 // === Import Bootstrap and set variable overrides ===
-$body-bg: {{ if .Param "style.backgroundColor" }}{{ .Param "style.backgroundColor"}}{{ else }}#f8f9fa{{ end }};
-$body-color: {{ if .Param "style.fontColor" }}{{ .Param "style.fontColor"}}{{ else }}#212529{{ end }};
+$color-fg-default: #1f2328;
+$color-fg-muted: #656d76;
+$color-accent-fg: #0969da;
+$color-bg-primary: #fff;
+$color-border-default: #d0d7de;
+$color-btn-bg: #f6f8fa;
+
 $font-family-base: Raleway, sans-serif;
 $font-size-base: 0.95rem;
-@import "../../node_modules/bootstrap/scss/bootstrap";
 
-/* raleway-regular - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/webfonts/raleway-v34-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-italic - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Raleway';
-  font-style: italic;
-  font-weight: 400;
-  src: url('/webfonts/raleway-v34-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-500 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 500;
-  src: url('/webfonts/raleway-v34-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-500italic - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Raleway';
-  font-style: italic;
-  font-weight: 500;
-  src: url('/webfonts/raleway-v34-latin-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-600 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 600;
-  src: url('/webfonts/raleway-v34-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-600italic - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Raleway';
-  font-style: italic;
-  font-weight: 600;
-  src: url('/webfonts/raleway-v34-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
 // === Import Font Awesome ===
 $fa-font-path: "../webfonts";
 @import "../../node_modules/@fontawesome/fontawesome-free/scss/fontawesome.scss";
 @import "../../node_modules/@fontawesome/fontawesome-free/scss/solid.scss";
 @import "../../node_modules/@fontawesome/fontawesome-free/scss/brands.scss";
-.fa-1x {
-	font-size: 0.9em !important;
+
+.fa-1x { font-size: 0.9em !important; }
+.fa-1x:hover { color: $color-accent-fg !important; }
+
+/* raleway-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/webfonts/raleway-v34-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-.fa-1x:hover {
-	color: #263238 !important;
+/* raleway-italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 400;
+    src: url('/webfonts/raleway-v34-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* raleway-500 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/webfonts/raleway-v34-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* raleway-500italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 500;
+    src: url('/webfonts/raleway-v34-latin-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* raleway-600 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/webfonts/raleway-v34-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* raleway-600italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Raleway';
+    font-style: italic;
+    font-weight: 600;
+    src: url('/webfonts/raleway-v34-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 // === Custom Styles ===
 #content {
-	width: 100%;
-	max-width: 650px;
-	min-height: calc(100vh - 105px);
+    width: 100%;
+    max-width: 650px;
+    min-height: calc(100vh - 105px);
 }
 
 #home-image {
-	width: 120px;
-	height: 120px;
-	border: solid 1px #6c757d;
-	// box-shadow: 0px 10px 7px -10px rgba(0,0,0,0.6);
-	// border-radius: 0.20rem;
-	padding: 0px;
-	object-fit: cover;
-	object-position: top;
+    width: 120px;
+    height: 120px;
+    border: solid 1px #6c757d;
+    padding: 0px;
+    object-fit: cover;
+    object-position: top;
 }
 
 #nav-links {
-	position: relative;
-	left: -5px;
+    position: relative;
+    left: -5px;
 }
 
 #nav-social {
-	position: relative;
-	left: 1px;
+    position: relative;
+    left: 1px;
 }
 
 .category {
-	color: $body-bg;
-	background-color: $body-color;
+    color: $color-bg-primary;
+    background-color: $color-fg-default;
 }
 
 .highlight > pre {
-	padding: 0.5rem 0.8rem;
-	border: 1px solid;
-	border-color: #ddd #ddd #ccc;
-	border-radius: 3px;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid;
+    border-radius: 3px;
 }
 
-html {
-    scroll-behavior: smooth !important;
+html { scroll-behavior: smooth !important; }
+
+a {
+    color: $color-accent-fg;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: $color-accent-fg;
+    text-decoration: none;
 }
 
 hr {
-	border: 0;
-	height: 1px;
-	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(51, 51, 51, 0.3), rgba(51, 51, 51, 0.4),
-	rgba(51, 51, 51, 0.3), rgba(0, 0, 0, 0));
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(51, 51, 51, 0.3), rgba(51, 51, 51, 0.4),
+    rgba(51, 51, 51, 0.3), rgba(0, 0, 0, 0));
 }
 
 h1, h2 {
-	font-weight: 600;
+    font-weight: 600;
     letter-spacing: -0.075rem;
 }
 
 h3, h4, h5, h6 {
-	font-weight: 500;
+    font-weight: 500;
     letter-spacing: -0.05rem;
 }
 
-h1 {
-    font-size: 2rem;
-}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.83rem; }
+h3 { font-size: 1.67rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.33rem; }
+h6 { font-size: 1.17rem; }
 
-h2 {
-    font-size: 1.83rem;
-}
-
-h3 {
-    font-size: 1.67rem;
-}
-
-h4 {
-    font-size: 1.5rem;
-}
-
-h5 {
-    font-size: 1.33rem;
-}
-
-h6 {
-    font-size: 1.17rem;
-}
-
-p {
-	margin-bottom: 0.7rem;
-}
+p { margin-bottom: 0.7rem; }
 
 header {
-	h1 {
-		a, a:hover {
-			color: $body-color;
-		}
-	}
+    h1 {
+        a, a:hover { color: $color-fg-default; }
+    }
 }
 
 footer {
@@ -171,164 +158,39 @@ footer {
 }
 
 img {
-	max-width: 100%;
-	height: auto;
-	border-radius: .2rem;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-a {
-	text-decoration: underline;
+    max-width: 100%;
+    height: auto;
+    border-radius: .2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 blockquote {
-	background: $body-bg;
-	border-left: 8px solid #ccc;
-	margin: 1.5em 10px;
-	padding: 0.5em 10px;
-	quotes: "\201C""\201D""\2018""\2019";
+    background: $color-bg-primary;
+    color: $color-fg-muted;
+    border-left: 6px solid $color-border-default;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
 }
 
 blockquote:before {
-	color: #ccc;
-	content: open-quote;
-	font-size: 4em;
-	line-height: 0.1em;
-	margin-right: 0.25em;
-	vertical-align: -0.4em;
+    color: $color-border-default;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
 }
 
-blockquote p {
-	display: inline;
-}
+blockquote p { display: inline; }
 
 .back-to-top {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
-    background-color: rgba(255,255,255,.5);
-}
-
-// copypasta from https://codepen.io/brandonmcconnell/pen/bZqGdw
-// now for some timing (in seconds)
-$durCharFwd: 0.10; // character typed
-$durFullGap: 2.00; // time between typed/delete
-$durCharBwd: 0.08; // character deleted
-$durDoneGap: 1.00; // time between strings
-
-// initializing some variables and functions
-$charCount: 0; $durTotal: 0;
-$strings: {{ .Site.Params.header_subtitle }};
-@each $string in $strings {
-	$charCount: $charCount + str-length($string);
-	$durTotal: $durTotal
-	+ (str-length($string) * ($durCharFwd + $durCharBwd))
-	+ $durFullGap + $durDoneGap;
-}
-@function percent($string, $letter, $modifier) {
-	$stringsPast: $string - 1; $time: 0;
-	@while $stringsPast > 0 {
-		$time: $time
-		+ (($durCharFwd + $durCharBwd) * (str-length(nth($strings, $stringsPast))))
-		+ $durFullGap + $durDoneGap;
-		$stringsPast: $stringsPast - 1;
-	}
-	@if $letter <= str-length(nth($strings, $string)) {
-		$time: $time
-		+ ($durCharFwd * ($letter - 1));
-	} @else {
-		$time: $time
-		+ ($durCharFwd * str-length(nth($strings, $string)))
-		+ $durFullGap
-		+ ($durCharBwd * ($letter - str-length(nth($strings, $string))));
-	}
-	@return ($time / $durTotal * 100 + $modifier) + "%";
-}
-$currentPercentage: 0;
-// now THIS is where the magic happens...
-@keyframes typed {
-	@for $i from 1 through length($strings) {
-		// @for $j from 1 through (str-length(nth($strings, $i)) * 2 - 1) {
-		@for $j from 1 through (str-length(nth($strings, $i)) * 2) {
-			/* string #{$i}, char #{$j} */
-			@if $j < str-length(nth($strings, $i)) * 2 { // not last character deleted
-				#{percent($i, $j, 0)}, #{percent($i, $j+1, -0.001)} {
-					@if $j <= str-length(nth($strings, $i)) {
-						content: quote(#{str_slice(nth($strings, $i), 1, $j)});
-					} @else {
-						content: quote(#{str_slice(nth($strings, $i), 1, str-length(nth($strings, $i)) - ($j - str-length(nth($strings, $i))))});
-					}
-				}
-			} @else {
-				@if $i < length($strings) { // not last string
-					#{percent($i, $j, 0)}, #{percent($i+1, 1, -0.001)} {
-						content: "​"; // zero-width space to retain element height
-					}
-				} @else { // last string
-					#{percent($i, $j, 0)}, 100% {
-						content: "​"; // zero-width space to retain element height
-					}
-				}
-			}
-		}
-	}
-}
-@keyframes cursor {
-	50% {border-color: transparent}
-}
-
-.subtitle {
-	&::after {
-		content: "​"; // zero-width space to retain element height
-		border-right: 1px solid;
-		animation: typed #{$durTotal + "s"} linear 1s infinite, cursor 1s infinite;
-	}
-}
-
-
-// copypasta from https://codepen.io/danielmorosan/pen/XmYBVx
-.spinner {
-	margin: 100px auto 0;
-	width: 70px;
-	text-align: center;
-}
-
-.spinner > div {
-	width: 6px;
-	height: 6px;
-	background-color: $body-color;
-
-	border-radius: 100%;
-	display: inline-block;
-	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-}
-
-.spinner .bounce1 {
-	-webkit-animation-delay: -0.32s;
-	animation-delay: -0.32s;
-}
-
-.spinner .bounce2 {
-	-webkit-animation-delay: -0.16s;
-	animation-delay: -0.16s;
-}
-
-@-webkit-keyframes sk-bouncedelay {
-	0%, 80%, 100% { -webkit-transform: scale(0) }
-	40% { -webkit-transform: scale(1.0) }
-}
-
-@keyframes sk-bouncedelay {
-	0%, 80%, 100% { 
-		-webkit-transform: scale(0);
-		transform: scale(0);
-	} 40% { 
-		-webkit-transform: scale(1.0);
-		transform: scale(1.0);
-	}
+    background-color: $color-btn-bg;
 }
 
 // === Media breakpoints ===
@@ -343,3 +205,122 @@ $currentPercentage: 0;
 
 // 1200px
 @include media-breakpoint-up(xl) {}
+
+// copypasta from https://codepen.io/brandonmcconnell/pen/bZqGdw
+// now for some timing (in seconds)
+$durCharFwd: 0.10; // character typed
+$durFullGap: 2.00; // time between typed/delete
+$durCharBwd: 0.08; // character deleted
+$durDoneGap: 1.00; // time between strings
+
+// initializing some variables and functions
+$charCount: 0; $durTotal: 0;
+$strings: {{ .Site.Params.header_subtitle }};
+@each $string in $strings {
+    $charCount: $charCount + str-length($string);
+    $durTotal: $durTotal
+    + (str-length($string) * ($durCharFwd + $durCharBwd))
+    + $durFullGap + $durDoneGap;
+}
+@function percent($string, $letter, $modifier) {
+    $stringsPast: $string - 1; $time: 0;
+    @while $stringsPast > 0 {
+        $time: $time
+        + (($durCharFwd + $durCharBwd) * (str-length(nth($strings, $stringsPast))))
+        + $durFullGap + $durDoneGap;
+        $stringsPast: $stringsPast - 1;
+    }
+    @if $letter <= str-length(nth($strings, $string)) {
+        $time: $time
+        + ($durCharFwd * ($letter - 1));
+    } @else {
+        $time: $time
+        + ($durCharFwd * str-length(nth($strings, $string)))
+        + $durFullGap
+        + ($durCharBwd * ($letter - str-length(nth($strings, $string))));
+    }
+    @return ($time / $durTotal * 100 + $modifier) + "%";
+}
+$currentPercentage: 0;
+// now THIS is where the magic happens...
+@keyframes typed {
+    @for $i from 1 through length($strings) {
+        @for $j from 1 through (str-length(nth($strings, $i)) * 2) {
+            /* string #{$i}, char #{$j} */
+            @if $j < str-length(nth($strings, $i)) * 2 { // not last character deleted
+                #{percent($i, $j, 0)}, #{percent($i, $j+1, -0.001)} {
+                    @if $j <= str-length(nth($strings, $i)) {
+                        content: quote(#{str_slice(nth($strings, $i), 1, $j)});
+                    } @else {
+                        content: quote(#{str_slice(nth($strings, $i), 1, str-length(nth($strings, $i)) - ($j - str-length(nth($strings, $i))))});
+                    }
+                }
+            } @else {
+                @if $i < length($strings) { // not last string
+                    #{percent($i, $j, 0)}, #{percent($i+1, 1, -0.001)} {
+                        content: "​"; // zero-width space to retain element height
+                    }
+                } @else { // last string
+                    #{percent($i, $j, 0)}, 100% {
+                        content: "​"; // zero-width space to retain element height
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes cursor {
+    50% {border-color: transparent}
+}
+
+.subtitle {
+    &::after {
+        content: "​"; // zero-width space to retain element height
+        border-right: 1px solid;
+        animation: typed #{$durTotal + "s"} linear 1s infinite, cursor 1s infinite;
+    }
+}
+
+// copypasta from https://codepen.io/danielmorosan/pen/XmYBVx
+.spinner {
+    margin: 100px auto 0;
+    width: 70px;
+    text-align: center;
+}
+
+.spinner > div {
+    width: 6px;
+    height: 6px;
+    background-color: $color-fg-default;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    } 40% { 
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}

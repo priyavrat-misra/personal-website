@@ -1,10 +1,10 @@
 {{ define "main" }}
-<div class="pl-sm-4 ml-sm-5">
+<div class="ps-sm-4 ms-sm-5">
     <h2>
     {{ if or (eq .Title "Blog") (eq .Title "Tags") }}
         {{ .Title }}
     {{ else }}
-        <a href="/tags/" class="text-decoration-none text-reset">Tags</a> <small>></small> <span class="badge badge-secondary">{{ .Title }}</span>
+        <a href="/tags/" class="text-decoration-none text-reset">Tags</a> <small>></small> <span class="badge bg-secondary">{{ lower .Title }}</span>
     {{ end }}
     </h2>
     <ul class="list-unstyled">

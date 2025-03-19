@@ -49,9 +49,6 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
   header_title = "Priyavrat Misra"
   header_subtitle = "('Software Engineer' 'Computer Science Graduate' 'Open Source Advocate' 'Cycling Enthusiast')"
   home_image = "/images/avatar.webp"
-  [params.style]
-    backgroundColor = "aliceblue"
-    fontColor = "#586069"
   [[params.social]]
     fa_icon = "fab fa-linkedin-in fa-1x"
     title = "LinkedIn"

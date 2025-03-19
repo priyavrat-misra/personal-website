@@ -1,6 +1,6 @@
 <header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
     <div class="row">
-        <div class="col-sm-4 col-12 text-sm-right text-center pt-sm-4">
+        <div class="col-sm-4 col-12 text-sm-end text-center pt-sm-4">
             <a href="/" class="text-decoration-none">
                 <img id="home-image"
                      class="rounded-circle"
@@ -16,7 +16,7 @@
                      {{ end }}>
             </a>
         </div>
-        <div class="col-sm-8 col-12 text-sm-left text-center">
+        <div class="col-sm-8 col-12 text-sm-start text-center">
             <h1 class="m-0 mb-2 mt-4">
                 <a href="/" class="text-decoration-none">
                     {{ if isset .Site.Params "header_title" }}
@@ -32,7 +32,7 @@
                     {{ $currentPage := . }}
                     {{ range .Site.Menus.main }}
                     <li class="list-inline-item">
-                        <a class="badge badge-white {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+                        <a class="badge bg-light text-primary {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
                     </li>
                     {{ end }}
                 </ul>
@@ -40,7 +40,7 @@
             <nav>
                 <ul id="nav-social" class="list-inline">
                     {{ range .Site.Params.social }}
-                    <li class="list-inline-item mr-3">
+                    <li class="list-inline-item me-3">
                         <a href="{{ .url }}" title="{{ .title }}" target="_blank">
                             <span class="{{ .fa_icon }} text-muted"></span>
                         </a>

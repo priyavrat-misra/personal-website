@@ -13,9 +13,9 @@
     {{ if gt .Params.tags 0 }}
     <br class="d-md-none">
     <small>
-        <i class="fas fa-tags fa-xs ml-1"></i>
+        <i class="fas fa-tags fa-xs ms-1"></i>
         {{ range .Params.tags }}
-        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge badge-secondary text-decoration-none">{{ . }}</a>
+        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge bg-secondary text-light text-decoration-none">{{ lower . }}</a>
         {{ end }}
     </small>
     {{ end }}

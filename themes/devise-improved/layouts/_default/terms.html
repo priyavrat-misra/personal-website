@@ -1,11 +1,11 @@
 {{ define "main" }}
-<div class="pl-sm-4 ml-sm-5">
+<div class="ps-sm-4 ms-sm-5">
     <h2>{{ .Title }}</h2>
     <ul class="list-inline">
         {{ range .Data.Terms }}
         <li class="list-inline-item">
-            <a href="{{ .Page.RelPermalink }}" class="badge badge-secondary text-decoration-none">
-                {{ .Page.Title }} <sup>{{ .Count }}</sup>
+            <a href="{{ .Page.RelPermalink }}" class="badge bg-secondary text-light text-decoration-none">
+                {{ lower .Page.Title }} <sup>{{ .Count }}</sup>
             </a>
         </li>
         {{ end }}
