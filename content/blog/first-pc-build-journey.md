@@ -4,15 +4,14 @@ date: 2022-07-20T12:12:12+05:30
 description: "Achievement Unlocked: Build a PC."
 tags: ["hardware", "life"]
 ---
-A couple of weeks ago, I learned that my laptop’s processor and the motherboard had fried. It might have sounded like a surprise to someone in my place, but to me it didn’t.
+A couple of weeks ago, I learned that my laptop’s processor and motherboard had fried. While this might have come as a shock to some, I can’t say I was surprised.
 
-I have been using that laptop for over four years, spending extended hours on it every day. I knew I had it coming. As a result, it was about time I built a PC.
+After all, I’d been using that laptop for over four years, subjecting it to marathon sessions almost every day. Frankly, it was more of a “when” than an “if.” So, when the inevitable happened, I decided it was finally time to build myself a PC.
 
-After spending a few exhausting days researching the hardware, comparing various benchmarks, choosing the components, looking for compatibility issues, and on and on, I finally placed the orders. It took me a lot of work to get through this step, but like they say:
-> _All's well that ends well._
+I spent several exhausting days researching hardware, poring over benchmarks, hunting for compatibility issues, and generally falling down the rabbit hole of PC building. Eventually, after much deliberation, I placed my orders. It was a ton of work, but hey—if it ends with a working PC, I’ll call that a win.
 
 ### Parts
-When choosing the parts, my goal was to get better performance while staying within the budget of an average laptop. I was able to accomplish that with the following components.
+My goal was to get significantly better performance than my old laptop, but without blowing my budget. Mission accomplished—with these parts:
 
 ![The Parts](/images/parts.webp)
 
@@ -27,9 +26,9 @@ When choosing the parts, my goal was to get better performance while staying wit
 | **PSU** |**:**| [Corsair CV 650 Watt 80+ Bronze Certified](https://www.corsair.com/us/en/Categories/Products/Power-Supply-Units/Power-Supply-Units-General-Purpose/CV-Series/p/CP-9020211-NA) |
 | **Case** |**:**| [Corsair SPEC-05 ATX Mid Tower Case](https://www.corsair.com/ww/en/Categories/Products/Cases/Mid-Tower-ATX-Cases/Carbide-Series-SPEC-05-Mid-Tower-Gaming-Case-%E2%80%94-Black/p/CC-9011138-WW) |
 {{< /table >}}
-As for why I bought a **GT 1030** in 2022, it’s because I intend to replace it once the {{<a_blank url="https://en.wikipedia.org/wiki/2020%E2%80%93present_global_chip_shortage" title="global chip shortage">}} boils down. Until then, it’ll do.
+Now, you might be wondering: “Why on earth did you buy a **GT 1030** in 2022?” Excellent question! The short answer: {{<a_blank url="https://en.wikipedia.org/wiki/2020%E2%80%93present_global_chip_shortage" title="global chip shortage">}}. My plan was to use it as a placeholder until the GPU market cooled off. Until then, it was the little graphics card that could.
 
-**_UPDATE:_** Within an year or so, I replaced it with a **RTX 3060 Ti** along with a few more additions.
+**_UPDATE:_** About a year later, I finally upgraded to an **RTX 3060 Ti**, along with a couple of other improvements:
 {{< table class="table table-sm table-borderless table-hover" >}}
 | | | |
 | :- | :- | -: |
@@ -39,19 +38,19 @@ As for why I bought a **GT 1030** in 2022, it’s because I intend to replace it
 {{< /table >}}
 
 ### Assemblage
-After a whole week of anxious waiting, I finally received the orders. Since this was my first time putting together a computer, I made sure I had everything ready before I began. Surprisingly, that “everything” included only a {{<a_blank url="https://en.wikipedia.org/wiki/List_of_screw_drives#Phillips" title="Phillips #1 screwdriver">}}, that’s all. That’s all one needs to assemble a PC. Also, another thing that goes without saying is “a great deal of concentration.”
+After a week of impatiently tracking shipping updates, my parts finally arrived. This was my first time assembling a PC, so I made sure I was prepared. Surprisingly, all I really needed was a {{<a_blank url="https://en.wikipedia.org/wiki/List_of_screw_drives#Phillips" title="Phillips #1 screwdriver">}}. That, and a healthy dose of concentration (and maybe a little prayer).
 
-I took my sweet time going through the manuals in the boxes, and then everything started to come together (pun intended).
+I took my time reading through the manuals—yes, I actually read the manuals—and soon enough, everything started coming together (pun absolutely intended).
 
 | | |
 | :-: | :-: |
 | ![Assembled](/images/assembled.webp "Version 1.0") | ![Assembled V2](/images/assembledV2.webp "Version 2.0") |
 
-After having assembled a PC by myself, I can confirm that it is simpler than it sounds; still, I did mess up once, which led to a series of unfortunate events.
+As it turns out, building a PC is simpler than it sounds. That said, I still managed to have my “oops” moment. Here’s what happened:
 
-It started with the way I inserted the AMD heatsink; they have this projection for the logo on one side which blocked a RAM slot. As one would expect, I tried removing it, but the thermal paste adhesion was way too strong. I could have looked up the internet for answers, but for some reason, I was wholeheartedly focused on removing it by force. As a result, the CPU came off with it even though the motherboard’s CPU lock was intact. Thankfully, neither the CPU pins nor the motherboard were damaged. And again, it was a case of _all’s well that ends well_.
+I installed the AMD heatsink, but didn’t notice that the logo projection on one side was blocking a RAM slot. When I tried to remove the heatsink, the thermal paste had basically turned into superglue. Did I look up a solution online? Of course not. I went full Hulk and tried to muscle it off. The result? The CPU came out stuck to the heatsink—even though the motherboard’s CPU lock was still engaged. Miraculously, neither the CPU pins nor the motherboard were damaged. In the end, disaster was narrowly averted, and I lived to tell the tale—with all components intact!
 
 ![The Build](/images/build.webp 'Translation: "Hello, World!"')
 
 ### Final Thoughts
-I recommend building your own PC if you get the chance. It takes a little research and time, but it’s incredibly rewarding. As a final note, I am glad I decided to embark on this journey.
+If you ever get the chance, I highly recommend building your own PC. It takes a bit of research and patience, but the sense of accomplishment is absolutely worth it. I’m glad I took the plunge—and my new PC agrees.
