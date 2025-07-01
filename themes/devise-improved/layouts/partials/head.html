@@ -16,7 +16,10 @@
     {{ if $customTemplate }}
     {{ $custom := $customTemplate | resources.ExecuteAsTemplate "css/custom.scss" . | toCSS | minify }}
     <link rel="stylesheet" href="{{ $custom.RelPermalink }}">
+    {{ end }}
 
+    {{ if .Param "math" }}
+    {{ partialCached "math.html" . }}
     {{ end }}
 
 </head>

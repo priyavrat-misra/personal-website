@@ -43,6 +43,7 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
   header_title = "Priyavrat Misra"
   header_subtitle = "('Software Engineer' 'Computer Science Graduate' 'Open Source Advocate' 'Cycling Enthusiast')"
   home_image = "/images/avatar.webp"
+  math = false
   [[params.social]]
     fa_icon = "fab fa-linkedin-in fa-1x"
     title = "LinkedIn"
@@ -69,3 +70,10 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
     endLevel = 6
     ordered = false
     startLevel = 3
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
