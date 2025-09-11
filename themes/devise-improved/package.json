@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "bootstrap": "^5.3.3"
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "bootstrap": "^5.3.8"
   },
   "keywords": [
     "hugo",
@@ -16,5 +16,7 @@
   ],
   "author": "Priyavrat Misra",
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "check-dependencies": "^2.0.0"
+  }
 }

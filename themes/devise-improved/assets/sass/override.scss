@@ -11,9 +11,9 @@ $font-family-base: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 // === Import Font Awesome ===
-@import "../../node_modules/@fontawesome/fontawesome-free/scss/fontawesome.scss";
-@import "../../node_modules/@fontawesome/fontawesome-free/scss/solid.scss";
-@import "../../node_modules/@fontawesome/fontawesome-free/scss/brands.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
 
 .fa-1x { font-size: 0.9em !important; }
 .fa-1x:hover { color: $color-accent-fg !important; }
@@ -75,11 +75,11 @@ footer {
 }
 
 nav ul li {
-    margin-right: 2px;
+    margin-right: 1rem !important;
 }
 
 nav ul li:last-child {
-    margin-right: 0px;
+    margin-right: 0 !important;
 }
 
 img {
