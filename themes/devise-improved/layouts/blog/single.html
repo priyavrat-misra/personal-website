@@ -1,32 +1,33 @@
 {{ define "main" }}
 <div class="ms-sm-4 me-sm-4">
-<header class="mb-3">
-    <h2 class="mb-0">{{ .Title }}</h2>
-    {{ if .Params.Subtitle }}
-    <aside>{{ .Params.Subtitle }}</aside>
-    {{ end }}
-    <small class="text-muted">Published: {{ dateFormat "02 Jan 06 15:04 MST" .Date.Local }}</small>
-    {{- if .Lastmod }}
-    {{- if ne .Lastmod .Date }}
-    <small class="text-muted">Last updated: {{ dateFormat "02 Jan 06 15:04 MST" .Lastmod.Local }}</small>
-    {{- end }}
-    {{- end }}
-    {{ if gt .Params.tags 0 }}
-    <br>
-    <small>
-        <i class="fas fa-tags fa-xs ms-1"></i>
-        {{ range .Params.tags }}
-        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge bg-secondary text-light text-decoration-none">{{ lower . }}</a>
+    <header class="mb-3">
+        <h2 class="mb-0">{{ .Title }}</h2>
+        {{ if .Params.Subtitle }}
+        <aside>{{ .Params.Subtitle }}</aside>
         {{ end }}
-    </small>
-    {{ end }}
-    {{ .TableOfContents }}  
-</header>
-<article>
-    {{ .Content }}
-</article>
+        <small class="text-muted">Published: {{ dateFormat "02 Jan 06 15:04 MST" .Date.Local }}</small>
+        {{- if .Lastmod }}
+        {{- if ne .Lastmod .Date }}
+        <small class="text-muted">Last updated: {{ dateFormat "02 Jan 06 15:04 MST" .Lastmod.Local }}</small>
+        {{- end }}
+        {{- end }}
+        {{ if gt .Params.tags 0 }}
+        <br>
+        <small>
+            <i class="fas fa-tags fa-xs ms-1"></i>
+            {{ range .Params.tags }}
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge bg-secondary text-light text-decoration-none">{{ lower . }}</a>
+            {{ end }}
+        </small>
+        {{ end }}
+        {{ .TableOfContents }}
+    </header>
+    <article>
+        {{ .Content }}
+    </article>
 </div>
-<button onclick="location.href='#'" type="button" class="back-to-top btn btn-link btn-sm" aria-label="scroll back to top">
+<button onclick="location.href='#'" type="button" class="back-to-top btn btn-link btn-sm"
+    aria-label="scroll back to top">
     Back to top
     <span class="fas fa-long-arrow-alt-up" aria-hidden="true"></span>
 </button>

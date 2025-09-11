@@ -6,7 +6,7 @@ $color-bg-primary: #fff;
 $color-border-default: #d0d7de;
 $color-btn-bg: #f6f8fa;
 
-$font-family-base: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;;
+$font-family-base: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
@@ -74,6 +74,14 @@ footer {
     }
 }
 
+nav ul li {
+    margin-right: 2px;
+}
+
+nav ul li:last-child {
+    margin-right: 0px;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -105,7 +113,7 @@ blockquote p { display: inline; }
 
 .back-to-top {
     position: fixed;
-    right: 2rem;
+    right: 4rem;
     bottom: 2rem;
     background-color: $color-btn-bg;
 }
