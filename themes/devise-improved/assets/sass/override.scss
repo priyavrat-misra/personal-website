@@ -8,16 +8,6 @@ $color-btn-bg: #f6f8fa;
 
 $font-family-base: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
 
-@import "../../node_modules/bootstrap/scss/bootstrap";
-
-// === Import Font Awesome ===
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
-
-.fa-1x { font-size: 0.9em !important; }
-.fa-1x:hover { color: $color-accent-fg !important; }
-
 // === Custom Styles ===
 #content {
     max-width: 650px;
@@ -50,6 +40,14 @@ a {
 a:hover {
     color: $color-accent-fg;
     text-decoration: none;
+}
+
+a svg {
+    color: $color-fg-muted;
+}
+
+a svg:hover {
+    color: $color-accent-fg !important;
 }
 
 h1 { font-size: 2rem; }
@@ -113,23 +111,15 @@ blockquote p { display: inline; }
 
 .back-to-top {
     position: fixed;
-    right: 4rem;
+    right: 2rem;
     bottom: 2rem;
-    background-color: $color-btn-bg;
 }
 
 // === Media breakpoints ===
-// 576px
-@include media-breakpoint-up(sm) {}
-
-// 768px
-@include media-breakpoint-up(md) {}
-
-// 992px
-@include media-breakpoint-up(lg) {}
-
-// 1200px
-@include media-breakpoint-up(xl) {}
+@media (min-width: 576px) {}
+@media (min-width: 768px) {}
+@media (min-width: 992px) {}
+@media (min-width: 1200px) {}
 
 // copypasta from https://codepen.io/brandonmcconnell/pen/bZqGdw
 // now for some timing (in seconds)

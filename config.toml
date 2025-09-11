@@ -45,25 +45,29 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
   home_image = "/images/avatar.webp"
   math = false
   [[params.social]]
-    fa_icon = "fab fa-linkedin-in fa-1x"
     title = "LinkedIn"
-    url = "https://www.linkedin.com/in/priyavrat-misra"
+    url = "https://www.linkedin.com/in/priyavrat-misra/"
+    icon = "/icons/linkedin.svg"
+  
   [[params.social]]
-    fa_icon = "fab fa-github fa-1x"
-    title = "GitHub"
+    title = "GitHub" 
     url = "https://github.com/priyavrat-misra"
+    icon = "/icons/github.svg"
+      
   [[params.social]]
-    fa_icon = "fab fa-strava fa-1x"
     title = "Strava"
     url = "https://www.strava.com/athletes/priyavrat"
+    icon = "/icons/activity.svg"
+      
   [[params.social]]
-    fa_icon = "fas fa-at fa-1x"
     title = "Email"
     url = "mailto:priyavratmisra123@gmail.com"
+    icon = "/icons/mail.svg"
+      
   [[params.social]]
-    fa_icon = "fas fa-rss-square fa-1x"
-    title = "RSS feed"
-    url = "/blog/rss.xml"
+    title = "RSS"
+    url = "/index.xml"
+    icon = "/icons/rss.svg"
 
 [markup]
   [markup.tableOfContents]

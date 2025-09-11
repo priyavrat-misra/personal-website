@@ -16,8 +16,8 @@
                 <ul class="list-inline">
                     {{ range .Site.Params.social }}
                     <li class="list-inline-item">
-                        <a href="{{ .url }}" title="{{ .title }}" target="_blank">
-                            <span class="{{ .fa_icon }} text-muted"></span>
+                         <a href="{{ .url }}" title="{{ .title }}" target="_blank" class="text-muted">
+                            {{ readFile (print "static" .icon) | safeHTML }}
                         </a>
                     </li>
                     {{ end }}
