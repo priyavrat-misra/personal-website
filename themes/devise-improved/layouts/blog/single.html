@@ -1,4 +1,5 @@
 {{ define "main" }}
+<div class="ms-sm-4 me-sm-4">
 <header class="mb-3">
     <h2 class="mb-0">{{ .Title }}</h2>
     {{ if .Params.Subtitle }}
@@ -11,7 +12,7 @@
     {{- end }}
     {{- end }}
     {{ if gt .Params.tags 0 }}
-    <br class="d-md-none">
+    <br>
     <small>
         <i class="fas fa-tags fa-xs ms-1"></i>
         {{ range .Params.tags }}
@@ -24,6 +25,7 @@
 <article>
     {{ .Content }}
 </article>
+</div>
 <button onclick="location.href='#'" type="button" class="back-to-top btn btn-link btn-sm" aria-label="scroll back to top">
     Back to top
     <span class="fas fa-long-arrow-alt-up" aria-hidden="true"></span>

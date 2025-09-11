@@ -1,49 +1,34 @@
-<header class="container mt-sm-5 mt-4 mb-4 mt-xs-1">
+<header class="container mt-4">
     <div class="row">
         <div class="col-sm-4 col-12 text-sm-end text-center pt-sm-4">
             <a href="/" class="text-decoration-none">
-                <img id="home-image"
-                     class="rounded-circle"
-                     alt="profile picture"
-                     {{ if (and (isset .Site.Params "home_image") (fileExists (printf "static/%s" (strings.TrimPrefix "/" .Site.Params.home_image)))) }}
-                     {{ if hasPrefix .Site.Params.home_image "/" }}
-                     src="{{ .Site.Params.home_image }}"
-                     {{ else }}
-                     src="{{ printf "/%s" .Site.Params.home_image }}"
-                     {{ end }}
-                     {{ else }}
-                     src="/images/avatar.png"
-                     {{ end }}>
+                <img id="home-image" class="rounded-circle" alt="profile picture" src="{{ .Site.Params.home_image }}">
             </a>
         </div>
         <div class="col-sm-8 col-12 text-sm-start text-center">
-            <h1 class="m-0 mb-2 mt-4">
+            <h1 class="mb-2 mt-4">
                 <a href="/" class="text-decoration-none">
-                    {{ if isset .Site.Params "header_title" }}
                     {{ .Site.Params.header_title }}
-                    {{ else }}
-                    Your Name
-                    {{ end }}
                 </a>
             </h1>
-            <p class="text-muted mb-1 subtitle"></p>
+            <p class="text-muted subtitle"></p>
             <nav>
-                <ul id="nav-links" class="list-inline mb-2">
-                    {{ $currentPage := . }}
-                    {{ range .Site.Menus.main }}
+                <ul class="list-inline">
+                    {{ range .Site.Params.social }}
                     <li class="list-inline-item">
-                        <a class="badge bg-light text-primary {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+                        <a href="{{ .url }}" title="{{ .title }}" target="_blank">
+                            <span class="{{ .fa_icon }} text-muted"></span>
+                        </a>
                     </li>
                     {{ end }}
                 </ul>
             </nav>
             <nav>
-                <ul id="nav-social" class="list-inline">
-                    {{ range .Site.Params.social }}
-                    <li class="list-inline-item me-3">
-                        <a href="{{ .url }}" title="{{ .title }}" target="_blank">
-                            <span class="{{ .fa_icon }} text-muted"></span>
-                        </a>
+                <ul class="list-inline">
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.main }}
+                    <li class="list-inline-item">
+                        <strong><a href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a></strong>
                     </li>
                     {{ end }}
                 </ul>

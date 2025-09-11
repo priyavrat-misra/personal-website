@@ -6,13 +6,11 @@ $color-bg-primary: #fff;
 $color-border-default: #d0d7de;
 $color-btn-bg: #f6f8fa;
 
-$font-family-base: Raleway, sans-serif;
-$font-size-base: 0.95rem;
+$font-family-base: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 // === Import Font Awesome ===
-$fa-font-path: "../webfonts";
 @import "../../node_modules/@fontawesome/fontawesome-free/scss/fontawesome.scss";
 @import "../../node_modules/@fontawesome/fontawesome-free/scss/solid.scss";
 @import "../../node_modules/@fontawesome/fontawesome-free/scss/brands.scss";
@@ -20,58 +18,8 @@ $fa-font-path: "../webfonts";
 .fa-1x { font-size: 0.9em !important; }
 .fa-1x:hover { color: $color-accent-fg !important; }
 
-/* raleway-regular - latin */
-@font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/webfonts/raleway-v34-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-italic - latin */
-@font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 400;
-    src: url('/webfonts/raleway-v34-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-500 - latin */
-@font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 500;
-    src: url('/webfonts/raleway-v34-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-500italic - latin */
-@font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 500;
-    src: url('/webfonts/raleway-v34-latin-500italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-600 - latin */
-@font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 600;
-    src: url('/webfonts/raleway-v34-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* raleway-600italic - latin */
-@font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Raleway';
-    font-style: italic;
-    font-weight: 600;
-    src: url('/webfonts/raleway-v34-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
 // === Custom Styles ===
 #content {
-    width: 100%;
     max-width: 650px;
     min-height: calc(100vh - 105px);
 }
@@ -79,20 +27,6 @@ $fa-font-path: "../webfonts";
 #home-image {
     width: 120px;
     height: 120px;
-    border: solid 1px #6c757d;
-    padding: 0px;
-    object-fit: cover;
-    object-position: top;
-}
-
-#nav-links {
-    position: relative;
-    left: -5px;
-}
-
-#nav-social {
-    position: relative;
-    left: 1px;
 }
 
 .category {
@@ -116,23 +50,6 @@ a {
 a:hover {
     color: $color-accent-fg;
     text-decoration: none;
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(51, 51, 51, 0.3), rgba(51, 51, 51, 0.4),
-    rgba(51, 51, 51, 0.3), rgba(0, 0, 0, 0));
-}
-
-h1, h2 {
-    font-weight: 600;
-    letter-spacing: -0.075rem;
-}
-
-h3, h4, h5, h6 {
-    font-weight: 500;
-    letter-spacing: -0.05rem;
 }
 
 h1 { font-size: 2rem; }
@@ -279,48 +196,5 @@ $currentPercentage: 0;
         content: "​"; // zero-width space to retain element height
         border-right: 1px solid;
         animation: typed #{$durTotal + "s"} linear 1s infinite, cursor 1s infinite;
-    }
-}
-
-// copypasta from https://codepen.io/danielmorosan/pen/XmYBVx
-.spinner {
-    margin: 100px auto 0;
-    width: 70px;
-    text-align: center;
-}
-
-.spinner > div {
-    width: 6px;
-    height: 6px;
-    background-color: $color-fg-default;
-
-    border-radius: 100%;
-    display: inline-block;
-    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-}
-
-.spinner .bounce1 {
-    -webkit-animation-delay: -0.32s;
-    animation-delay: -0.32s;
-}
-
-.spinner .bounce2 {
-    -webkit-animation-delay: -0.16s;
-    animation-delay: -0.16s;
-}
-
-@-webkit-keyframes sk-bouncedelay {
-    0%, 80%, 100% { -webkit-transform: scale(0) }
-    40% { -webkit-transform: scale(1.0) }
-}
-
-@keyframes sk-bouncedelay {
-    0%, 80%, 100% { 
-        -webkit-transform: scale(0);
-        transform: scale(0);
-    } 40% { 
-        -webkit-transform: scale(1.0);
-        transform: scale(1.0);
     }
 }
