@@ -65,8 +65,8 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
     icon = "/icons/mail.svg"
       
   [[params.social]]
-    title = "RSS"
-    url = "/index.xml"
+    title = "RSS Feed"
+    url = "/blog/rss.xml"
     icon = "/icons/rss.svg"
 
 [markup]

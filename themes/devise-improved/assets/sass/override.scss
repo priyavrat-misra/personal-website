@@ -30,7 +30,11 @@ $font-family-base: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe
     border-radius: 3px;
 }
 
-html { scroll-behavior: smooth !important; }
+html {
+    scroll-behavior: smooth !important;
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
+}
 
 a {
     color: $color-accent-fg;
@@ -120,6 +124,10 @@ blockquote p { display: inline; }
 @media (min-width: 768px) {}
 @media (min-width: 992px) {}
 @media (min-width: 1200px) {}
+
+@view-transition {
+    navigation: auto;
+}
 
 // copypasta from https://codepen.io/brandonmcconnell/pen/bZqGdw
 // now for some timing (in seconds)

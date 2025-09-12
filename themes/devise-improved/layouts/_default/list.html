@@ -4,7 +4,7 @@
     {{ if or (eq .Title "Blog") (eq .Title "Tags") }}
         {{ .Title }}
     {{ else }}
-        <a href="/tags/" class="text-decoration-none text-reset">Tags</a> <small>></small> <span class="badge bg-secondary">{{ lower .Title }}</span>
+        <a href="/tags/" class="text-decoration-none text-reset">Tags</a> &gt; <span class="badge bg-secondary">{{ lower .Title }}</span>
     {{ end }}
     </h2>
     <ul class="list-unstyled">
