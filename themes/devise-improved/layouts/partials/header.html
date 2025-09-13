@@ -2,7 +2,13 @@
     <div class="row">
         <div class="col-sm-4 col-12 text-sm-end text-center pt-sm-4">
             <a href="/" class="text-decoration-none">
-                <img class="rounded-circle" width="120" height="120" alt="Profile Picture" src="/images/avatar120w.webp" srcset="/images/avatar180w.webp 180w, /images/avatar120w.webp 120w">
+                <img id="avatar"
+                     height="120px"
+                     width="120px"
+                     alt="Profile Picture"
+                     src="/images/avatar120w.webp"
+                     srcset="/images/avatar180w.webp 180w, /images/avatar120w.webp 120w"
+                     sizes="(width <= 600px) 180px, 120px"/>
             </a>
         </div>
         <div class="col-sm-8 col-12 text-sm-start text-center">
@@ -35,5 +41,5 @@
             </nav>
         </div>
     </div>
-    <hr>
+    <hr/>
 </header>

@@ -1,14 +1,12 @@
 {{ define "main" }}
-<div class="ms-sm-4 me-sm-4">
-    <h2>{{ .Title }}</h2>
-    <ul class="list-inline">
-        {{ range .Data.Terms }}
-        <li class="list-inline-item">
-            <a href="{{ .Page.RelPermalink }}" class="badge bg-secondary text-light text-decoration-none">
-                {{ lower .Page.Title }} <sup>{{ .Count }}</sup>
-            </a>
-        </li>
-        {{ end }}
-    </ul>
-</div>
+<h2>{{ .Title }}</h2>
+<ul class="list-inline">
+    {{ range .Data.Terms }}
+    <li class="list-inline-item">
+        <a href="{{ .Page.RelPermalink }}" class="badge bg-secondary text-light text-decoration-none">
+            {{ lower .Page.Title }} <sup>{{ .Count }}</sup>
+        </a>
+    </li>
+    {{ end }}
+</ul>
 {{ end }}

@@ -45,7 +45,7 @@ Assuming no hash collisions, our problem reduces to finding the number of unique
 
 Alternatively, think of the string as a series of coin tosses: zero means heads, one means tails. If, across multiple individual runs, the longest run of heads we encountered is \(l\), then its probability is \(1 / 2^{l+1}\). In other words, we can estimate that, on average, we’ve tried at least \(2^{l+1}\) times.
 
-To put it simply: if we see a maximum run of 2 heads, \(HHT\), we probably tossed the coin at least \(2^{2+1} = 8\) times, \(\{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT\}\). The probability ends up being \(1 / 8\).
+To put it simply: if we see a maximum run of 2 heads, \(HHT\), we probably tossed the coin at least \(2^{2+1} = 8\) times, \(\{HHH, HHT, HTH, HTT,\allowbreak THH, THT, TTH, TTT\}\). The probability ends up being \(1 / 8\).
 
 Note that, \(HHH\) isn't valid here because we considered the maximum leading heads to be 2, so technically it should be one less, but to keep things simple, we can round it off.
 
@@ -67,7 +67,7 @@ So, what if we take the average of all the maximums across the buckets? Does it 
 
 Let \(b\) be the number of bits chosen to identify a bucket, giving us \(m = 2^b\) buckets. Let \(p_i\) be the maximum leftmost position of \(1\) seen so far for bucket \(i\). The cardinality estimate is calculated as:
 
-\[CARDINALITY_{HLL} = 0.79402 * m * \frac{m}{\sum_{i=0}^{m-1} 2^{-p_i}}\]
+\[0.79402 * m * \frac{m}{\sum_{i=0}^{m-1} 2^{-p_i}}\]
 
 Notice that outliers appear in the denominator as \(p_i\), contributing only slightly to the cardinality. Also, the more buckets we have, the more outliers we can handle, and the more accurate the cardinality estimate becomes (although this does require more memory).
 
