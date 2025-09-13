@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.145.0
+      HUGO_VERSION: 0.150.0
     steps:
       - name: Install Hugo CLI
         run: |
@@ -40,8 +40,8 @@ jobs:
           source-directory: 'public'
           destination-github-username: 'priyavrat-misra'
           destination-repository-name: 'priyavrat-misra.github.io'
-          user-name: 'Priyavrat Misra'
-          user-email: 'priyavratmisra123@gmail.com'
+          user-name: 'github-actions[bot]'
+          user-email: '41898282+github-actions[bot]@users.noreply.github.com'
           target-branch: main
       - name: Test get variable exported by priyavrat-misra.github.io
         run: echo $DESTINATION_CLONED_DIRECTORY
