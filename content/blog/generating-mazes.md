@@ -35,7 +35,7 @@ From these corollaries, we can conclude that,
 
 > Generating a **valid** worst-case path will naturally create the maze’s walls. Since each cell is connected by at least one path, there is always a route between the start and end cells, leading to a valid maze.
 
-!["The Algorithm"](/images/mazic.gif "An animation showing various steps in the algorithm.")
+!["The Algorithm"](/images/generating-mazes/mazic.gif "An animation showing various steps in the algorithm.")
 
 Now, to generate a “valid” worst-case path, we have to reverse-engineer how we solve a maze. The idea is simple, start at any cell (not necessarily the starting), then randomly venture into one of its unexplored neighboring cells. From there, repeat this depth-first process by randomly selecting another neighboring cell, and so on. Eventually, you’ll stumble upon a cell with no remaining neighbors to explore - a dead end, in maze terms. But don’t give up! You must backtrack your steps until you find a new path to pursue, like in real life. This iterative process continues until every cell has been visited, revealing the entire maze in all its glorious complexity.
 
@@ -102,7 +102,7 @@ int main() {
 }
 ```
 The `for` loops are used to draw dots in the entire window else it would have been a single dot in the top left corner. If everything works, you should see this in a new window:
-![dots](/images/dots.png "They don't look like 'dots', do they? 'cell' is a more accurate term.")
+![dots](/images/generating-mazes/dots.png "They don't look like 'dots', do they? 'cell' is a more accurate term.")
 #### Representing the Maze in Memory
 Now that the field has been laid, all that remains is to draw the maze. But first we need some data structure to hold information about the maze. Information like whether two cells are neighbors, whether there is a wall separating them and so on.
 
