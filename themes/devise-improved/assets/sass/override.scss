@@ -123,12 +123,6 @@ blockquote p { display: inline; }
     bottom: 2rem;
 }
 
-// === Media breakpoints ===
-@media (min-width: 576px) {}
-@media (min-width: 768px) {}
-@media (min-width: 992px) {}
-@media (min-width: 1200px) {}
-
 @view-transition {
     navigation: auto;
 }

@@ -1,28 +1,8 @@
-{{ $ext := lower (path.Ext .Destination) }}
-
-{{ if eq $ext ".svg" }}
-  {{ $svgPath := print "static" .Destination }}
-  {{ $svgContent := readFile $svgPath }}
-  {{ $alt := .Text }}
-
-  {{ if $alt }}
-    {{ $svgWithTitle := replaceRE `(?s)<svg([^>]*)>` (printf "<svg$1><title>%s</title>" $alt) $svgContent }}
-    <div class="embedded-svg" role="img" aria-label="{{ $alt }}">
-      {{ $svgWithTitle | safeHTML }}
-    </div>
-  {{ else }}
-    <div class="embedded-svg">
-      {{ $svgContent | safeHTML }}
-    </div>
-  {{ end }}
-
+{{ if .Title }}
+<figure>
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy">
+  <figcaption class="text-center figure-caption">{{ .Title }}</figcaption>
+</figure>
 {{ else }}
-  {{ if .Title }}
-    <figure>
-      <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy">
-      <figcaption class="text-center figure-caption">{{ .Title }}</figcaption>
-    </figure>
-  {{ else }}
-    <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy">
-  {{ end }}
+<img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy">
 {{ end }}
