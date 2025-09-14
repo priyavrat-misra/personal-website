@@ -6,10 +6,10 @@ subtitle: ""
 tags: ["c++", "programming"]
 draft: true
 ---
-### Structs and Memory
-#### the `alignas` specifier
-### Flexible array members
-### Arrays and Structs—_two sides of the same coin_
+## Structs and Memory
+### the `alignas` specifier
+## Flexible array members
+## Arrays and Structs—_two sides of the same coin_
 Along with the ones we saw so far, below are few more similarities and differences between arrays and structs I find noteworthy,
 - In an array, the address of the first element is same as the address of the array, the same is true for structs.
 - In structs, there may be unnamed padding between any two members of a struct or after the last member, but not before the first member.

@@ -10,7 +10,7 @@ After all, I’d been using that laptop for over four years, subjecting it to ma
 
 I spent several exhausting days researching hardware, poring over benchmarks, hunting for compatibility issues, and generally falling down the rabbit hole of PC building. Eventually, after much deliberation, I placed my orders. It was a ton of work, but hey—if it ends with a working PC, I’ll call that a win.
 
-### Parts
+## Parts
 My goal was to get significantly better performance than my old laptop, but without blowing my budget. Mission accomplished—with these parts:
 
 ![The Parts](/images/first-pc-build-journey/parts.webp)
@@ -37,7 +37,7 @@ Now, you might be wondering: “Why on earth did you buy a **GT 1030** in 2022?�
 | **Monitor** |**:**| [Gigabyte G24F 2](https://www.gigabyte.com/Monitor/G24F-2/) |
 {{< /table >}}
 
-### Assemblage
+## Assemblage
 After a week of impatiently tracking shipping updates, my parts finally arrived. This was my first time assembling a PC, so I made sure I was prepared. Surprisingly, all I really needed was a {{<a_blank url="https://en.wikipedia.org/wiki/List_of_screw_drives#Phillips" title="Phillips #1 screwdriver">}}. That, and a healthy dose of concentration (and maybe a little prayer).
 
 I took my time reading through the manuals—yes, I actually read the manuals—and soon enough, everything started coming together (pun absolutely intended).
@@ -52,5 +52,5 @@ I installed the AMD heatsink, but didn’t notice that the logo projection on on
 
 ![The Build](/images/first-pc-build-journey/build.webp 'Translation: "Hello, World!"')
 
-### Final Thoughts
+## Final Thoughts
 If you ever get the chance, I highly recommend building your own PC. It takes a bit of research and patience, but the sense of accomplishment is absolutely worth it. I’m glad I took the plunge—and my new PC agrees.

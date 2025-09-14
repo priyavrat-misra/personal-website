@@ -6,6 +6,6 @@ subtitle: ""
 tags: ["c++", "programming"]
 draft: true
 ---
-### Structs and Functions
-#### passing structs as argument
-#### returning structs
+## Structs and Functions
+### passing structs as argument
+### returning structs

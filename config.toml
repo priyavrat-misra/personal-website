@@ -72,7 +72,7 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
   [markup.tableOfContents]
     endLevel = 6
     ordered = false
-    startLevel = 3
+    startLevel = 2
   [markup.goldmark]
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]

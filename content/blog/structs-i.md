@@ -5,12 +5,12 @@ description: "Part 1: Defining, Initializing and Assigning Structs."
 subtitle: "Definition, Initialization and Assignment."
 tags: ["c++", "programming"]
 ---
-### Motivation
+## Motivation
 I’m back, folks! Though I must admit, I’m a little rusty. It’s been a while since I’ve written anything. Life, as it tends to do, got in the way—new job, new priorities, you know the drill. I’m not entirely sure what inspired me to dust off my portfolio today. Perhaps it was the domain renewal email or perhaps it was the realization that two years have passed since I started writing an article that's still lingering in draft form, waiting for its chance to shine (or, more likely, to be completely rewritten). But today I'm dusting myself off and diving back in, ready to share some fresh thoughts. Join me, if you will, on _A Voyage to Structs_.
 
 > A quick note: this article focuses exclusively on structs in C++, though most of the concepts here are applicable to C, and some might even apply to other {{<a_blank title="C-family languages" url="https://en.wikipedia.org/wiki/List_of_C-family_programming_languages">}}. But hey, no promises.
 
-### Introduction
+## Introduction
 Let’s kick things off with a definition from _cppreference_:
 
 > A struct is a type consisting of a sequence of members whose storage is allocated in an ordered sequence.
@@ -23,7 +23,7 @@ So, what does "type" mean in this context? Well, here’s a quick breakdown:
 - **A class type**: This could be a `struct`, `class`, or `union`.
 - **A program-defined type**: In C++20, this refers to class and enum types *we* define, not those that come with the standard library or the core language.
 
-### Defining Structs
+## Defining Structs
 Since structs are program-defined types, we need to describe them to the compiler before we use them. Structs can either have a name (a _type tag_) or not. If there’s no name, we call them anonymous structs—pretty self-explanatory. Anonymous structs are useful in special contexts, like inside a `typedef` or `union`.
 
 Let’s start with how structs are defined in C, and then we’ll dive into some C++ additions.
@@ -81,12 +81,12 @@ struct Node {
 };
 ```
 
-### Initializing Structs
+## Initializing Structs
 In the previous section, to keep the examples simple, I have instantiated the structs and assigned the values one by one. It may be considered as one form of initialization but it is not a good practice to do so. In a way it violates the _always initialize_ rule from the {{<a_blank title="C++ Core Guidelines" url="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es20-always-initialize-an-object">}}. It can be a bit error-prone, especially since some members might slip through the cracks and be left uninitialized—leading to undefined behavior or garbage values. To avoid this, we need to properly initialize our structs.
 
 To correctly initialize a struct, we first have to get familiar with _aggregates_. 
 
-#### What is an _aggregate_?
+### What is an _aggregate_?
 The formal definition of an aggregate has changed throughout the C++ standards. There have been few rules added and few removed, however the following stayed consistent throughout all the standards.
 
 > An _aggregate_ is any data type with multiple members, it can either be an array type or a class type with:
@@ -99,7 +99,7 @@ You might be tempted to think that structs are always aggregates, but that’s n
 
 Before delving into _aggregate-initialization_, let's take a short detour.
 
-#### Value-initialization
+### Value-initialization
 In C++11 and beyond, _value-initialization_ occurs when a variable is initialized using an empty brace-enclosed initializer list.
 
 If a scalar type (`bool`, `int`, `char`, `double`, pointers, etc.) is initialized this way then they are zero-initialized.
@@ -109,7 +109,7 @@ int* p {}; // value-initialized to NULL
 ```
 Whereas, for aggregate types if this form of initialization is used then _aggregate-initialization_ is performed instead.
 
-#### Aggregate-initialization
+### Aggregate-initialization
 There are four ways to initialize an aggregate, all of which are various forms of {{<a_blank title="list-initialization" url="https://en.cppreference.com/w/cpp/language/list_initialization">}}.
 - Initializing an aggregate with an ordinary initializer list.
 1. `T object = { arg1, arg2, ... };`
@@ -120,7 +120,7 @@ There are four ways to initialize an aggregate, all of which are various forms o
 
 Here, 2 and 4 are termed _direct list initialization_ and, 1 and 3 are termed _copy list initialization_.
 
-##### initializing with ordinary initializer lists
+#### initializing with ordinary initializer lists
 This syntax (_1, 2_) is commonly used when initializing arrays, which can be generalized to aggregates.
 ```cpp
 int oneDigitPrimes[]{2, 3, 5, 7}; // or oneDigitPrimes[] = {2, 3, 5, 7}
@@ -219,7 +219,7 @@ derived d2{{}, {}, 4};     // initializes d2.b1 with 0, d2.b2 with 42,
 ```
 Note that if there is a user declared default constructor (like in `base2`), then value-initialization will invoke it instead of value initializing the members. 
 
-##### initializing with designated initializers
+#### initializing with designated initializers
 A designated initializer, or designator, points out a particular element to be initialized. A designator list is a comma-separated list of one or more designators. They must appear in the same order as the order of declaration. All the members without a designator having a default value are assigned that value. And the other members are initialized from an empty initializer list, similar to the above section.
 ```cpp
 struct Person {
@@ -283,7 +283,7 @@ struct Course {
 Course c = {{.name = "Alice", .marks = {85, 90, 88}}, 90.5};
 ```
 
-#### Initializing from a Struct
+### Initializing from a Struct
 Let's say we have a struct, and we want to initialize another struct with the same values. Lucky for us, C++ makes it pretty intuitive to do so without manually initializing each member. All it takes is `operator=`, also known as _copy initialization_.
 ```cpp
 struct Node {
@@ -319,12 +319,12 @@ Node b(a); // copy ctor invoked
 Node c{b}; // copy ctor invoked
 ```
 
-### Assigning Structs
+## Assigning Structs
 There will be times when not all the values of struct members are known at initialization. Later on, when the values become known, one option is to assign individually but there is always a chance of overlooking a few.
 
 So, what are the best ways to assign values to structs correctly? Let’s explore a couple of approaches.
 
-#### assigning with initializer lists
+### assigning with initializer lists
 Out of the four list-initialization forms discussed earlier, two of them _(1, 3)_ can be used for assignments. To refresh your memory, these two forms of initialization are called _copy list initialization_.
 1. `object = { arg1, arg2, ... };`
 2. `object = { .des1 = arg1 , .des2 { arg2 } ... };` (since C++20)
@@ -345,7 +345,7 @@ person = { .name = person.name, .age = calc_age(dob) };
 ```
 In this example, `age` was value-initialized to `-1` at first. Later, it gets recalculated and assigned. Since `name` didn't need to change, we just reused the previous value. However, here’s where things can trip you up: `height` was left out of the assignment and gets value-initialized to `0.0`, overwriting the original height value. Oops!
 
-#### assigning another struct using `operator=`
+### assigning another struct using `operator=`
 The syntax is similar to that of initializing from a struct using `operator=`.
 - `object2 = object1;`
 
@@ -362,5 +362,5 @@ A b = a; // copy ctor invoked
 a = b; // operator= invoked
 ```
 
-### To Be Continued...
+## To Be Continued...
 At first, I had big dreams of covering everything there is to know about structs in a single article. But, let's be real—it was turning into a novel. So, I’ve decided to break it up into a trilogy (think _Lord of the Rings_, but with fewer swords and more code). Stay tuned for the next part, where I’ll dive deeper into how structs really shine in C++!

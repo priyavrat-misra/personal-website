@@ -1,11 +1,11 @@
 {{ define "main" }}
-<h2>
+<h1>
 {{ if or (eq .Title "Blog") (eq .Title "Tags") }}
     {{ .Title }}
 {{ else }}
     <a href="/tags/" class="text-decoration-none text-reset">Tags</a> &gt; <span class="badge bg-secondary">{{ lower .Title }}</span>
 {{ end }}
-</h2>
+</h1>
 <ul class="list-unstyled">
     {{ range .Pages }}
     <li>
