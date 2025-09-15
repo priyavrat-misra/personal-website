@@ -1,21 +1,32 @@
 {{ define "main" }}
 <header class="mb-3">
-    <h1 class="mb-0">{{ .Title }}</h1>
-    {{ if .Params.Subtitle }}
-    <aside>{{ .Params.Subtitle }}</aside>
-    {{ end }}
-    <small class="text-muted">Published: <time>{{- dateFormat "02 Jan 06 15:04 MST" .Date.Local -}}</time></small>
-    {{- if .Lastmod }}
-    {{- if ne .Lastmod .Date }}
-    <small class="text-muted">Last updated: <time>{{- dateFormat "02 Jan 06 15:04 MST" .Lastmod.Local -}}</time></small>
-    {{- end }}
-    {{- end }}
+    <hgroup id="blog-heading">
+        <h1>{{ .Title }}</h1>
+        {{ if .Params.Subtitle }}
+        <p>{{ .Params.Subtitle }}</p>
+        {{ end }}
+        <p>
+            <small class="text-muted">Published: <time>{{- dateFormat "02 Jan 06 15:04 MST" .Date.Local -}}</time></small>
+            {{- if .Lastmod }}
+            {{- if ne .Lastmod .Date }}
+            <small class="text-muted">Last updated: <time>{{- dateFormat "02 Jan 06 15:04 MST" .Lastmod.Local -}}</time></small>
+            {{- end }}
+            {{- end }}
+        </p>
+    </hgroup>
     {{ if gt .Params.tags 0 }}
-    <br/>
-    {{ readFile "static/icons/tag.svg" | safeHTML }}
-    {{ range .Params.tags }}
-    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge bg-secondary text-decoration-none">{{ lower . }}</a>
-    {{ end }}
+    <ul id="tags" class="list-inline">
+        <li class="list-inline-item">
+            <a href="/tags/" title="View all tags">
+                {{ readFile "static/icons/tag.svg" | safeHTML }}
+            </a>
+        </li>
+        {{ range .Params.tags }}
+        <li class="list-inline-item">
+            <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge bg-secondary text-decoration-none">{{ lower . }}</a>
+        </li>
+        {{ end }}
+    </ul>
     {{ end }}
     {{ .TableOfContents }}
 </header>
@@ -23,7 +34,7 @@
     {{ .Content }}
 </article>
 <a href="#" class="back-to-top" aria-label="scroll back to top">{{ readFile "static/icons/arrow-up-circle.svg" | safeHTML }}</a>
-<hr/>
+<hr>
 <script src="https://giscus.app/client.js"
         data-repo="priyavrat-misra/personal-website"
         data-repo-id="R_kgDOHXZkKg"

@@ -3,33 +3,35 @@
         <div class="col-sm-4 col-12 text-sm-end text-center pt-sm-4">
             <a href="/" class="text-decoration-none">
                 <img id="avatar"
-                     height="120px"
-                     width="120px"
+                     height="120"
+                     width="120"
                      alt="Profile Picture"
                      src="/images/avatar/120x120.webp"
-                     srcset="/images/avatar/180x180.webp 180w, /images/avatar/120x120.webp 120w"
-                     sizes="(width <= 600px) 180px, 120px"/>
+                     srcset="/images/avatar/120x120.webp 1x, /images/avatar/180x180.webp 2x">
             </a>
         </div>
         <div class="col-sm-8 col-12 text-sm-start text-center">
-            <h1 class="mb-2 mt-4">
-                <a href="/" class="text-decoration-none">
-                    {{ .Site.Params.header_title }}
-                </a>
-            </h1>
-            <p class="text-muted subtitle"></p>
-            <nav>
+            <hgroup>
+                <h1 class="mb-2 mt-4">
+                    <a href="/" class="text-decoration-none">
+                        {{ .Site.Params.header_title }}
+                    </a>
+                </h1>
+                <p class="text-muted subtitle" aria-hidden="true"></p>
+                <p class="sr-only">{{ .Site.Params.header_subtitle }}</p>
+            </hgroup>
+            <nav aria-label="Socials">
                 <ul class="list-inline">
                     {{ range .Site.Params.social }}
                     <li class="list-inline-item">
-                         <a href="{{ .url }}" title="{{ .title }}" target="_blank" class="text-muted">
+                         <a href="{{ .url }}" title="{{ .title }}" target="_blank">
                             {{ readFile (print "static" .icon) | safeHTML }}
                         </a>
                     </li>
                     {{ end }}
                 </ul>
             </nav>
-            <nav>
+            <nav aria-label="Menu">
                 <ul class="list-inline">
                     {{ $currentPage := . }}
                     {{ range .Site.Menus.main }}
@@ -41,5 +43,5 @@
             </nav>
         </div>
     </div>
-    <hr/>
+    <hr>
 </header>

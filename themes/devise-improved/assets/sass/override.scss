@@ -4,7 +4,6 @@ $color-fg-muted: #656d76;
 $color-accent-fg: #0969da;
 $color-bg-primary: #fff;
 $color-border-default: #d0d7de;
-$color-btn-bg: #f6f8fa;
 
 $font-family-base: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, segoe ui, 'helvetica neue', 'Adwaita Sans', Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
 
@@ -14,10 +13,6 @@ $font-family-base: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, seg
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-#TableOfContents {
-    margin-top: 1rem;
 }
 
 body {
@@ -33,6 +28,22 @@ main {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+#blog-heading > * {
+    margin-bottom: 0;
 }
 
 .highlight > pre {
@@ -55,12 +66,16 @@ a:hover {
     text-decoration: none;
 }
 
-a svg {
+svg {
     color: $color-fg-muted;
 }
 
 a svg:hover {
-    color: $color-accent-fg !important;
+    color: $color-accent-fg;
+}
+
+a:has(svg) {
+    text-decoration: none;
 }
 
 h1 { font-size: 2rem; }
@@ -86,11 +101,19 @@ footer {
 }
 
 nav ul li {
-    margin-right: 1rem !important;
+    margin-right: 1rem;
 }
 
 nav ul li:last-child {
-    margin-right: 0 !important;
+    margin-right: 0;
+}
+
+#tags > * {
+    margin-right: 0.2rem;
+}
+
+.list-inline-item:not(:last-child) {
+    margin-right: 1rem;
 }
 
 img {

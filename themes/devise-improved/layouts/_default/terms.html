@@ -1,9 +1,9 @@
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
-<ul class="list-inline">
+<ul id="tags" class="list-inline">
     {{ range .Data.Terms }}
     <li class="list-inline-item">
-        <a href="{{ .Page.RelPermalink }}" class="badge bg-secondary text-light text-decoration-none">
+        <a href="{{ .Page.RelPermalink }}" class="badge bg-secondary text-decoration-none">
             {{ lower .Page.Title }} <sup>{{ .Count }}</sup>
         </a>
     </li>
