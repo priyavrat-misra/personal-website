@@ -80,3 +80,18 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
         [markup.goldmark.extensions.passthrough.delimiters]
           block = [['\[', '\]'], ['$$', '$$']]
           inline = [['\(', '\)']]
+  [markup.highlight]
+    style = 'github-dark'
+
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "hugo_stats.json"
+    target = "assets/watching/hugo_stats.json"
+
+[build]
+  [build.buildStats]
+    # Enables PostCSS stats for debugging
+    enable = true

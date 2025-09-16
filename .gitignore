@@ -12,5 +12,7 @@ hugo.linux
 # Temporary lock file while building
 /.hugo_build.lock
 
+/node_modules/
+
 *.cpp
 *.swp
