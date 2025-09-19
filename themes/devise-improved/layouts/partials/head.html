@@ -11,15 +11,15 @@
     <link rel="manifest" href="/site.webmanifest">
 
     {{- $overrideTemplate := resources.Get "sass/override.scss" -}}
-    {{- $styles := $overrideTemplate | resources.ExecuteAsTemplate "css/theme.scss" . | toCSS -}}
-    {{- if hugo.IsProduction -}}
-    {{- $styles = $styles | minify | postCSS | fingerprint -}}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
-    {{- else -}}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
-    {{- end -}}
+    {{- $styles := $overrideTemplate | resources.ExecuteAsTemplate "css/theme.scss" . | toCSS | css.PostCSS -}}
     
-    {{- if .Param "math" -}}
+    {{ if hugo.IsProduction -}}
+    {{- $styles = $styles | minify | fingerprint | resources.PostProcess -}}
+    {{- end }}
+
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" {{ if hugo.IsProduction -}} integrity="{{ $styles.Data.Integrity }}" {{- end }} />
+
+    {{ if .Param "math" -}}
     {{- partialCached "math.html" . }}
     {{- end }}
 </head>

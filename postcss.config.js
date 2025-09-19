@@ -13,7 +13,7 @@ const purgecss = purgeCSSPlugin({
 
 export default {
     plugins: [
-        purgecss,
+        ...(process.env.HUGO_ENVIRONMENT === "production" ? [purgecss] : []),
         autoprefixer,
         cssnano({
             preset: [
