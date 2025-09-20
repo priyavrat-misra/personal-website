@@ -17,7 +17,7 @@
                         {{ .Site.Params.header_title }}
                     </a>
                 </h1>
-                <p class="text-muted subtitle" aria-hidden="true"></p>
+                <p class="muted-text subtitle" aria-hidden="true"></p>
                 <p class="sr-only">{{ .Site.Params.header_subtitle }}</p>
             </hgroup>
             <nav aria-label="Socials">
@@ -42,6 +42,13 @@
                 </ul>
             </nav>
         </div>
+    </div>
+    <div class="theme-toggle-container">
+        <input id="dark" type="checkbox" />
+        <label id="theme-toggle" for="dark">
+            {{ readFile "static/icons/moon.svg" | safeHTML }}
+            {{ readFile "static/icons/sun.svg" | safeHTML }}
+        </label>
     </div>
     <hr>
 </header>

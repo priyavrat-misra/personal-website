@@ -1,0 +1,25 @@
+// inspired from github light
+@mixin light {
+    --color-fg-default: #1f2328;
+    --color-fg-muted: #656d76;
+    --color-canvas-default: #fff;
+    --color-neutral-muted: #afb8c133;
+    --color-accent-fg: #0969da;
+
+    // Local Variables
+    --display-light: none;
+    --display-dark: initial;
+}
+
+// inspired from github dark_dimmed
+@mixin dark {
+    --color-fg-default: #adbac7;
+    --color-fg-muted: #9198A1;
+    --color-canvas-default: #22272e;
+    --color-neutral-muted: #636e7b1a;
+    --color-accent-fg: #539bf5;
+
+    // Local Variables
+    --display-light: initial;
+    --display-dark: none;
+}

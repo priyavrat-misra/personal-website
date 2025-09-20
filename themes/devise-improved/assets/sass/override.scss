@@ -1,15 +1,77 @@
-// === Import Bootstrap and set variable overrides ===
 @import "node_modules/bootstrap/scss/bootstrap.scss";
+@import 'themes';
 
-$color-fg-default: #1f2328;
-$color-fg-muted: #656d76;
-$color-accent-fg: #0969da;
-$color-bg-primary: #fff;
-$color-border-default: #d0d7de;
+// Default (light) theme
+:root {
+  @include light;
+}
 
-$font-family-base: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, segoe ui, 'helvetica neue', 'Adwaita Sans', Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+// Toggled (dark) theme via checkbox
+body:has(#dark:checked) {
+  @include dark;
+}
 
-// === Custom Styles ===
+// System preference for dark mode
+@media (prefers-color-scheme: dark) {
+  // Default is dark if system prefers it
+  :root {
+    @include dark;
+  }
+
+  // Toggled (light) theme when system preference is dark
+  body:has(#dark:checked) {
+    @include light;
+  }
+}
+
+#dark {
+    display: none;
+}
+
+#theme-toggle {
+    cursor: pointer;
+    > svg:hover {
+        color: var(--color-accent-fg);
+    }
+}
+
+// Show the MOON icon in light mode
+#theme-toggle svg:first-of-type {
+    display: var(--display-dark);
+}
+
+// Show the SUN icon in dark mode
+#theme-toggle svg:last-of-type {
+    display: var(--display-light);
+}
+
+// Positioning for the toggle container
+.theme-toggle-container {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+// systemfontstack.com
+code {
+    font-family: Menlo, Consolas, Monaco, 'Adwaita Mono', 'Liberation Mono', 'Lucida Console', monospace;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, segoe ui, 'helvetica neue', 'Adwaita Sans', Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+    padding-left: calc(100vw - 100%);
+    background-color: var(--color-canvas-default);
+    color: var(--color-fg-default);
+}
+
 #content {
     max-width: 650px;
     display: flex;
@@ -17,12 +79,32 @@ $font-family-base: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, seg
     min-height: 100vh;
 }
 
-body {
-  padding-left: calc(100vw - 100%);
-}
-
 main {
     flex: 1;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.83rem; }
+h3 { font-size: 1.67rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.33rem; }
+h6 { font-size: 1.17rem; }
+
+header {
+    h1 {
+        a, a:hover { color: var(--color-fg-default); }
+    }
+}
+
+footer {
+    p {
+        text-align: center;
+        padding: 1rem 0;
+    }
+}
+
+img {
+    max-width: 100%;
 }
 
 #avatar {
@@ -48,69 +130,31 @@ main {
     margin-bottom: 0;
 }
 
-.highlight > pre {
-    padding: 0.5rem 0.8rem;
-    border: 1px solid;
-    border-radius: 3px;
-}
-
-html {
-    scroll-behavior: smooth !important;
-}
-
 a {
-    color: $color-accent-fg;
+    color: var(--color-accent-fg);
     text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+    }
+    > svg {
+        text-decoration: none;
+        &:hover {
+            color: var(--color-accent-fg);
+        }
+    }
 }
 
-a:hover {
-    color: $color-accent-fg;
-    text-decoration: none;
+.muted-text, svg {
+    color: var(--color-fg-muted);
 }
-
-svg {
-    color: $color-fg-muted;
-}
-
-a svg:hover {
-    color: $color-accent-fg;
-}
-
-a:has(svg) {
-    text-decoration: none;
-}
-
-h1 { font-size: 2rem; }
-h2 { font-size: 1.83rem; }
-h3 { font-size: 1.67rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.33rem; }
-h6 { font-size: 1.17rem; }
 
 p { margin-bottom: 0.7rem; }
 
-header {
-    h1 {
-        a, a:hover { color: $color-fg-default; }
-    }
-}
-
-footer {
-    p {
-        text-align: center;
-        padding: 1rem 0;
-    }
-}
-
-nav ul li {
+nav > ul > li:not(:last-child) {
     margin-right: 1rem;
 }
 
-nav ul li:last-child {
-    margin-right: 0;
-}
-
-#tags > * {
+#tags > *:not(:last-child) {
     margin-right: 0.2rem;
 }
 
@@ -118,38 +162,40 @@ nav ul li:last-child {
     margin-right: 1rem;
 }
 
-img {
-    max-width: 100%;
+// inspired from github
+.highlight > pre {
+    border-radius: .375rem;
+    font-size: .75rem;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 1rem;
+}
+
+// inspired from github
+code:not(pre > code) {
+    color: var(--color-fg-default);
+    background-color: var(--color-neutral-muted);
+    border-radius: .375rem;
+    font-size: .75rem;
+    line-height: 1rem;
+    padding-inline-end: .25rem;
+    padding-bottom: 2px;
+    padding-inline-start: .25rem;
+    padding-top: 2px;
 }
 
 blockquote {
-    background: $color-bg-primary;
-    color: $color-fg-muted;
-    border-left: 6px solid $color-border-default;
-    margin: 1.5em 10px;
-    padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
+    color: var(--color-fg-muted);
+    border-inline-start-style: solid;
+    border-inline-start-width: 3px;
+    padding-inline-end: 1rem;
+    padding-inline-start: 1rem;
 }
 
-blockquote:before {
-    color: $color-border-default;
-    content: open-quote;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
-}
-
-blockquote p { display: inline; }
-
-.back-to-top {
+#back-to-top {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
-}
-
-@view-transition {
-    navigation: auto;
 }
 
 // copypasta from https://codepen.io/brandonmcconnell/pen/bZqGdw

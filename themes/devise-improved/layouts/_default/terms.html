@@ -3,9 +3,10 @@
 <ul id="tags" class="list-inline">
     {{ range .Data.Terms }}
     <li class="list-inline-item">
-        <a href="{{ .Page.RelPermalink }}" class="badge bg-secondary text-decoration-none">
-            {{ lower .Page.Title }} <sup>{{ .Count }}</sup>
-        </a>
+        <code>
+            <a href="{{ .Page.RelPermalink }}">{{ lower .Page.Title }}</a>
+            <sup>{{ .Count }}</sup>
+        </code>
     </li>
     {{ end }}
 </ul>
