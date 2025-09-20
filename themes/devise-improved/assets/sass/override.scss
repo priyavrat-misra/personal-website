@@ -24,10 +24,6 @@ body:has(#dark:checked) {
   }
 }
 
-#dark {
-    display: none;
-}
-
 #theme-toggle {
     cursor: pointer;
     > svg:hover {
@@ -137,11 +133,14 @@ a {
         text-decoration: none;
     }
     > svg {
-        text-decoration: none;
         &:hover {
             color: var(--color-accent-fg);
         }
     }
+}
+
+a:has(svg) {
+    text-decoration: none;
 }
 
 .muted-text, svg {

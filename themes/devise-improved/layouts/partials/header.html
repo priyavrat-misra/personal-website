@@ -44,8 +44,8 @@
         </div>
     </div>
     <div class="theme-toggle-container">
-        <input id="dark" type="checkbox" />
-        <label id="theme-toggle" for="dark">
+        <input id="dark" class="sr-only" type="checkbox" role="switch" aria-label="Switch between light and dark theme.">
+        <label id="theme-toggle" title="Toggle theme" for="dark" aria-hidden="true">
             {{ readFile "static/icons/moon.svg" | safeHTML }}
             {{ readFile "static/icons/sun.svg" | safeHTML }}
         </label>
