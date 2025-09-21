@@ -1,24 +1,21 @@
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 @import 'themes';
 
-// Default (light) theme
-:root {
-  @include light;
+@media (prefers-color-scheme: light) {
+  :root {
+    @include light;
+  }
+
+  body:has(#dark:checked) {
+    @include dark;
+  }
 }
 
-// Toggled (dark) theme via checkbox
-body:has(#dark:checked) {
-  @include dark;
-}
-
-// System preference for dark mode
 @media (prefers-color-scheme: dark) {
-  // Default is dark if system prefers it
   :root {
     @include dark;
   }
 
-  // Toggled (light) theme when system preference is dark
   body:has(#dark:checked) {
     @include light;
   }
@@ -41,7 +38,6 @@ body:has(#dark:checked) {
     display: var(--display-light);
 }
 
-// Positioning for the toggle container
 .theme-toggle-container {
     position: absolute;
     right: 2rem;
@@ -183,6 +179,7 @@ code:not(pre > code) {
     padding-top: 2px;
 }
 
+// inspired from github
 blockquote {
     color: var(--color-fg-muted);
     border-inline-start-style: solid;
