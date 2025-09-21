@@ -62,6 +62,9 @@ body {
     padding-left: calc(100vw - 100%);
     background-color: var(--color-canvas-default);
     color: var(--color-fg-default);
+    * {
+      border-color: var(--color-border-default);
+    }
 }
 
 #content {
@@ -186,6 +189,26 @@ blockquote {
     border-inline-start-width: 3px;
     padding-inline-end: 1rem;
     padding-inline-start: 1rem;
+}
+
+// inspired from github
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+
+  th,
+  td {
+    border-width: 1px;
+    padding-inline-end: .75rem;
+    padding-bottom: 6px;
+    padding-inline-start: .75rem;
+    padding-top: 6px;
+  }
+
+  tr:nth-child(2n) {
+    background-color: var(--color-canvas-subtle);
+  }
 }
 
 #back-to-top {

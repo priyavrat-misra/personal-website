@@ -37,7 +37,6 @@ The numbers following `\` and `\x` represent the character’s value. For simpli
 
 The table below breaks down each character in `"Hello, World!\n"`—but you can generalize this approach to any string, should you wish to thoroughly confuse your future self (or your colleagues).
 
-{{< table class="table table-sm table-borderless table-hover" >}}
 | Character | ASCII Value | Octal | Hexadecimal |
 | :-----: | :-: | :----: | :----: |
 |   `H`   |  72 | `\110` | `\x48` |
@@ -54,6 +53,5 @@ The table below breaks down each character in `"Hello, World!\n"`—but you can 
 |   `d`   | 100 | `\144` | `\x64` |
 |   `!`   |  33 |  `\41` | `\x21` |
 |  `\n`   |  10 |  `\12` |  `\xA` |
-{{</ table >}}
 
 Hope you enjoyed this deep dive into the unnecessarily complex world of escape sequences. Remember: just because you *can* overengineer “Hello, World!” doesn’t mean you *should*—but it sure is fun.
