@@ -1,1 +1,1 @@
-<a href="{{ .Get "url" }}" target="_blank">{{ with .Get "title" }}{{ . }}{{ else }}{{ .Get "url" }}{{ end }}</a>
+<a href="{{ .Get "url" }}" target="_blank" rel="noopener noreferrer">{{ with .Get "title" }}{{ . }}{{ else }}{{ .Get "url" }}{{ end }}</a>

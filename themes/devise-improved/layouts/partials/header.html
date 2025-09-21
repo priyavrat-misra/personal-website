@@ -24,7 +24,7 @@
                 <ul class="list-inline">
                     {{ range .Site.Params.social }}
                     <li class="list-inline-item">
-                         <a href="{{ .url }}" title="{{ .title }}" target="_blank">
+                         <a href="{{ .url }}" title="{{ .title }}" target="_blank" class="text-muted" {{ if in (slice "linkedin" "github" "strava") (lower .title) }} rel="me noopener noreferrer"{{ end }}>
                             {{ readFile (print "static" .icon) | safeHTML }}
                         </a>
                     </li>
