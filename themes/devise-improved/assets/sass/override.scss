@@ -40,7 +40,7 @@
 
 .theme-toggle-container {
     position: absolute;
-    right: 2rem;
+    right: calc(2rem - (100vw - 100%));
     top: 2rem;
 }
 
@@ -59,7 +59,7 @@ code {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, segoe ui, 'helvetica neue', 'Adwaita Sans', Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
-    padding-left: calc(100vw - 100%);
+    padding-left: calc(100vw - 100%); // avoid page shift due to scroll bar
     background-color: var(--color-canvas-default);
     color: var(--color-fg-default);
     * {
@@ -114,7 +114,6 @@ img {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1;
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
@@ -213,7 +212,7 @@ table {
 
 #back-to-top {
     position: fixed;
-    right: 2rem;
+    right: calc(2rem - (100vw - 100%));
     bottom: 2rem;
 }
 
