@@ -1,7 +1,8 @@
 ---
-title: "Three Years and 100 Commits Later: A Reflection"
+title: "3 Years and 100 Commits Later"
+"subtitle": "A look back at the site's history and a commitment to myself."
 date: 2025-09-21T20:30:00+05:30
-description: "A reflection on the three-year journey of a website and a call to reclaim the web."
+description: "A look back of a personal website's three-year journey and fixing some mistakes."
 tags: ["life"]
 ---
 ## A Milestone and a Realization
