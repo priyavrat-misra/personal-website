@@ -42,6 +42,7 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
 [params]
   header_title = "Priyavrat Misra"
   header_subtitle = "['Software Engineer', 'Computer Science Graduate', 'Open Source Advocate', 'Cycling Enthusiast']"
+  description = "Priyavrat's corner of the internet."
   math = false
   [[params.social]]
     title = "LinkedIn"

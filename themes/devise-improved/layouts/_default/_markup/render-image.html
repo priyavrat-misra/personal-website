@@ -1,8 +1,19 @@
-{{ if .Title }}
-<figure>
-  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy">
-  <figcaption class="text-center"><small>{{ .Title }}</small></figcaption>
-</figure>
+{{ $src := .Destination }}
+{{ $alt := .Text }}
+{{ $title := .Title }}
+
+{{ $image := "" }}
+{{ $imageResource := resources.Get $src }}
+{{ if $imageResource }}
+    {{ $image = $imageResource.RelPermalink }}
 {{ else }}
-<img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy">
+    {{/* Fallback for images still in static or incorrect paths */}}
+    {{ $image = $src | safeURL }}
 {{ end }}
+
+<figure>
+  <img src="{{ $image }}" alt="{{ $alt }}" loading="lazy">
+  {{ with $title }}
+  <figcaption class="text-center"><small>{{ . }}</small></figcaption>
+  {{ end }}
+</figure>
