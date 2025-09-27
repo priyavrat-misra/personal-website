@@ -18,7 +18,7 @@
 {{ if .Params.ogimage }}
     {{ $imagePath = .Params.ogimage }}
 {{ else }}
-    {{ $imagePath = resources.Get "images/avatar/1200x630.webp" }}
+    {{ $imagePath = resources.Get "images/ogDefault.webp" }}
 {{ end }}
 
 {{ with resources.Get $imagePath }}
