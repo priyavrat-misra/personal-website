@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="{{ $.Site.Params.header_title }}">
-    <meta name="description" content="{{if .Description}}{{.Description}}{{else}}{{$.Site.Params.description}}{{with .Title}} - {{.}}{{end}}{{end}}">
+    <meta name="description" content="{{if .Description}}{{.Description}}{{else}}{{$.Site.Params.header_title}}{{with .Title}} - {{.}}{{end}}{{end}}">
     <meta name="color-scheme" content="light dark">
     <link rel="canonical" href="{{ $.Permalink }}">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
