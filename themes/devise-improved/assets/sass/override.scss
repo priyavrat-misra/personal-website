@@ -102,6 +102,14 @@ img {
     max-width: 100%;
 }
 
+iframe {
+    width: 100%;
+    display: block;
+    &#resume {
+        aspect-ratio: calc(1 / sqrt(2)); // A4
+    }
+}
+
 #avatar {
     border-radius: 50%;
     display: block;

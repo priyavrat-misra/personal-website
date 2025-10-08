@@ -3,7 +3,7 @@
 {{ $description := "" }}
 {{ if .Description }}
     {{ $description = .Description }}
-{{ else if .IsPage }}
+{{ else if and .IsPage (ne .Summary "") }}
     {{ $description = .Summary | plainify | safeHTML }}
 {{ else }}
     {{ $description = .Site.Params.description }}
