@@ -3,10 +3,8 @@ title: "Priyavrat Misra"
 description: "Priyavrat's corner of the internet."
 ---
 # About
-Hey there! I'm a Software Engineer with a background in Computer Science and a love for all things code. When I’m not writing performant, efficient, clean code (_using Vim obviously_), you’ll probably catch me geeking out over operating systems, computer architecture, and anything that gives me a deeper understanding of how things tick. Furthermore, I have a particular soft spot for accessibility, because I believe great tech should be accessible to everyone!
+A Software Engineer with a passion for the submerged 90% of the iceberg.
 
-My personal coding projects often involve interesting algorithms—anything that makes my brain work a little harder, I’m game! I usually document these adventures on my blog, where I aim to break down complex concepts and showcase my learning with visualizations that make sense to both new and seasoned developers.
+I love writing clean, efficient code (_in Vim, obviously_) and geeking out over system internals, whether it's operating, database, or distributed systems. I document my findings in [my blog](/blog), but admittedly less than I'd like to.
 
-On the side, I’m an avid cyclist—so much so that I pedal to work, rain or shine.
-
-That's me in a nutshell: a coder with a passion for learning, sharing, and pedaling. Thanks for stopping by!
+Oh, and I pedal to work. Say hi if you see me. I'm the one in the shiny orange helmet.
