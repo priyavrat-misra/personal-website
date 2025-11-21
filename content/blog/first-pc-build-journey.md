@@ -5,14 +5,15 @@ description: "Achievement Unlocked: Build a PC."
 ogimage: "images/first-pc-build-journey/parts.webp"
 tags: ["hardware", "life"]
 ---
+## Prologue: The Crash
 A couple of weeks ago, I learned that my laptop’s processor and motherboard had fried. While this might have come as a shock to some, I can’t say I was surprised.
 
-After all, I’d been using that laptop for over four years, subjecting it to marathon sessions almost every day. Frankly, it was more of a “when” than an “if.” So, when the inevitable happened, I decided it was finally time to build myself a PC.
+After all, I had been using that laptop for over four years, pushing it through marathon sessions almost every day. Frankly, it was more of a “when” rather than an “if.” So, when the inevitable finally happened, I decided it was time to build myself a PC.
 
-I spent several exhausting days researching hardware, poring over benchmarks, hunting for compatibility issues, and generally falling down the rabbit hole of PC building. Eventually, after much deliberation, I placed my orders. It was a ton of work, but hey—if it ends with a working PC, I’ll call that a win.
+I spent several exhausting days researching hardware, poring over benchmarks, hunting for compatibility issues, and generally falling down the rabbit hole of PC building. Eventually, after much deliberation, I placed my orders. It was a ton of work, but hey, if it ends with a working PC, I’ll call that a win.
 
-## Parts
-My goal was to get significantly better performance than my old laptop, but without blowing my budget. Mission accomplished—with these parts:
+## Act I: The Hardware
+My goal was to get significantly better performance than my old laptop without blowing my budget. Mission accomplished. Here is the breakdown of the parts I chose:
 
 ![The Parts](images/first-pc-build-journey/parts.webp)
 
@@ -26,9 +27,9 @@ My goal was to get significantly better performance than my old laptop, but with
 | PSU | [Corsair CV 650 Watt 80+ Bronze Certified](https://www.corsair.com/us/en/Categories/Products/Power-Supply-Units/Power-Supply-Units-General-Purpose/CV-Series/p/CP-9020211-NA) |
 | Case | [Corsair SPEC-05 ATX Mid Tower Case](https://www.corsair.com/ww/en/Categories/Products/Cases/Mid-Tower-ATX-Cases/Carbide-Series-SPEC-05-Mid-Tower-Gaming-Case-%E2%80%94-Black/p/CC-9011138-WW) |
 
-Now, you might be wondering: “Why on earth did you buy a **GT 1030** in 2022?” Excellent question! The short answer: {{<a_blank url="https://en.wikipedia.org/wiki/2020%E2%80%93present_global_chip_shortage" title="global chip shortage">}}. My plan was to use it as a placeholder until the GPU market cooled off. Until then, it was the little graphics card that could.
+Now, you might be wondering: “Why on earth did you buy a **GT 1030** in 2022?” Excellent question! The short answer is the {{<a_blank url="https://en.wikipedia.org/wiki/2020%E2%80%93present_global_chip_shortage" title="global chip shortage">}}. My plan was to use it as a placeholder until the GPU market cooled off. Until then, it was the little graphics card that could.
 
-**_UPDATE:_** About a year later, I finally upgraded to an **RTX 3060 Ti**, along with a couple of other improvements:
+**_UPDATE:_** About a year later, I finally upgraded to an **RTX 3060 Ti** along with a couple of other improvements:
 
 | | |
 | :- | -: |
@@ -36,20 +37,20 @@ Now, you might be wondering: “Why on earth did you buy a **GT 1030** in 2022?�
 | CPU Cooler | [DeepCool AK400](https://www.deepcool.com/products/Cooling/cpuaircoolers/AK400-Performance-CPU-Cooler-1700-AM5/2021/15222.shtml) |
 | Monitor | [Gigabyte G24F 2](https://www.gigabyte.com/Monitor/G24F-2/) |
 
-## Assemblage
-After a week of impatiently tracking shipping updates, my parts finally arrived. This was my first time assembling a PC, so I made sure I was prepared. Surprisingly, all I really needed was a {{<a_blank url="https://en.wikipedia.org/wiki/List_of_screw_drives#Phillips" title="Phillips #1 screwdriver">}}. That, and a healthy dose of concentration (and maybe a little prayer).
+## Act II: The Build
+After a week of impatiently tracking shipping updates, my parts finally arrived. This was my first time assembling a PC, so I made sure I was prepared. To my surprise, all I really needed was a {{<a_blank url="https://en.wikipedia.org/wiki/List_of_screw_drives#Phillips" title="Phillips #1 screwdriver">}}. That, and a healthy dose of concentration (plus maybe a little prayer).
 
-I took my time reading through the manuals—yes, I actually read the manuals—and soon enough, everything started coming together (pun absolutely intended).
+I took my time reading through the manuals (yes, I actually read them) and soon enough, everything started coming together; pun absolutely intended.
 
 | | |
 | :-: | :-: |
 | ![Assembled](images/first-pc-build-journey/assembled.webp "Version 1.0") | ![Assembled V2](images/first-pc-build-journey/assembledV2.webp "Version 2.0") |
 
-As it turns out, building a PC is simpler than it sounds. That said, I still managed to have my “oops” moment. Here’s what happened:
+As it turns out, building a PC is simpler than it sounds. That said, I still managed to have my “oops” moment. Here is what happened:
 
-I installed the AMD heatsink, but didn’t notice that the logo projection on one side was blocking a RAM slot. When I tried to remove the heatsink, the thermal paste had basically turned into superglue. Did I look up a solution online? Of course not. I went full Hulk and tried to muscle it off. The result? The CPU came out stuck to the heatsink—even though the motherboard’s CPU lock was still engaged. Miraculously, neither the CPU pins nor the motherboard were damaged. In the end, disaster was narrowly averted, and I lived to tell the tale—with all components intact!
+I installed the AMD heatsink but didn’t notice that the logo projection on one side was blocking a RAM slot. When I tried to remove the heatsink, the thermal paste had basically turned into superglue. Did I look up a solution online? Of course not. I went full Hulk and tried to muscle it off. The result? The CPU came out stuck to the heatsink, even though the motherboard’s CPU lock was still engaged. Miraculously, neither the CPU pins nor the motherboard were damaged. In the end, disaster was narrowly averted, and I lived to tell the tale with all components intact!
 
 ![The Build](images/first-pc-build-journey/build.webp 'Translation: "Hello, World!"')
 
-## Final Thoughts
-If you ever get the chance, I highly recommend building your own PC. It takes a bit of research and patience, but the sense of accomplishment is absolutely worth it. I’m glad I took the plunge—and my new PC agrees.
+## Act III: The Verdict
+If you ever get the chance, I highly recommend building your own PC. It takes a bit of research and patience, but the sense of accomplishment is absolutely worth it. I’m glad I took the plunge, and my new PC agrees.
