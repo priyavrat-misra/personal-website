@@ -7,7 +7,7 @@ enableEmoji = false
 enableRobotsTXT = true
 enableGitInfo = true
 pluralizelisttitles = false
-copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
+copyright = "&copy; 2022-{year} Priyavrat Misra.<br><em>This site is built on fundamentals and handcrafted for <abbr title='accessibility'>a11y</abbr>.</em>"
 
 [taxonomies]
   tag = "tags"
@@ -61,7 +61,7 @@ copyright = "&copy; 2022-{year} Priyavrat Misra. All rights reserved."
       
   [[params.social]]
     title = "Email"
-    url = "mailto:priyavratmisra123@gmail.com"
+    url = "mailto:misra.priyavrat@gmail.com"
     icon = "/icons/mail.svg"
       
   [[params.social]]
