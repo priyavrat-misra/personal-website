@@ -11,6 +11,12 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
+    {{ with resources.Get .Site.Params.avatar }}
+    {{ $avatar1x := . }}
+    {{ $avatar2x := resources.Get $.Site.Params.avatar_2x }}
+    <link rel="preload" as="image" href="{{ $avatar1x.RelPermalink }}" imagesrcset="{{ $avatar1x.RelPermalink }} 1x{{ if $avatar2x }}, {{ $avatar2x.RelPermalink }} 2x{{ end }}">
+    {{ end }}
+
     {{- $overrideTemplate := resources.Get "sass/override.scss" -}}
     {{- $styles := $overrideTemplate | resources.ExecuteAsTemplate "css/theme.scss" . | toCSS | css.PostCSS -}}
 

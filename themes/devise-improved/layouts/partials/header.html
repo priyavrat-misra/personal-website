@@ -6,6 +6,8 @@
                      height="120"
                      width="120"
                      alt="Profile Picture"
+                     loading="eager"
+                     fetchpriority="high"
                      {{ with resources.Get .Site.Params.avatar }}
                      src="{{ .RelPermalink }}"
                      srcset="{{ .RelPermalink }} 1x, {{ with resources.Get $.Site.Params.avatar_2x }}{{ .RelPermalink }}{{ end }} 2x"
