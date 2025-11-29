@@ -6,10 +6,10 @@
                      height="120"
                      width="120"
                      alt="Profile Picture"
-                     {{ with resources.Get "images/avatar/120x120.webp" }}
+                     {{ with resources.Get .Site.Params.avatar }}
                      src="{{ .RelPermalink }}"
-                     srcset="{{ .RelPermalink }} 1x, {{ with resources.Get "images/avatar/180x180.webp" }}{{ .RelPermalink }}{{ end }} 2x"
-                     {{ end }}>
+                     srcset="{{ .RelPermalink }} 1x, {{ with resources.Get $.Site.Params.avatar_2x }}{{ .RelPermalink }}{{ end }} 2x"
+                    {{ end }}>
             </a>
         </div>
         <div class="col-sm-8 col-12 text-sm-start text-center">
@@ -26,7 +26,7 @@
                 <ul class="list-inline">
                     {{ range .Site.Params.social }}
                     <li class="list-inline-item">
-                         <a href="{{ .url }}" title="{{ .title }}" target="_blank" class="text-muted" {{ if in (slice "linkedin" "github" "strava") (lower .title) }} rel="me noopener noreferrer"{{ end }}>
+                        <a href="{{ .url }}" title="{{ .title }}" target="_blank" class="text-muted" {{ if in (slice "linkedin" "github" "strava" ) (lower .title) }} rel="me noopener noreferrer" {{ end }}>
                             {{ readFile (print "static" .icon) | safeHTML }}
                         </a>
                     </li>

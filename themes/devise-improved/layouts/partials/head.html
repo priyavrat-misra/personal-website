@@ -13,7 +13,7 @@
 
     {{- $overrideTemplate := resources.Get "sass/override.scss" -}}
     {{- $styles := $overrideTemplate | resources.ExecuteAsTemplate "css/theme.scss" . | toCSS | css.PostCSS -}}
-    
+
     {{ if hugo.IsProduction -}}
     {{- $styles = $styles | minify | fingerprint | resources.PostProcess -}}
     {{- end }}
@@ -25,4 +25,5 @@
     {{- end }}
 
     {{ partial "opengraph.html" . }}
+    {{ partial "structured-data.html" . }}
 </head>
