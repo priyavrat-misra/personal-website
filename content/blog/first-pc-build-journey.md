@@ -2,7 +2,7 @@
 title: "Building a PC"
 date: 2022-07-20T12:12:12+05:30
 description: "Achievement Unlocked: Build a PC."
-ogimage: "images/first-pc-build-journey/parts.webp"
+ogimage: "first-pc-build-journey/parts.webp"
 tags: ["hardware", "life"]
 ---
 ## Prologue: The Crash
@@ -15,7 +15,7 @@ I spent several exhausting days researching hardware, poring over benchmarks, hu
 ## Act I: The Hardware
 My goal was to get significantly better performance than my old laptop without blowing my budget. Mission accomplished. Here is the breakdown of the parts I chose:
 
-![The Parts](images/first-pc-build-journey/parts.webp)
+![The Parts](first-pc-build-journey/parts.webp)
 
 | | |
 | :- | -: |
@@ -44,13 +44,13 @@ I took my time reading through the manuals (yes, I actually read them) and soon 
 
 | | |
 | :-: | :-: |
-| ![Assembled](images/first-pc-build-journey/assembled.webp "Version 1.0") | ![Assembled V2](images/first-pc-build-journey/assembledV2.webp "Version 2.0") |
+| ![Assembled](first-pc-build-journey/assembled.webp "Version 1.0") | ![Assembled V2](first-pc-build-journey/assembledV2.webp "Version 2.0") |
 
 As it turns out, building a PC is simpler than it sounds. That said, I still managed to have my “oops” moment. Here is what happened:
 
 I installed the AMD heatsink but didn’t notice that the logo projection on one side was blocking a RAM slot. When I tried to remove the heatsink, the thermal paste had basically turned into superglue. Did I look up a solution online? Of course not. I went full Hulk and tried to muscle it off. The result? The CPU came out stuck to the heatsink, even though the motherboard’s CPU lock was still engaged. Miraculously, neither the CPU pins nor the motherboard were damaged. In the end, disaster was narrowly averted, and I lived to tell the tale with all components intact!
 
-![The Build](images/first-pc-build-journey/build.webp 'Translation: "Hello, World!"')
+![The Build](first-pc-build-journey/build.webp 'Translation: "Hello, World!"')
 
 ## Act III: The Verdict
 If you ever get the chance, I highly recommend building your own PC. It takes a bit of research and patience, but the sense of accomplishment is absolutely worth it. I’m glad I took the plunge, and my new PC agrees.

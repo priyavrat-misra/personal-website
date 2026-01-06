@@ -2,7 +2,7 @@
 title: "Counting at Scale"
 date: 2025-07-03T20:48:00+05:30
 description: "A mathematical exploration of efficiently counting at scale, where traditional methods fall short."
-ogimage: "images/hyperloglog/hllBuckets.svg"
+ogimage: "hyperloglog/hllBuckets.svg"
 tags: ["databases", "system-design", "mathematics"]
 params:
   math: true
@@ -35,7 +35,7 @@ HyperLogLog uses a hash function. Ideally, this function produces uniformly dist
 
 Assuming no hash collisions, our problem reduces to finding the number of unique binary strings. If you remember your high school math, for a random binary string, the probability of getting \(k\) leading zeroes followed by a one is \(1 / 2^{k+1}\).
 
-![Probability of getting a leftmost one illustrated](images/hyperloglog/leftmostOneProbability.svg)
+![Probability of getting a leftmost one illustrated](hyperloglog/leftmostOneProbability.svg)
 
 Alternatively, think of the string as a series of coin tosses: zero means heads, one means tails. If, across multiple individual runs, the longest run of heads we encountered is \(l\), then its probability is \(1 / 2^{l+1}\). In other words, we can estimate that, on average, we’ve tried at least \(2^{l+1}\) times.
 
@@ -48,7 +48,7 @@ The chance of seeing a hash with many leading zeroes is very low. The more uniqu
 ### Bucketing and Mergeability
 To manage outliers, HyperLogLog distributes the hash values into different buckets based on the initial \(b\) bits of the hash. This gives us a total of \(2^b\) buckets, and each bucket tracks its own maximum. Even though we are distributing values, the maximum among them remains the same. This means our problem is *mergeable*, so we do not have to worry about double-counting.
 
-![Bucketing in HyperLogLog illustrated](images/hyperloglog/hllBuckets.svg)
+![Bucketing in HyperLogLog illustrated](hyperloglog/hllBuckets.svg)
 
 This property is incredibly useful for queries such as “How many unique users have liked posts in the last month?” We can easily combine the buckets for each day and calculate the result. To do this, we persist each day’s serialized HyperLogLog structure. Since this structure is typically just a few kilobytes, storage is not an issue. The mergeability of HyperLogLog is also a boon in distributed systems: each server can maintain its own buckets, which can later be aggregated.
 

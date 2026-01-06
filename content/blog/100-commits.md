@@ -3,7 +3,7 @@ title: "3 Years and 100 Commits Later"
 subtitle: "A look back at the site's history and a commitment to myself."
 date: 2025-09-21T20:30:00+05:30
 description: "A look back at the website's history and some new commitments."
-ogimage: "images/100-commits/coracleBoats.webp"
+ogimage: "100-commits/coracleBoats.webp"
 tags: ["life"]
 ---
 ## A Milestone and a Realization
@@ -24,6 +24,6 @@ That’s a silence I’m now committed to filling. Going forward, this site will
 ## The Endangered Art of the Web
 I find that personal websites have a distinct feel in a web full of centralized platforms and social media. In this age, finding a personal site is like discovering a _Coracle Boat_ in the vast sea of the internet. They are a deep reflection of what the author truly cares about.
 
-![Coracle Boats at Patalganga riverside, Srisailam](images/100-commits/coracleBoats.webp "Coracle Boats at Patalganga riverside, Srisailam.")
+![Coracle Boats at Patalganga riverside, Srisailam](100-commits/coracleBoats.webp "Coracle Boats at Patalganga riverside, Srisailam.")
 
 I started this site because I was inspired by someone else's little corner of the internet. So, if this resonated with you, consider it a sign. Go build your own. The web needs less uniformity and more weirdness. It needs more personality, more passion projects, and more of what makes you, you.

@@ -43,8 +43,8 @@ copyright = "&copy; 2022-{year} Priyavrat Misra.<br><em>This site is built on fu
   header_title = "Priyavrat Misra"
   header_subtitle = "['Software Engineer', 'Computer Science Graduate', 'Open Source Advocate', 'Cycling Enthusiast']"
   description = "Priyavrat's corner of the internet."
-  avatar = "images/avatar/120x120.webp"
-  avatar_2x = "images/avatar/180x180.webp"
+  avatar = "avatar/120x120.webp"
+  avatar_2x = "avatar/180x180.webp"
   knowsAbout = ["Software Engineering", "Distributed Systems", "Open Source", "Web Development"]
   math = false
   [[params.social]]
