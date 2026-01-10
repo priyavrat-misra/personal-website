@@ -28,7 +28,12 @@
         {{ end }}
     </ul>
     {{ end }}
-    {{ .TableOfContents }}
+    {{ if .TableOfContents }}
+    <details id="toc-details">
+        <summary><strong>Table of Contents</strong></summary>
+        {{ .TableOfContents }}
+    </details>
+    {{ end }}
 </header>
 <article>
     {{ .Content }}

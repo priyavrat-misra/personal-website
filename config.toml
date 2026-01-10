@@ -80,6 +80,8 @@ copyright = "&copy; 2022-{year} Priyavrat Misra.<br><em>This site is built on fu
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true  
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
         enable = true

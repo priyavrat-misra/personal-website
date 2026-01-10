@@ -100,6 +100,9 @@ footer {
 
 img {
     max-width: 100%;
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 iframe {
@@ -297,5 +300,23 @@ $currentPercentage: 0;
         content: "​"; // zero-width space to retain element height
         border-right: 1px solid;
         animation: typed #{$durTotal + "s"} linear 1s infinite, cursor 1s infinite;
+    }
+}
+
+// Table of Contents details/summary
+#toc-details {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border-default);
+    border-radius: 0.375rem;
+    background-color: var(--color-canvas-subtle);
+
+    summary {
+        strong {
+            font-size: 1.1rem;
+        }
+    }
+
+    &[open] summary {
+        margin-bottom: 0.5rem;
     }
 }
