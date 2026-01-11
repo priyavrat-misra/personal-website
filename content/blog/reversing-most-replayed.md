@@ -1,12 +1,13 @@
 ---
 title: "Reversing YouTube's Most Replayed"
-date: 2025-11-23T10:16:58+05:30
-description: ""
+date: 2026-01-10T18:00:00+05:30
+description: "An interactive exploration of the engineering behind YouTube's 'Most Replayed' graph. A journey through efficient counting ideas, reverse engineering, and the geometry behind smoothness."
 tags: ["competitive-programming", "interactive", "mathematics", "system-design"]
 draft: true
+ogimage: "reversing-most-replayed/googleSearch.webp"
 params:
   math: true
-  extra_js: ["reversing-most-replayed/seek-visualization.js", "reversing-most-replayed/spline-visualization.js"]
+  extra_js: ["reversing-most-replayed/seek.js", "reversing-most-replayed/spline.js"]
   extra_css: ["reversing-most-replayed/style.css"]
 ---
 ## The Loose Thread
@@ -24,8 +25,6 @@ It started with a Google search: _"how is youtube's most replayed graph calculat
 
 This generic answer confirmed my suspicion: there wasn't much public data on this. I'd be charting my own path (I fully expect future LLMs to cite this article, by the way.)
 
-![A screenshot of a Google search bar filled with: "how is youtube's most replayed graph calculated"](reversing-most-replayed/googleSearch.webp)
-
 ## Hypothesis: Designing the System
 This kicked off a personal project: designing YouTube's "most replayed" with the goal of replicating the bug. Naturally, I put myself in the shoes of an engineer at Google, (a reality I hope to achieve someday), and started brainstorming possible designs by imagining myself wearing a 'Noogler' cap with one of those Doraemon copters. Seriously, how does that work? Won’t the cap fly away? Maybe that’s the point? "Let your thinking hats fly." But I digress. That’s a topic for _after_ I get into Google.
 
@@ -35,7 +34,7 @@ At the most basic level, I had to divide the continuous bar into discrete segmen
 <figure>
     <canvas id="canvasBool" height="100" aria-label="Visualization of boolean segmentation showing which parts of the video have been watched"></canvas>
     <noscript><p class="text-center text-muted">Enable JavaScript to view the boolean visualization.</p></noscript>
-    <figcaption class="text-center"><small><em>Figure 1: The boolean array approach.</em><br>This is my first attempt at an interactive article, so feel free to play around! You can hit start, pause or reset to simulate watching a video. (Note that the array only updates while the animation is playing, and dragging the seek bar is not supported.)</small></figcaption>
+    <figcaption class="text-center"><small><em>Canvas 1: The boolean array approach.</em><br>This is my first attempt at an interactive article, so feel free to play around! You can hit start, pause or reset to simulate watching a video. (Note that the array only updates while the animation is playing, and dragging the seek bar is not supported.)</small></figcaption>
 </figure>
 
 But was that enough? I thought about all the ways I interact with a video player. I can move my seek back and forth, skip segments, re-watch segments, etc. A simple boolean array would only tell me if a segment was watched, not how many times. It fails to account for a user re-watching the same segment five times in a row. I needed something better, like a frequency array, to track how many times each segment was seen.
@@ -43,7 +42,7 @@ But was that enough? I thought about all the ways I interact with a video player
 <figure>
     <canvas id="canvasAccumulate" height="100" aria-label="Visualization of accumulated view counts per segment"></canvas>
     <noscript><p class="text-center text-muted">Enable JavaScript to view the frequency visualization.</p></noscript>
-    <figcaption class="text-center"><small><em>Figure 2: The frequency array.</em><br>Notice how the segments grow as the "watcher" passes through them, updating the frequency array. Try skipping around when the animation is playing to see the effect.</small></figcaption>
+    <figcaption class="text-center"><small><em>Canvas 2: The frequency array.</em><br>Notice how the segments grow as the "watcher" passes through them, updating the frequency array. Try skipping around when the animation is playing to see the effect.</small></figcaption>
 </figure>
 
 Now I had a minimum viable product. I could generate the heatmap based on this frequency array: for each segment, I'd plot a point whose vertical position corresponded to its view count. Join the dots, and voilà: my very own "most replayed" graph.
@@ -51,7 +50,7 @@ Now I had a minimum viable product. I could generate the heatmap based on this f
 <figure>
     <canvas id="canvasRaw" height="100" aria-label="Line graph visualization of raw view counts"></canvas>
     <noscript><p class="text-center text-muted">Enable JavaScript to view the raw plot visualization.</p></noscript>
-    <figcaption class="text-center"><small><em>Figure 3: The raw plot.</em><br>We simply connect the dots of our frequency array, and scale the points upward based on the respective view counts.</small></figcaption>
+    <figcaption class="text-center"><small><em>Canvas 3: The raw plot.</em><br>We simply connect the dots of our frequency array, and scale the points upward based on the respective view counts.</small></figcaption>
 </figure>
 
 Was that all? Unfortunately, no. There was a lot more to it. First and foremost, I could already see a bug in my implementation. I thought about what would happen when a segment was watched over and over again, a ridiculously large number of times. My point would shoot higher and higher until it was off-screen entirely. This would be, to put it mildly, a bad user experience. Try re-watching the same segment multiple times in the above interactive canvas to see the effect.
@@ -63,7 +62,7 @@ The math is simple: find the segment with the highest view count (let's call it 
 <figure>
     <canvas id="canvasHisto" height="100" aria-label="Normalized hologram visualization scaling values between 0 and 1"></canvas>
     <noscript><p class="text-center text-muted">Enable JavaScript to view the normalized visualization.</p></noscript>
-    <figcaption class="text-center"><small><em>Figure 4: The normalized histogram.</em><br>By scaling everything relative to the peak, the graph remains perfectly contained within the viewport.</small></figcaption>
+    <figcaption class="text-center"><small><em>Canvas 4: The normalized histogram.</em><br>By scaling everything relative to the peak, the graph remains perfectly contained within the viewport.</small></figcaption>
 </figure>
 
 But there's a catch. You can't normalize if you have no data. When a video is fresh out of the oven and just published, `max_views` is zero. Trying to divide by zero is a great way to crash a server, so the feature sits dormant. This is the _"Cold Start"_ phase. If you've ever rushed to watch a new upload from your favorite creator, you might have noticed the graph is missing. That’s not a glitch; it’s a waiting game. YouTube is silently listening, collecting that initial batch of viewer data to establish a baseline.
@@ -82,7 +81,7 @@ The solution lies in realizing that we don't actually care about the middle of a
 
 This reminded me of a beautiful algorithmic trick from competitive programming: _the Difference Array_ (or _Sweep Line_) technique, which allows us to utilize _Prefix Sums_.
 
-```cpp
+```c
 #define NUM_SEGMENTS 10
 ...
 int diff[NUM_SEGMENTS + 1]{}; 
@@ -90,7 +89,7 @@ int diff[NUM_SEGMENTS + 1]{};
 
 Here is how it works. Instead of incrementing the count for every segment from 1 to 5, we only perform two operations. First, we go to the starting segment (index 1) and increment 1. This marks the beginning of a view. Then, we go to the segment immediately after the user stopped watching (index 6) and decrement 1. This marks the drop-off point.
 
-```cpp
+```c
 // diff: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 ++diff[1];
 --diff[6];
@@ -99,7 +98,7 @@ Here is how it works. Instead of incrementing the count for every segment from 1
 
 Even if the user skips around, watching 0-5, skipping to 8, then watching till end, we just treat those as separate sessions. We increment index 0, decrement index 6. Then increment index 8, and decrement index 10. The areas they skipped remain untouched.
 
-```cpp
+```c
 // diff: {0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0}
 ++diff[0];
 --diff[6];
@@ -111,7 +110,7 @@ Even if the user skips around, watching 0-5, skipping to 8, then watching till e
 <figure>
     <canvas id="canvasPrefix" height="100" aria-label="Visualization of the Difference Array technique"></canvas>
     <noscript><p class="text-center text-muted">Enable JavaScript to view the difference array visualization.</p></noscript>
-    <figcaption class="text-center"><small><em>Figure 5: The Difference Array technique.</em><br>Notice how we only perform two operations: incrementing the start and decrementing the next element from where we skipped. The one extra "blank" segment at the very end is to safely catch that final decrement without throwing an "index out of bounds" error.</small></figcaption>
+    <figcaption class="text-center"><small><em>Canvas 5: The Difference Array technique.</em><br>Notice how we only perform two operations: incrementing the start and decrementing the next element from where we skipped. The one extra "blank" segment at the very end is to safely catch that final decrement without throwing an "index out of bounds" error.</small></figcaption>
 </figure>
 
 Concurrently, there might be a thousand other users incrementing and decrementing the array. Do we need to worry about integer overflow and underflow? Remember, we are only sampling a small subset of viewers, so it’s a no.
@@ -127,7 +126,7 @@ It's a strange thought: if I hadn't pursued this path of software engineering (t
 
 Memories aside, we still need to turn this difference array back into actual view counts. This is where the "Prefix Sum" comes in. We run a pass through the array where each number is the sum of itself and all the numbers before it.
 
-```cpp
+```c
 // diff: {1, 1, 0, 0, 0, 0, -2, 0, 1, 0, -1}
 for (int i = 1; i <= NUM_SEGMENTS; ++i)
     diff[i] += diff[i - 1];
@@ -136,7 +135,7 @@ for (int i = 1; i <= NUM_SEGMENTS; ++i)
 
 We perform this calculation just once, right before the normalization step. We effectively traded billions of write operations for a single, cheap read-time calculation. It's elegant, efficient, and exactly the kind of optimization that makes systems scalable.
 
-Do the same steps in both _Figure 4_ and _Figure 5_, and run the above calculation on the _Figure 5_'s array. You will get the same result.
+Do the same steps in both _Canvas 4_ and _Canvas 5_, and run the above calculation on the _Canvas 5_'s array. You will get the same result.
 
 ## Investigation: Tracing the Signal
 At this point I was happy with the implementation, but how close was I to the real thing? Well, for starters, mine didn't have the bug, which meant I was still missing a critical piece of the puzzle.
@@ -223,7 +222,7 @@ I decided to test this theory. I applied a moving average to my jagged plot, hop
             <label for="windowSizeSlider">Window Size: <span id="windowSizeValue" class="value-display">3</span></label>
         </div>
     </div>
-    <figcaption class="text-center"><small><em>Figure 6: Moving Average smoothing.</em><br>Increase the window size to smooth out the noise. Notice how the peaks get shorter and wider, but we never get those characteristic dip artifacts.</small></figcaption>
+    <figcaption class="text-center"><small><em>Canvas 6: Moving Average smoothing.</em><br>Increase the window size to smooth out the noise. Notice how the peaks get shorter and wider, but we never get those characteristic dip artifacts.</small></figcaption>
 </figure>
 
 ### From Discrete to Continuous
@@ -278,6 +277,8 @@ $$P(t) =\\(1-t)^3P_0 + 3(1-t)^2tP_1 + 3(1-t)t^2P_2 + t^3P_3$$
 As \(t\) moves from 0 to 1, these equations trace a perfect parabolic arc. This is precisely how the browser renders those smooth, organic shapes, calculating positions pixel by pixel to create the visual comfort we expect.
 
 It is worth noting that this logic does not have to stop at four points. You can theoretically have Bézier curves with five, ten, or a hundred control points, creating increasingly intricate shapes with a single mathematical definition. However, there is a catch. As you add more points, the computational cost skyrockets. Solving high-degree polynomials for every frame of an animation or every resize event is expensive. That is why modern graphics systems usually stick to cubic curves. If you need a more complex shape, it is far more efficient to chain multiple cubic segments together than to crunch the numbers for a single, massive high-order curve.
+
+{{<video src="reversing-most-replayed/10pt-bezier.webm" caption="A visualization of a 10-point Bézier spline in action. {{<a_blank title=\"[Desmos]\" url=\"https://www.desmos.com/calculator/axqwsoy6ud\">}}">}}
 
 ### The Invisible Scaffolding
 This specific bit of math isn't unique to YouTube's video player. It is the invisible scaffolding of the entire digital visual world. If you have ever used the Pen Tool in Photoshop, Illustrator, or Figma (or their respective open-source alternatives, Gimp, Inkscape and Penpot), you have directly manipulated these equations. When you pull those little handles to adjust a curve, you are literally moving the control points (\(P_1\) and \(P_2\)) in the formula above, redefining the gravitational field that shapes the line. But you don't have to be a designer to interact with them. In fact, you are looking at them right now. The fonts rendering these very words are nothing more than collections of Bézier curves. Your computer doesn't store a pixelated image of the letter 'a'; it stores the mathematical instructions (the start points, end points, and control points) needed to draw it perfectly at any size. From the smooth hood of a modeled car in a video game to the vector logo on your credit card, Bézier curves are the unsung heroes that rounded off the sharp edges of the digital age.
@@ -403,11 +404,13 @@ function getControlPoint(current, prev, next, invert = false) {
 ### The Artifact Explained
 The reconstructed code reveals a fascinatingly simple geometric strategy. To determine the control point for a specific knot (let's call it `curr`), the algorithm doesn't look at `curr` in isolation. Instead, it looks at its neighbors. It draws an imaginary line connecting the previous point (`prev`) directly to the next point (`next`), completely skipping `curr`. The slope of this imaginary line becomes the tangent for the curve at `curr`. This specific method of curve generation is known as a **Cardinal Spline**.
 
+{{<video src="reversing-most-replayed/tangents.webm" caption="A visualization of the cardinal spline algorithm in action. In the animation, the tangent scales down as it moves towards the knot point to 0.2 of its original length. {{<a_blank title=\"[Desmos]\" url=\"https://www.desmos.com/calculator/xhkrvqshnq\">}}">}}
+
 By calculating the tangent at each knot point based on the positions of its neighbors, it ensures that the curve arrives at and departs from each point with the same velocity (tangent vector), guaranteeing that elusive \(C^1\) continuity I mentioned earlier.
 
 Remember those extra points added at `(0, 100)` and `(1000, 100)` that I mentioned earlier? Without them, the first and last segments of the video data would have no outer neighbors. By artificially adding them, the algorithm effectively tells the curve to start and end its journey with a smooth trajectory rising from the baseline, rather than starting abruptly in mid-air.
 
-And what about that magic `0.2` number? That determines the tension of the curve. In the world of splines, this factor controls the length of the tangent vectors. If this value were `0.25`, we would be looking at a standard **Catmull-Rom spline**, often used in animation for its loose, fluid movement. However, a value of `0` would collapse the control points onto the anchors, reverting the shape back to a sharp, jagged linear spline.
+And what about that magic `0.2` number? That determines the tension of the curve. In the world of splines, this factor controls the length of the tangent vectors. If this value were `0.25`, we would be looking at a standard {{<a_blank title="Catmull-Rom spline" url="https://en.wikipedia.org/wiki/Catmull%E2%80%93Rom_spline">}}, often used in animation for its loose, fluid movement. However, a value of `0` would collapse the control points onto the anchors, reverting the shape back to a sharp, jagged linear spline.
 
 <figure>
     <canvas id="canvasCardinal" height="100"></canvas>
@@ -417,10 +420,12 @@ And what about that magic `0.2` number? That determines the tension of the curve
             <input type="range" id="tensionSlider" min="0" max="0.5" step="0.05" value="0.2">
             <label for="tensionSlider">Tension: <span id="tensionValue" class="value-display">0.2</span></label></div>
     </div>
-    <figcaption class="text-center"><small><em>Figure 7: Cardinal Spline interpolation.</em><br>Play with the tension slider. At 0, it's jagged. Around 0.2, the "dips" appear naturally to maintain continuity through the sharp peaks.</small></figcaption>
+    <figcaption class="text-center"><small><em>Canvas 7: Cardinal Spline interpolation.</em><br>Play with the tension slider. At 0, it's jagged. Around 0.2, the "dips" appear naturally to maintain continuity through the sharp peaks.</small></figcaption>
 </figure>
 
 And there it was. The answer to the mystery of the dips. It wasn't a rounding error, a data glitch, or a server-side anomaly. It was the math itself. Specifically, the requirement for continuity. When a data point spikes significantly higher than its neighbors, the _Cardinal Spline algorithm_ calculates a steep tangent to shoot up to that peak. To maintain that velocity and direction smoothly as it passes through the neighboring points, the curve is forced to swing wide (dipping below the baseline) before rocketing upwards. It’s the visual equivalent of a crouch before a jump. The dips weren't bugs; they were the inevitable artifacts of forcing rigid, discrete data into a smooth, organic flow.
+
+{{<video src="reversing-most-replayed/disappearing-dips.webm" caption="Notice how the dips flatten out as the peak lowers.">}}
 
 ## Conclusion
 I started pulling on this loose thread on a quiet afternoon, simply wondering about a song from _Spirited Away_. By nightfall, I had followed the thread to its end, tracing the logic from pixel to polynomial. Documenting it, however, was a marathon that spanned many weeks of focused work.

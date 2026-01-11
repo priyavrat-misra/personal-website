@@ -8,7 +8,8 @@
         <p>
             <small class="muted-text">Published: <time>{{- dateFormat "02 Jan 06 15:04 MST" .Date.Local -}}</time></small>
             {{- if .Lastmod }}
-            {{- if ne .Lastmod .Date }}
+            {{- $diff := sub .Lastmod.Unix .Date.Unix }}
+            {{- if gt $diff 86400 }}
             <small class="muted-text">Last updated: <time>{{- dateFormat "02 Jan 06 15:04 MST" .Lastmod.Local -}}</time></small>
             {{- end }}
             {{- end }}
