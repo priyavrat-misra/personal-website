@@ -1,9 +1,8 @@
 ---
 title: "Reversing YouTube's Most Replayed"
-date: 2026-01-10T18:00:00+05:30
-description: "An interactive exploration of the engineering behind YouTube's 'Most Replayed' graph. A journey through efficient counting ideas, reverse engineering, and the geometry behind smoothness."
+date: 2026-01-11T19:30:00+05:30
+description: "An interactive exploration of the engineering behind YouTube's 'Most Replayed' graph."
 tags: ["competitive-programming", "interactive", "mathematics", "system-design"]
-draft: true
 ogimage: "reversing-most-replayed/googleSearch.webp"
 params:
   math: true
@@ -234,6 +233,8 @@ $$P(t) = \text{Lerp}(P_0, P_1, t) = (1-t)P_0 + tP_1$$
 
 Here, \(t\) acts as a slider ranging from 0 to 1. At \(t=0\), we are at the start point \(P_0\). At \(t=1\), we arrive at the end point \(P_1\).
 
+{{<video src="reversing-most-replayed/linear.webm" caption="A simple line connecting two points using the above equation. (You are going to have to settle for a video from here on out because _Desmos_ does a better job than I ever could with an HTML canvas.) Check out the {{<a_blank title=\"interactive graph on Desmos\" url=\"https://www.desmos.com/calculator/3eipb5lodk\">}}.">}}
+
 To get a curve, we extend this concept using the _Quadratic Bézier curve_. Imagine you have three points: a start \(P_0\), an end \(P_2\), and a _"control point"_ \(P_1\) hovering in between. The math essentially _"Lerps the Lerps"_ by nesting the equations. First, we calculate two moving intermediate points  to create a sliding segment:
 
 $$Q_0 = \text{Lerp}(P_0, P_1, t) = (1-t)P_0 + tP_1$$
@@ -249,6 +250,8 @@ When you expand this algebra, you get the quadratic formula:
 $$P(t) = (1-t)^2P_0 + 2(1-t)tP_1 + t^2P_2$$
 
 The result is a smooth curve that starts at \(P_0\) and travels towards \(P_2\), but is magnetically pulled towards \(P_1\) without ever touching it.
+
+{{<video src="reversing-most-replayed/quadratic.webm" caption="A quadratic Bézier curve. {{<a_blank title=\"[Desmos]\" url=\"https://www.desmos.com/calculator/rnnc9nmfuc\">}}">}}
 
 However, because _Quadratic Bézier_ relies on a single control point, it lacks the flexibility to create "S" curves or inflections; it can only bend in one direction. For "S" curves we need two control points. Which brings us to the _Cubic Bézier_. This adds a second control point, giving us four points total: Start (\(P_0\)), Control 1 (\(P_1\)), Control 2 (\(P_2\)), and End (\(P_3\)). We just add another layer of depth to the recursion.
 
@@ -275,6 +278,8 @@ Substituting everything back in gives the elegant cubic formula:
 $$P(t) =\\(1-t)^3P_0 + 3(1-t)^2tP_1 + 3(1-t)t^2P_2 + t^3P_3$$
 
 As \(t\) moves from 0 to 1, these equations trace a perfect parabolic arc. This is precisely how the browser renders those smooth, organic shapes, calculating positions pixel by pixel to create the visual comfort we expect.
+
+{{<video src="reversing-most-replayed/cubic.webm" caption="A cubic Bézier curve. {{<a_blank title=\"[Desmos]\" url=\"https://www.desmos.com/calculator/fbwrcoalbv\">}}">}}
 
 It is worth noting that this logic does not have to stop at four points. You can theoretically have Bézier curves with five, ten, or a hundred control points, creating increasingly intricate shapes with a single mathematical definition. However, there is a catch. As you add more points, the computational cost skyrockets. Solving high-degree polynomials for every frame of an animation or every resize event is expensive. That is why modern graphics systems usually stick to cubic curves. If you need a more complex shape, it is far more efficient to chain multiple cubic segments together than to crunch the numbers for a single, massive high-order curve.
 
