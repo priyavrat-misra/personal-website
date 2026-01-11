@@ -1,0 +1,18 @@
+canvas {
+  border: 1px solid var(--color-border-default);
+  width: 100%;
+  max-width: 800px;
+  display: block;
+}
+
+.canvas-controls {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.value-display {
+  display: inline-block;
+  width: 3ch;
+  text-align: right;
+}

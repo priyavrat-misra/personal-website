@@ -1,0 +1,10 @@
+{{ range .Params.extra_js }}
+    {{ $script := resources.Get . }}
+    {{ if $script }}
+        {{ $script := $script | minify }}
+        {{ if hugo.IsProduction }}
+            {{ $script = $script | fingerprint }}
+        {{ end }}
+        <script defer src="{{ $script.RelPermalink }}" {{ if hugo.IsProduction }}integrity="{{ $script.Data.Integrity }}"{{ end }}></script>
+    {{ end }}
+{{ end }}

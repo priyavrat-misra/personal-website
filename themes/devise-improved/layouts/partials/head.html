@@ -30,6 +30,9 @@
     {{- partialCached "math.html" . }}
     {{- end }}
 
+    {{ partial "extra_css.html" . }}
+    {{ partial "extra_scripts.html" . }}
+
     {{ partial "opengraph.html" . }}
     {{ partial "structured-data.html" . }}
 </head>

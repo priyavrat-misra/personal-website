@@ -6,6 +6,8 @@ tags: ["competitive-programming", "interactive", "mathematics", "system-design"]
 draft: true
 params:
   math: true
+  extra_js: ["reversing-most-replayed/seek-visualization.js", "reversing-most-replayed/spline-visualization.js"]
+  extra_css: ["reversing-most-replayed/style.css"]
 ---
 ## The Loose Thread
 It was a quiet afternoon; the only sound was an instrumental playlist humming from a forgotten YouTube tab. A melody felt familiar, but I couldn't quite place it, spirited away by my work. Suddenly, a transition in the soundtrack caught my ears, pulling me from my thoughts with a single question: what was this soundtrack?
@@ -30,23 +32,39 @@ This kicked off a personal project: designing YouTube's "most replayed" with the
 ### The Naive Implementation
 At the most basic level, I had to divide the continuous bar into discrete segments. So I represented the progress bar's state as a boolean array, where each index corresponded to a segment of the video. That seemed like a good start.
 
-<canvas id="canvasBool" height="100"></canvas>
+<figure>
+    <canvas id="canvasBool" height="100" aria-label="Visualization of boolean segmentation showing which parts of the video have been watched"></canvas>
+    <noscript><p class="text-center text-muted">Enable JavaScript to view the boolean visualization.</p></noscript>
+    <figcaption class="text-center"><small><em>Figure 1: The boolean array approach.</em><br>This is my first attempt at an interactive article, so feel free to play around! You can hit start, pause or reset to simulate watching a video. (Note that the array only updates while the animation is playing, and dragging the seek bar is not supported.)</small></figcaption>
+</figure>
 
 But was that enough? I thought about all the ways I interact with a video player. I can move my seek back and forth, skip segments, re-watch segments, etc. A simple boolean array would only tell me if a segment was watched, not how many times. It fails to account for a user re-watching the same segment five times in a row. I needed something better, like a frequency array, to track how many times each segment was seen.
 
-<canvas id="canvasAccumulate" height="100"></canvas>
+<figure>
+    <canvas id="canvasAccumulate" height="100" aria-label="Visualization of accumulated view counts per segment"></canvas>
+    <noscript><p class="text-center text-muted">Enable JavaScript to view the frequency visualization.</p></noscript>
+    <figcaption class="text-center"><small><em>Figure 2: The frequency array.</em><br>Notice how the segments grow as the "watcher" passes through them, updating the frequency array. Try skipping around when the animation is playing to see the effect.</small></figcaption>
+</figure>
 
 Now I had a minimum viable product. I could generate the heatmap based on this frequency array: for each segment, I'd plot a point whose vertical position corresponded to its view count. Join the dots, and voilà: my very own "most replayed" graph.
 
-<canvas id="canvasRaw" height="100"></canvas>
+<figure>
+    <canvas id="canvasRaw" height="100" aria-label="Line graph visualization of raw view counts"></canvas>
+    <noscript><p class="text-center text-muted">Enable JavaScript to view the raw plot visualization.</p></noscript>
+    <figcaption class="text-center"><small><em>Figure 3: The raw plot.</em><br>We simply connect the dots of our frequency array, and scale the points upward based on the respective view counts.</small></figcaption>
+</figure>
 
-Was that all? Unfortunately, no. There was a lot more to it. First and foremost, I could already see a bug in my implementation. I thought about what would happen when a segment was watched over and over again, a ridiculously large number of times. My point would shoot higher and higher until it was off-screen entirely. This would be, to put it mildly, a bad user experience.
+Was that all? Unfortunately, no. There was a lot more to it. First and foremost, I could already see a bug in my implementation. I thought about what would happen when a segment was watched over and over again, a ridiculously large number of times. My point would shoot higher and higher until it was off-screen entirely. This would be, to put it mildly, a bad user experience. Try re-watching the same segment multiple times in the above interactive canvas to see the effect.
 
 So, what's the fix? If you have a statistics background (or just a good memory of high school math), you might already know the answer. Either way, it's **normalization**. It sounds fancy, but it's really just a way of keeping our graph in check. Instead of plotting the raw view counts (which can range from zero to billions), we scale everything down to a standard range, typically between 0 and 1.
 
 The math is simple: find the segment with the highest view count (let's call it `max_views`). Then, divide every segment's view count by `max_views`. Suddenly, the specific numbers don't matter. The most popular segment will always have a value of 1 (or 100% height), and every other segment falls somewhere below that, relative to the peak. It ensures that whether a video has a thousand views or a thousand million, the points' value range from 0 to 1 and the graph always fits perfectly inside the viewport.
 
-<canvas id="canvasHisto" height="100"></canvas>
+<figure>
+    <canvas id="canvasHisto" height="100" aria-label="Normalized hologram visualization scaling values between 0 and 1"></canvas>
+    <noscript><p class="text-center text-muted">Enable JavaScript to view the normalized visualization.</p></noscript>
+    <figcaption class="text-center"><small><em>Figure 4: The normalized histogram.</em><br>By scaling everything relative to the peak, the graph remains perfectly contained within the viewport.</small></figcaption>
+</figure>
 
 But there's a catch. You can't normalize if you have no data. When a video is fresh out of the oven and just published, `max_views` is zero. Trying to divide by zero is a great way to crash a server, so the feature sits dormant. This is the _"Cold Start"_ phase. If you've ever rushed to watch a new upload from your favorite creator, you might have noticed the graph is missing. That’s not a glitch; it’s a waiting game. YouTube is silently listening, collecting that initial batch of viewer data to establish a baseline.
 
@@ -90,7 +108,11 @@ Even if the user skips around, watching 0-5, skipping to 8, then watching till e
 // diff: {1, 1, 0, 0, 0, 0, -2, 0, 1, 0, -1}
 ```
 
-<canvas id="canvasPrefix" height="100"></canvas>
+<figure>
+    <canvas id="canvasPrefix" height="100" aria-label="Visualization of the Difference Array technique"></canvas>
+    <noscript><p class="text-center text-muted">Enable JavaScript to view the difference array visualization.</p></noscript>
+    <figcaption class="text-center"><small><em>Figure 5: The Difference Array technique.</em><br>Notice how we only perform two operations: incrementing the start and decrementing the next element from where we skipped. The one extra "blank" segment at the very end is to safely catch that final decrement without throwing an "index out of bounds" error.</small></figcaption>
+</figure>
 
 Concurrently, there might be a thousand other users incrementing and decrementing the array. Do we need to worry about integer overflow and underflow? Remember, we are only sampling a small subset of viewers, so it’s a no.
 
@@ -98,7 +120,7 @@ Concurrently, there might be a thousand other users incrementing and decrementin
 <h4>A Historic Limit</h4>
 <p>The mere mention of "integer overflow" in the context of YouTube unlocks a core memory for me. I remember being a kid when the news broke that {{<a_blank title="Psy's \"Gangnam Style\"" url="https://www.youtube.com/watch?v=9bZkp7q19f0">}} had "broken" YouTube. At the time, I thought it was just a metaphor for its explosive popularity. It wasn't until years later, after trading childhood wonder for computer science textbooks, that I realized the breakage was literal: the video's view count had smashed through the ceiling of a <em>32-bit signed integer.</em></p>
 
-![A screenshot of a tweet by YouTube dated December 1, 2014. It reads: "We never thought a video would be watched in numbers greater than a 32-bit integer (=2,147,483,647 views), but that was before we met PSY. "Gangnam Style" has been viewed so many times we had to upgrade to a 64-bit integer (9,223,372,036,854,775,808)!"](reversing-most-replayed/psy.webp "Credits: {{<a_blank title="TechCrunch" url="https://techcrunch.com/2014/12/03/gangnam-style-has-been-viewed-so-many-times-it-broke-youtubes-code/">}}. I was unable to find this tweet. Not even in {{<a_blank title="Wayback Machine" url="https://web.archive.org/">}}.")
+![A screenshot of a tweet by YouTube dated December 1, 2014. It reads: "We never thought a video would be watched in numbers greater than a 32-bit integer (=2,147,483,647 views), but that was before we met PSY. "Gangnam Style" has been viewed so many times we had to upgrade to a 64-bit integer (9,223,372,036,854,775,808)!"](reversing-most-replayed/psy.webp "Credits: {{<a_blank title="TechCrunch" url="https://techcrunch.com/2014/12/03/gangnam-style-has-been-viewed-so-many-times-it-broke-youtubes-code/">}}. I was unable to find this tweet, not even in {{<a_blank title="Wayback Machine" url="https://web.archive.org/">}}.")
 
 It's a strange thought: if I hadn't pursued this path of software engineering (though, looking back at the kid who lived on his computer, that was probably inevitable), I might still be walking around thinking "Gangnam Style" just partied too hard for the servers to handle.
 </aside>
@@ -114,11 +136,13 @@ for (int i = 1; i <= NUM_SEGMENTS; ++i)
 
 We perform this calculation just once, right before the normalization step. We effectively traded billions of write operations for a single, cheap read-time calculation. It's elegant, efficient, and exactly the kind of optimization that makes systems scalable.
 
+Do the same steps in both _Figure 4_ and _Figure 5_, and run the above calculation on the _Figure 5_'s array. You will get the same result.
+
+## Investigation: Tracing the Signal
 At this point I was happy with the implementation, but how close was I to the real thing? Well, for starters, mine didn't have the bug, which meant I was still missing a critical piece of the puzzle.
 
 My first instinct was to blame the classic enemy of precise computing: floating point errors. After all, normalization involves division, and we all know computers have a complicated relationship with decimals. I stared at the dips, trying to convince myself that this was just a rounding error, a ghost in the machine born from {{<a_blank title="0.1 + 0.2 not equaling 0.3" url="https://stackoverflow.com/questions/588004/is-floating-point-math-broken">}}. But the more I looked, the less it fit. A precision bug is usually chaotic, a messy scattering of noise across the entire dataset. It wouldn't manifest as two perfect, symmetrical dips flanking the highest point while leaving the rest of the curve smooth. This wasn't random; it felt structural. If it were a floating point issue, the artifacts would be everywhere, not just comfortably nesting next to the peak.
 
-## Investigation: Tracing the Signal
 So, I decided to stop guessing and start looking. I fired up the browser's developer tools. Right-click. Inspect. The holy grail of web debugging. I hovered over the heatmap, diving into the DOM tree, peeling back layer after layer of nested `<div>` containers until I finally hit the source. There it was: a single `<svg>` element hiding inside the structure.
 
 This discovery shifted the investigation. I was now looking at a _Scalable Vector Graphic_ (SVG), but its origin was a mystery. Was this SVG pre-rendered on YouTube's servers and sent over as a static asset? Or was the browser receiving a raw payload of data points (my hypothetical frequency array) and generating the curve locally using JavaScript?
@@ -189,6 +213,18 @@ It is not just an aesthetic trend; it is a psychological one. Sharp corners sign
 Driven by this universal preference for organic shapes, I needed to understand the mathematics behind YouTube's implementation. Was it a _Moving Average_? Real-world data is inherently noisy, and a moving average is the standard tool for smoothing it out. By sliding a "window" across the dataset and averaging the points within it (say, three at a time), it irons out the wrinkles. Instead of a single, erratic value, you get the consensus of the neighborhood.
 
 I decided to test this theory. I applied a moving average to my jagged plot, hoping to see the familiar YouTube curve emerge. It certainly helped sand down the sharpest peaks, making the graph look less like a mountain range and more like rolling hills. But it created a critical problem. The distinctive dips flanking the main peak (the very artifacts I was trying to replicate) were nowhere to be found. They weren't in the raw data, and the moving average certainly didn't create them; if anything, it would have smoothed them out if they were there. My plot was now smooth, but it was featureless. It looked like a low-resolution approximation, missing the specific character of the real thing. Clearly, a simple moving average wasn't the answer.
+ 
+<figure>
+    <canvas id="canvasMovingAvg" height="100"></canvas>
+    <div class="canvas-controls">
+        <label><input type="checkbox" id="showPointsMA" checked> Show Points</label>
+        <div>
+            <input type="range" id="windowSizeSlider" min="1" max="20" value="3">
+            <label for="windowSizeSlider">Window Size: <span id="windowSizeValue" class="value-display">3</span></label>
+        </div>
+    </div>
+    <figcaption class="text-center"><small><em>Figure 6: Moving Average smoothing.</em><br>Increase the window size to smooth out the noise. Notice how the peaks get shorter and wider, but we never get those characteristic dip artifacts.</small></figcaption>
+</figure>
 
 ### From Discrete to Continuous
 So I decided to check the path of the YouTube SVG itself. My recreation relied on the _"Line To" line command_ (`L`). It draws a straight, uncompromising line from point A to point B. Simple, efficient, but undeniably jagged. YouTube, however, wasn't using lines. Their path was packed with _{{<a_blank title="Cubic Bézier curve commands" url="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch/Paths#curve_commands">}}_ (`C`). It became clear that the secret wasn't in the data values themselves, but in how they were connected. I decided to pause the investigation and familiarize myself with the mathematics of curves. 
@@ -373,6 +409,17 @@ Remember those extra points added at `(0, 100)` and `(1000, 100)` that I mention
 
 And what about that magic `0.2` number? That determines the tension of the curve. In the world of splines, this factor controls the length of the tangent vectors. If this value were `0.25`, we would be looking at a standard **Catmull-Rom spline**, often used in animation for its loose, fluid movement. However, a value of `0` would collapse the control points onto the anchors, reverting the shape back to a sharp, jagged linear spline.
 
+<figure>
+    <canvas id="canvasCardinal" height="100"></canvas>
+    <div class="canvas-controls">
+        <label><input type="checkbox" id="showPointsCardinal"> Show Points</label>
+        <div>
+            <input type="range" id="tensionSlider" min="0" max="0.5" step="0.05" value="0.2">
+            <label for="tensionSlider">Tension: <span id="tensionValue" class="value-display">0.2</span></label></div>
+    </div>
+    <figcaption class="text-center"><small><em>Figure 7: Cardinal Spline interpolation.</em><br>Play with the tension slider. At 0, it's jagged. Around 0.2, the "dips" appear naturally to maintain continuity through the sharp peaks.</small></figcaption>
+</figure>
+
 And there it was. The answer to the mystery of the dips. It wasn't a rounding error, a data glitch, or a server-side anomaly. It was the math itself. Specifically, the requirement for continuity. When a data point spikes significantly higher than its neighbors, the _Cardinal Spline algorithm_ calculates a steep tangent to shoot up to that peak. To maintain that velocity and direction smoothly as it passes through the neighboring points, the curve is forced to swing wide (dipping below the baseline) before rocketing upwards. It’s the visual equivalent of a crouch before a jump. The dips weren't bugs; they were the inevitable artifacts of forcing rigid, discrete data into a smooth, organic flow.
 
 ## Conclusion
@@ -380,6 +427,6 @@ I started pulling on this loose thread on a quiet afternoon, simply wondering ab
 
 This project wasn't just a random curiosity; it was about the joy of digging until I hit the bedrock of logic. It forced me to bridge concepts from disparate domains (frontend engineering, competitive programming, geometry, and design history) and to think deeply about the performance implications of every calculation. I am grateful to live in an era where curiosity can be so readily shared with the world.
 
-Having made it this far (through over 6,000 words), you have my wholehearted thanks for lending me your time. If you enjoyed this descent into madness and want to support future deep dives, consider {{<a_blank title="buying me a coffee (or two?)" url="https://buymeacoffee.com/priyavrat">}}. Though I don't drink coffee, it helps pay for the domain costs.
+Having made it this far (through over 7,000 words), you have my wholehearted thanks for lending me your time. If you enjoyed this descent into madness and want to support future deep dives, consider {{<a_blank title="buying me a coffee (or two?)" url="https://buymeacoffee.com/priyavrat">}}. Though I don't drink coffee, it helps pay for the domain costs.
 
 Until next time.

@@ -1,0 +1,10 @@
+{{ range .Params.extra_css }}
+    {{ $style := resources.Get . }}
+    {{ if $style }}
+        {{ $style := $style | toCSS | minify }}
+        {{ if hugo.IsProduction }}
+            {{ $style = $style | fingerprint }}
+        {{ end }}
+        <link rel="stylesheet" href="{{ $style.RelPermalink }}" {{ if hugo.IsProduction }}integrity="{{ $style.Data.Integrity }}"{{ end }}>
+    {{ end }}
+{{ end }}
