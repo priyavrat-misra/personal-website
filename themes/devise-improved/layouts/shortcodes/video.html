@@ -1,0 +1,29 @@
+{{ $autoplay := .Get "autoplay" -}}
+{{ $caption := .Get "caption" -}}
+{{ $loop := .Get "loop" -}}
+{{ $preload := .Get "preload" | default "metadata" -}}
+{{ $src := .Get "src" -}}
+
+{{ $type := "" -}}
+{{ $resource := resources.Get $src -}}
+{{ if not $resource -}}
+  {{ $resource = .Page.Resources.Get $src -}}
+{{ end -}}
+
+{{ if $resource -}}
+  {{ $src = $resource.RelPermalink -}}
+  {{ $type = $resource.MediaType -}}
+{{ else -}}
+  {{ $src = $src | relURL -}}
+{{ end -}}
+
+{{ $captionBaseId := printf "video-caption-%d" .Ordinal -}}
+{{ $captionId := $captionBaseId | printf "%s-%s" .Page.File.UniqueID -}}
+<figure>
+<video controls preload="{{ $preload }}" {{ with $autoplay }}autoplay="{{ . }}"{{ end }} {{ with $loop }}loop="{{ . }}"{{ end }} {{ if $caption }}aria-labelledby="{{ $captionId }}"{{ end }}>
+<source src="{{ $src }}" {{ with $type }}type="{{ . }}"{{ end }}>
+</video>
+{{ with $caption }}
+<figcaption id="{{ $captionId }}" class="text-center"><small>{{ . | $.Page.RenderString }}</small></figcaption>
+{{ end }}
+</figure>
