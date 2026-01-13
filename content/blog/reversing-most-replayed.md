@@ -1,5 +1,5 @@
 ---
-title: "Reversing YouTube's Most Replayed"
+title: "Reversing YouTube's \"Most Replayed\" Graph"
 date: 2026-01-11T19:30:00+05:30
 description: "An interactive exploration of the engineering behind YouTube's 'Most Replayed' graph."
 tags: ["competitive-programming", "interactive", "mathematics", "system-design"]
