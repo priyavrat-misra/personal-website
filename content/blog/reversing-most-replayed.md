@@ -251,7 +251,7 @@ $$P(t) = (1-t)^2P_0 + 2(1-t)tP_1 + t^2P_2$$
 
 The result is a smooth curve that starts at \(P_0\) and travels towards \(P_2\), but is magnetically pulled towards \(P_1\) without ever touching it.
 
-{{<video src="reversing-most-replayed/quadratic.webm" caption="A quadratic Bézier curve. {{<a_blank title=\"[Desmos]\" url=\"https://www.desmos.com/calculator/rnnc9nmfuc\">}}">}}
+{{<video src="reversing-most-replayed/quadratic.webm" caption="A quadratic Bézier curve. Notice how since it has only one control point, it can only bend in one direction. {{<a_blank title=\"[Desmos]\" url=\"https://www.desmos.com/calculator/rnnc9nmfuc\">}}">}}
 
 However, because _Quadratic Bézier_ relies on a single control point, it lacks the flexibility to create "S" curves or inflections; it can only bend in one direction. For "S" curves we need two control points. Which brings us to the _Cubic Bézier_. This adds a second control point, giving us four points total: Start (\(P_0\)), Control 1 (\(P_1\)), Control 2 (\(P_2\)), and End (\(P_3\)). We just add another layer of depth to the recursion.
 
@@ -279,7 +279,7 @@ $$P(t) =\\(1-t)^3P_0 + 3(1-t)^2tP_1 + 3(1-t)t^2P_2 + t^3P_3$$
 
 As \(t\) moves from 0 to 1, these equations trace a perfect parabolic arc. This is precisely how the browser renders those smooth, organic shapes, calculating positions pixel by pixel to create the visual comfort we expect.
 
-{{<video src="reversing-most-replayed/cubic.webm" caption="A cubic Bézier curve. {{<a_blank title=\"[Desmos]\" url=\"https://www.desmos.com/calculator/fbwrcoalbv\">}}">}}
+{{<video src="reversing-most-replayed/cubic.webm" caption="A cubic Bézier curve. Notice how it can bend in two directions and form \"S\" curves easily. {{<a_blank title=\"[Desmos]\" url=\"https://www.desmos.com/calculator/fbwrcoalbv\">}}">}}
 
 It is worth noting that this logic does not have to stop at four points. You can theoretically have Bézier curves with five, ten, or a hundred control points, creating increasingly intricate shapes with a single mathematical definition. However, there is a catch. As you add more points, the computational cost skyrockets. Solving high-degree polynomials for every frame of an animation or every resize event is expensive. That is why modern graphics systems usually stick to cubic curves. If you need a more complex shape, it is far more efficient to chain multiple cubic segments together than to crunch the numbers for a single, massive high-order curve.
 
@@ -432,7 +432,7 @@ And what about that magic `0.2` number? That determines the tension of the curve
 
 And there it was. The answer to the mystery of the dips. It wasn't a rounding error, a data glitch, or a server-side anomaly. It was the math itself. Specifically, the requirement for continuity. When a data point spikes significantly higher than its neighbors, the _Cardinal Spline algorithm_ calculates a steep tangent to shoot up to that peak. To maintain that velocity and direction smoothly as it passes through the neighboring points, the curve is forced to swing wide (dipping below the baseline) before rocketing upwards. It’s the visual equivalent of a crouch before a jump. The dips weren't bugs; they were the inevitable artifacts of forcing rigid, discrete data into a smooth, organic flow.
 
-{{<video src="reversing-most-replayed/disappearing-dips.webm" caption="Notice how the dips flatten out as the peak lowers.">}}
+{{<video src="reversing-most-replayed/disappearing-dips.webm" caption="Notice how the dips flatten out as the peak lowers. {{<a_blank title=\"[Desmos]\" url=\"https://www.desmos.com/calculator/xhkrvqshnq\">}}">}}
 
 ## Conclusion
 I started pulling on this loose thread on a quiet afternoon, simply wondering about a song from _Spirited Away_. By nightfall, I had followed the thread to its end, tracing the logic from pixel to polynomial. Documenting it, however, was a marathon that spanned many weeks of focused work.
