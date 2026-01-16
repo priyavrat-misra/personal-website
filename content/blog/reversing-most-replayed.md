@@ -8,6 +8,7 @@ params:
   math: true
   extra_js: ["reversing-most-replayed/seek.js", "reversing-most-replayed/spline.js"]
   extra_css: ["reversing-most-replayed/style.css"]
+discuss_url: "https://news.ycombinator.com/item?id=46642173"
 ---
 ## The Loose Thread
 It was a quiet afternoon; the only sound was an instrumental playlist humming from a forgotten YouTube tab. A melody felt familiar, but I couldn't quite place it, spirited away by my work. Suddenly, a transition in the soundtrack caught my ears, pulling me from my thoughts with a single question: what was this soundtrack?

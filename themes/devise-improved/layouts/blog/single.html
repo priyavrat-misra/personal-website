@@ -38,6 +38,11 @@
 </header>
 <article>
     {{ .Content }}
+    {{ if .Params.discuss_url }}
+    <p class="text-center">
+        <a href="{{ .Params.discuss_url }}" target="_blank" rel="noopener noreferrer">Discuss on Hacker News</a>
+    </p>
+    {{ end }}
 </article>
 <a href="#" id="back-to-top" data-tooltip="Scroll to top" aria-label="scroll back to top">{{ readFile "static/icons/arrow-up-circle.svg" | safeHTML }}</a>
 <hr>
