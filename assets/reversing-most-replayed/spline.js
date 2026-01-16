@@ -22,8 +22,6 @@
 
         function setupCanvas(id) {
             const canvas = document.getElementById(id);
-            // Set canvas resolution to match display size
-            canvas.width = canvas.offsetWidth;
             return { canvas, ctx: canvas.getContext('2d') };
         }
 
@@ -55,15 +53,18 @@
             const colors = getThemeColors();
 
             // Adjust canvas width on draw in case of resize
-            canvas.width = canvas.offsetWidth;
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * dpr;
+            canvas.height = 100 * dpr;
+            ctx.scale(dpr, dpr);
 
-            ctx.clearRect(0, 0, canvas.width, 100);
+            ctx.clearRect(0, 0, canvas.offsetWidth, 100);
 
             ctx.strokeStyle = colors.border;
             ctx.lineWidth = 2;
             ctx.beginPath();
 
-            const xStep = canvas.width / (smoothedData.length - 1);
+            const xStep = canvas.offsetWidth / (smoothedData.length - 1);
 
             smoothedData.forEach((val, i) => {
                 const x = i * xStep;
@@ -117,10 +118,14 @@
             const { canvas, ctx } = csCanvas;
             const colors = getThemeColors();
 
-            canvas.width = canvas.offsetWidth;
-            ctx.clearRect(0, 0, canvas.width, 100);
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * dpr;
+            canvas.height = 100 * dpr;
+            ctx.scale(dpr, dpr);
 
-            const xStep = canvas.width / (intensityData.length - 1);
+            ctx.clearRect(0, 0, canvas.offsetWidth, 100);
+
+            const xStep = canvas.offsetWidth / (intensityData.length - 1);
             const points = [];
 
             // Prepend dummy point for start fill
@@ -143,7 +148,7 @@
 
             // Append dummy point for end fill
             points.push({
-                x: canvas.width + xStep,
+                x: canvas.offsetWidth + xStep,
                 y: 100
             });
 

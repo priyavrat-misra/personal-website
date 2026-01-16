@@ -50,8 +50,10 @@
             resetButtonX = seekX + seekWidth + buttonGap;
 
             canvases.forEach(c => {
-                c.canvas.width = canvasWidth;
-                c.canvas.height = 100;
+                const dpr = window.devicePixelRatio || 1;
+                c.canvas.width = canvasWidth * dpr;
+                c.canvas.height = 100 * dpr;
+                c.ctx.scale(dpr, dpr);
             });
         }
 
