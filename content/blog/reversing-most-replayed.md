@@ -122,6 +122,8 @@ Concurrently, there might be a thousand other users incrementing and decrementin
 ![A screenshot of a tweet by YouTube dated December 1, 2014. It reads: "We never thought a video would be watched in numbers greater than a 32-bit integer (=2,147,483,647 views), but that was before we met PSY. "Gangnam Style" has been viewed so many times we had to upgrade to a 64-bit integer (9,223,372,036,854,775,808)!"](reversing-most-replayed/psy.webp "Credits: {{<a_blank title="TechCrunch" url="https://techcrunch.com/2014/12/03/gangnam-style-has-been-viewed-so-many-times-it-broke-youtubes-code/">}}. I was unable to find this tweet, not even in {{<a_blank title="Wayback Machine" url="https://web.archive.org/">}}.")
 
 It's a strange thought: if I hadn't pursued this path of software engineering (though, looking back at the kid who lived on his computer, that was probably inevitable), I might still be walking around thinking "Gangnam Style" just partied too hard for the servers to handle.
+
+> **Update**: It turns out I fell for a bit of tech folklore! {{<a_blank title="As pointed out by plastic041 on Hacker News" url="https://news.ycombinator.com/item?id=46642406">}}, this "integer overflow" was actually a joke by YouTube. The original conversation happened on Google+ (which explains why the primary source is dead). You can read the full debunking on {{<a_blank title="CNET" url="https://www.cnet.com/tech/services-and-software/gangnam-style-busts-youtubes-view-counter-not-so-fast/">}}.
 </aside>
 
 Memories aside, we still need to turn this difference array back into actual view counts. This is where the "Prefix Sum" comes in. We run a pass through the array where each number is the sum of itself and all the numbers before it.
