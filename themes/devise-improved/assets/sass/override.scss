@@ -223,8 +223,8 @@ table {
   }
 }
 
-input[type="checkbox"],
-input[type="range"] {
+.input-checkbox,
+.input-range {
     vertical-align: -2px;
     accent-color: var(--color-accent-fg);
 }
@@ -343,7 +343,7 @@ $currentPercentage: 0;
         flex-wrap: wrap;
     }
 
-    input[type="email"] {
+    #email-input {
         flex: 1;
         padding: 0.25rem 0.5rem;
         border: 1px solid var(--color-border-default);

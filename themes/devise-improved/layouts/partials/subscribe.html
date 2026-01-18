@@ -42,9 +42,6 @@
                 if (response.ok) {
                     statusDiv.textContent = 'Thanks for subscribing!';
                     form.querySelector('.form-group').style.display = 'none';
-                } else if (response.status === 409) {
-                    statusDiv.textContent = 'You are already subscribed!';
-                    form.querySelector('.form-group').style.display = 'none';
                 } else {
                     statusDiv.textContent = 'Something went wrong. Please try again.';
                     submitBtn.disabled = false;

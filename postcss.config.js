@@ -8,7 +8,9 @@ const purgecss = purgeCSSPlugin({
         const els = JSON.parse(content).htmlElements;
         return [...(els.tags || []), ...(els.classes || []), ...(els.ids || [])];
     },
-    safelist: [],
+    safelist: [
+        /\[open\]/,
+    ],
 });
 
 export default {

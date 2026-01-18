@@ -218,9 +218,9 @@ I decided to test this theory. I applied a moving average to my jagged plot, hop
 <figure>
     <canvas id="canvasMovingAvg" height="100"></canvas>
     <div class="canvas-controls">
-        <label><input type="checkbox" id="showPointsMA" checked> Show Points</label>
+        <label><input type="checkbox" class="input-checkbox" id="showPointsMA" checked> Show Points</label>
         <div>
-            <input type="range" id="windowSizeSlider" min="1" max="20" value="3">
+            <input type="range" class="input-range" id="windowSizeSlider" min="1" max="20" value="3">
             <label for="windowSizeSlider">Window Size: <span id="windowSizeValue" class="value-display">3</span></label>
         </div>
     </div>
@@ -425,9 +425,9 @@ And what about that magic `0.2` number? That determines the tension of the curve
 <figure>
     <canvas id="canvasCardinal" height="100"></canvas>
     <div class="canvas-controls">
-        <label><input type="checkbox" id="showPointsCardinal"> Show Points</label>
+        <label><input type="checkbox" class="input-checkbox" id="showPointsCardinal"> Show Points</label>
         <div>
-            <input type="range" id="tensionSlider" min="0" max="0.5" step="0.05" value="0.2">
+            <input type="range" class="input-range" id="tensionSlider" min="0" max="0.5" step="0.05" value="0.2">
             <label for="tensionSlider">Tension: <span id="tensionValue" class="value-display">0.2</span></label></div>
     </div>
     <figcaption class="text-center"><small><em>Canvas 7: Cardinal Spline interpolation.</em><br>Play with the tension slider. At 0, it's jagged. Around 0.2, the "dips" appear naturally to maintain continuity through the sharp peaks.</small></figcaption>
