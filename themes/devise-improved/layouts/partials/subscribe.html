@@ -1,0 +1,59 @@
+<div id="email-subscription">
+    <form id="subscription-form" action="#" method="POST" aria-label="RSS/Email Subscription">
+        <p>Stay updated with the latest posts via <a href="/blog/rss.xml" target="_blank" title="Subscribe via RSS">RSS</a> or email.</p>
+
+        <div class="form-group">
+            <label for="email-input" class="sr-only">Email Address</label>
+            <input type="email" id="email-input" name="email" placeholder="email@example.com" required aria-required="true">
+            <button type="submit">Subscribe</button>
+        </div>
+
+        <small id="form-status" aria-live="polite" class="status-message"></small>
+
+        <noscript>
+            JavaScript is required to subscribe via email. Please enable JavaScript or use the <a href="/blog/rss.xml">RSS feed</a>.
+        </noscript>
+    </form>
+</div>
+
+<script defer>
+    (function () {
+        const form = document.getElementById('subscription-form');
+        const statusDiv = document.getElementById('form-status');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email-input').value;
+
+            // UI updates
+            submitBtn.disabled = true;
+            statusDiv.textContent = '';
+            statusDiv.className = 'status-message';
+
+            const referrer = window.location.pathname;
+
+            fetch('https://website-backend.p-v.workers.dev/subscribers', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, referrer })
+            }).then(response => {
+                if (response.ok) {
+                    statusDiv.textContent = 'Thanks for subscribing!';
+                    form.querySelector('.form-group').style.display = 'none';
+                } else if (response.status === 409) {
+                    statusDiv.textContent = 'You are already subscribed!';
+                    form.querySelector('.form-group').style.display = 'none';
+                } else {
+                    statusDiv.textContent = 'Something went wrong. Please try again.';
+                    submitBtn.disabled = false;
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                statusDiv.textContent = 'Something went wrong. Please try again.';
+                submitBtn.disabled = false;
+            });
+        });
+    })();
+</script>

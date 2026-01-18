@@ -44,6 +44,9 @@
     </p>
     {{ end }}
 </article>
+
+{{ partial "subscribe.html" . }}
+
 <a href="#" id="back-to-top" data-tooltip="Scroll to top" aria-label="scroll back to top">{{ readFile "static/icons/arrow-up-circle.svg" | safeHTML }}</a>
 <hr>
 <div id="giscus-comments-container"></div>
