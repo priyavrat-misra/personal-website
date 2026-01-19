@@ -16,41 +16,8 @@
     </form>
 </div>
 
-<script defer>
-    (function () {
-        const form = document.getElementById('subscription-form');
-        const statusDiv = document.getElementById('form-status');
-        const submitBtn = form.querySelector('button[type="submit"]');
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const email = document.getElementById('email-input').value;
-
-            // UI updates
-            submitBtn.disabled = true;
-            statusDiv.textContent = '';
-            statusDiv.className = 'status-message';
-
-            const referrer = window.location.pathname;
-
-            fetch('https://website-backend.p-v.workers.dev/subscribers', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, referrer })
-            }).then(response => {
-                if (response.ok) {
-                    statusDiv.textContent = 'Thanks for subscribing!';
-                    form.querySelector('.form-group').style.display = 'none';
-                } else {
-                    statusDiv.textContent = 'Something went wrong. Please try again.';
-                    submitBtn.disabled = false;
-                }
-            }).catch(error => {
-                console.error('Error:', error);
-                statusDiv.textContent = 'Something went wrong. Please try again.';
-                submitBtn.disabled = false;
-            });
-        });
-    })();
-</script>
+{{ $script := resources.Get "js/subscribe.js" | minify }}
+{{ if hugo.IsProduction }}
+    {{ $script = $script | fingerprint }}
+{{ end }}
+<script src="{{ $script.RelPermalink }}" defer {{ if hugo.IsProduction }}integrity="{{ $script.Data.Integrity }}"{{ end }}></script>
