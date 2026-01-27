@@ -29,7 +29,8 @@
         {{ end }}
     </ul>
     {{ end }}
-    {{ if .TableOfContents }}
+    {{ $hasHeaders := findRE "<h[2-6]" .Content 1 }}
+    {{ if and .TableOfContents $hasHeaders }}
     <details id="toc-details">
         <summary><strong>Table of Contents</strong></summary>
         {{ .TableOfContents }}
