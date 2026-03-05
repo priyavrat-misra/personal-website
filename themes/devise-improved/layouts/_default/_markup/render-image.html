@@ -14,6 +14,6 @@
 <figure>
   <img src="{{ $image }}" alt="{{ $alt }}" loading="lazy">
   {{ with $title }}
-  <figcaption class="text-center"><small>{{ . }}</small></figcaption>
+  <figcaption class="text-center"><small>{{ . | markdownify }}</small></figcaption>
   {{ end }}
 </figure>
